@@ -45,6 +45,10 @@ public class Partido {
     public String getDeporte() {
         return deporte;
     }
+    
+    public int getNivelPartido() {
+        return nivelPartido;
+    }
 
     public Reserva getFechaHora() {
         return reserva;
@@ -96,6 +100,7 @@ public class Partido {
             return true;
         }
         
+        calcularNivelPartido();
         return false;
         
     }
@@ -110,6 +115,7 @@ public class Partido {
             return true;
         }
         
+        calcularNivelPartido();
         return false;
         
     }

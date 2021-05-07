@@ -86,6 +86,30 @@ public class Partido {
     }
     
     
+    //Permite a un jugador (clase jugador) inscribirse en el partido
+    public boolean inscribirsePartido(Jugador jugador){
+        
+        if(jugadores.size() <= numeroJugadores){
+            
+            jugadores.add(jugador);
+            return true;
+        }
+        
+        return false;
+        
+    }
     
+    public boolean inscribirColega(String nombre, String apellidos, int nivel){
+        
+        Jugador colega = new Jugador()
+        if(jugadores.size() <= numeroJugadores){
+            
+            jugadores.add();
+            return true;
+        }
+        
+        return false;
+        
+    }
     
 }

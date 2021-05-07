@@ -64,6 +64,16 @@ public class Jugador {
         this.valoracionesJugador = valoracionesJugador;
         
     }
+
+    public Jugador(String usuario, String nombre, String apellidos, String email, int telefono, int nivel, String deporte) {
+        this.usuario = usuario;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+        this.telefono = telefono;
+        
+    }
+   
     
     
     

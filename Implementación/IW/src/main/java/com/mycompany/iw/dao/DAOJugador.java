@@ -50,7 +50,6 @@ public class DAOJugador extends ConexionBD{
             ps.setString(2, jugador.getContraseña());
             ps.setString(3, jugador.getEmail());
             ps.setDate(4, jugador.getFechaNacimiento());
-            ps.setLong(5, jugador.getId());
             ps.setString(6, jugador.getNombre());
             ps.setInt(7, jugador.getTelefono());
             ps.setString(8, jugador.getUsuario());

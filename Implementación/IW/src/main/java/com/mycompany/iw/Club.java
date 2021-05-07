@@ -9,25 +9,30 @@ package com.mycompany.iw;
  *
  * @author crist
  */
-public class Propietario {
+public class Club {
     
     private String nombreClub;
     private String localizacion;
     private String email;
     private String contraseña;
     private long telefono;
+    private String nombrePropietario;
+    private boolean alta;
 
-    public Propietario() {
+    public Club() {
     }
 
-    public Propietario(String nombreClub, String localizacion, String email, String contraseña, long telefono) {
+    public Club(String nombreClub, String localizacion, String email, String contraseña, long telefono, String nombrePropietario, boolean alta) {
         this.nombreClub = nombreClub;
         this.localizacion = localizacion;
         this.email = email;
         this.contraseña = contraseña;
         this.telefono = telefono;
+        this.nombrePropietario = nombrePropietario;
+        this.alta = alta;
     }
 
+    //getters de la clase
     public String getNombreClub() {
         return nombreClub;
     }
@@ -48,6 +53,16 @@ public class Propietario {
         return telefono;
     }
 
+    public String getNombrePropietario() {
+        return nombrePropietario;
+    }
+
+    public bool getAlta() {
+        return alta;
+    }
+
+
+    //seters de la clase
     public void setNombreClub(String nombreClub) {
         this.nombreClub = nombreClub;
     }
@@ -68,5 +83,8 @@ public class Propietario {
         this.telefono = telefono;
     }
     
+    public void setNombrePropietario(String nombrePropietario) {
+        this.nombrePropietario = nombrePropietario;
+    }
     
 }

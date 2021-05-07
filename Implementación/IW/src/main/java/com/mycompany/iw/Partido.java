@@ -15,9 +15,9 @@ import java.util.ArrayList;
 
 public class Partido {
     
-    private int id;
+    private Long id = null;
     private String deporte;
-    private LocalDateTime fechaHora;
+    private Reserva reserva;
     private Jugador creador;
     private Pista pistaPartido;
     private ArrayList<Jugador> jugadores;
@@ -29,15 +29,15 @@ public class Partido {
     public Partido() {
     }
 
-    public Partido(int id, String deporte, LocalDateTime fechaHora, Jugador creador, Pista pistaPartido) {
+    public Partido(Long id, String deporte, Reserva reserva, Jugador creador, Pista pistaPartido) {
         this.id = id;
         this.deporte = deporte;
-        this.fechaHora = fechaHora;
+        this.reserva = reserva;
         this.creador = creador;
         this.pistaPartido = pistaPartido;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -45,8 +45,8 @@ public class Partido {
         return deporte;
     }
 
-    public LocalDateTime getFechaHora() {
-        return fechaHora;
+    public Reserva getFechaHora() {
+        return reserva;
     }
 
     public Jugador getCreador() {
@@ -61,7 +61,7 @@ public class Partido {
         return jugadores;
     }
     
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -69,8 +69,8 @@ public class Partido {
         this.deporte = deporte;
     }
 
-    public void setFechaHora(LocalDateTime fechaHora) {
-        this.fechaHora = fechaHora;
+    public void setFechaHora(Reserva reserva) {
+        this.reserva = reserva;
     }
 
     public void setCreador(Jugador creador) {
@@ -104,7 +104,7 @@ public class Partido {
         Jugador colega = new Jugador()
         if(jugadores.size() <= numeroJugadores){
             
-            jugadores.add();
+            jugadores.add(colega);
             return true;
         }
         

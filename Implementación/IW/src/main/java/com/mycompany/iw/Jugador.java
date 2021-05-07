@@ -44,8 +44,13 @@ public class Jugador {
     //Valoración del resto de Jugadores
     private LinkedList<Long> valoracionesJugador = new LinkedList<Long>();
     
-    //Valoración del resto de Jugadores
+    //Historial de partidos del jugador
     private LinkedList<Long> historialPartidos = new LinkedList<Long>();
+    
+    //
+    
+    
+    
     
     
     //Constructor completo de la clase Jugador

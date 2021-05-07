@@ -32,6 +32,7 @@ public class Jugador {
     private String apellidos;
     private String email;
     private int telefono;
+    private String contraseña;
 
     private Date fechaNacimiento;
     private long edad;
@@ -50,7 +51,7 @@ public class Jugador {
     //Constructor completo de la clase Jugador
 
     public Jugador(String usuario, String nombre, String apellidos, String email,int telefono, Date fechaNacimiento
-                     ,LinkedList<Long> historialPartidos, LinkedList<Long> valoracionesJugador, Map<String,Integer> nivelesJugador ) {
+                     ,LinkedList<Long> historialPartidos, LinkedList<Long> valoracionesJugador, Map<String,Integer> nivelesJugador, String contraseña) {
         
         this.usuario = usuario;
         this.nombre = nombre;
@@ -62,6 +63,7 @@ public class Jugador {
         this.nivelesJugador = nivelesJugador;
         this.historialPartidos = historialPartidos;
         this.valoracionesJugador = valoracionesJugador;
+        this.contraseña = contraseña;
         
     }
 
@@ -85,8 +87,17 @@ public class Jugador {
     
 //getters de la clase Jugador
     
-    public Long getId(){
+    
+    public String getEmail(){
         
+        return email;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public Long getId() {
         return id;
     }
 
@@ -125,10 +136,20 @@ public class Jugador {
     public LinkedList<Long> getHistorialPartidos() {
         return historialPartidos;
     }
-
     
-
+    
 //setters de la clase Jugador
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public void setEdad(long edad) {
+        this.edad = edad;
+    }
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;

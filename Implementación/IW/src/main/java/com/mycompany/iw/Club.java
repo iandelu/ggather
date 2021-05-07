@@ -57,7 +57,7 @@ public class Club {
         return nombrePropietario;
     }
 
-    public bool getAlta() {
+    public boolean getAlta() {
         return alta;
     }
 

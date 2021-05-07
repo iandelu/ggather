@@ -22,6 +22,7 @@ public class Partido {
     private Pista pistaPartido;
     private ArrayList<Jugador> jugadores;
     private int numeroJugadores;
+    private int nivelPartido;
     
 
     
@@ -101,7 +102,8 @@ public class Partido {
     
     public boolean inscribirColega(String nombre, String apellidos, int nivel){
         
-        Jugador colega = new Jugador()
+        Jugador colega = new Jugador("COLEGA", nombre, apellidos, "COLEGA@COLEGA", 999999999, nivel, this.deporte);
+        
         if(jugadores.size() <= numeroJugadores){
             
             jugadores.add(colega);
@@ -112,4 +114,16 @@ public class Partido {
         
     }
     
+    public void calcularNivelPartido(){
+        
+        int media = 0;
+        
+        for(int i = 0; i< jugadores.size();i++){
+            media = jugadores.get(i).getNivelJugador(deporte);
+        }
+        
+        media = media/judarores.size();
+        
+        this.nivelPartido = media;
+    }
 }

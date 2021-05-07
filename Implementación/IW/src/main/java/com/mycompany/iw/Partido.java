@@ -12,6 +12,7 @@ import java.util.ArrayList;
  *
  * @author crist
  */
+
 public class Partido {
     
     private int id;
@@ -20,6 +21,8 @@ public class Partido {
     private Jugador creador;
     private Pista pistaPartido;
     private ArrayList<Jugador> jugadores;
+    private int numeroJugadores;
+    
 
     
     //Constructor vacio de la clase Partido

@@ -53,6 +53,7 @@ public class Partido {
     public Reserva getFechaHora() {
         return reserva;
     }
+    
 
     public Jugador getCreador() {
         return creador;
@@ -128,7 +129,7 @@ public class Partido {
             media = jugadores.get(i).getNivelJugador(deporte);
         }
         
-        media = media/judarores.size();
+        media = media/judadores.size();
         
         this.nivelPartido = media;
     }

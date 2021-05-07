@@ -15,7 +15,7 @@
     </context-param>
     <context-param>
         <param-name>url</param-name>
-        <param-value>jdbc:ggather.zapto.org/phpmyadmin</param-value>        
+        <param-value>jdbc:mysql://ggather.zapto.org/phpmyadmin/ggather</param-value>        
     </context-param>
     <context-param>
         <param-name>usuario</param-name>
@@ -23,6 +23,6 @@
     </context-param>
     <context-param>
         <param-name>password</param-name>
-        <param-value>root</param-value>        
+        <param-value> </param-value>        
     </context-param>
 </web-app>

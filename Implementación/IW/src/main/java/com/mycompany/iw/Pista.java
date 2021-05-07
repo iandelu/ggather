@@ -19,7 +19,7 @@ public class Pista {
     private LocalTime horarioFin;
     private float precioHora;
     private float puntuacionMedia;
-    private String propietario;
+    private String club;
     
     public Pista() {
     }
@@ -31,7 +31,7 @@ public class Pista {
         this.horarioFin = horarioFin;
         this.precioHora = precioHora;
         this.puntuacionMedia = puntuacionMedia;
-        this.propietario = propietario;
+        this.club = propietario;
     }
 
     public Long getId() {
@@ -59,7 +59,7 @@ public class Pista {
     }
 
     public String getPropietario() {
-        return propietario;
+        return club;
     }
 
     public void setId(Long id) {
@@ -87,7 +87,7 @@ public class Pista {
     }
 
     public void setPropietario(String propietario) {
-        this.propietario = propietario;
+        this.club = propietario;
     }
 
     

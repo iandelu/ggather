@@ -55,7 +55,7 @@ public class Jugador {
     //Constructor completo de la clase Jugador
 
     public Jugador(String usuario, String nombre, String apellidos, String email,int telefono, Date fechaNacimiento, ArrayList<Tarjeta> historialTarjetas
-                     ,ArrayList<Partido> historalPartidos, ArrayList<Tarjeta> valoracionesJugador, Map<String,Integer> nivelesJugador, String contraseña) {
+                     ,ArrayList<Partido> historalPartidos, ArrayList<Valoracion> valoracionesJugador, Map<String,Integer> nivelesJugador, String contraseña) {
         
         this.usuario = usuario;
         this.nombre = nombre;
@@ -219,16 +219,14 @@ public class Jugador {
         
     }
     
-    //
+    //Calcula las estrellas en funcion de las valoraciones
     public double calcularEstrellas(){
         
-        double suma = 0;
-        Iterator iterador = this.valoracionesJugador.iterator();
+        int suma = 0;
         
-        while(iterador.hasNext()){
+        for(int i = 0; i < valoracionesJugador.size();i++)
             
-            suma = suma + iterador.next();
-            
+            suma = suma + this.valoracionesJugador(i).getValoracion();
         }
     
         suma = Math.round((suma/this.valoracionesJugador.size())%5);

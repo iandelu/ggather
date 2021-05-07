@@ -9,6 +9,10 @@ import java.io.InputStream;
 public class ConexionBD {
 	
 	//private String url,usuario,password;
+        private String driver = "com.mysql.jdbc.Driver";
+        private String url = "jdbc:mysql://http://ggather.zapto.org/ggather"
+        private String usuario = "root";
+        private String password = "";        
 	
 	public ConexionBD(){
 		

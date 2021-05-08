@@ -12,14 +12,14 @@ package com.mycompany.iw;
 public class Tarjeta {
     
     private Long idTarjeta = null;
-    private Jugador jugadorSancionado;
-    private Jugador jugadorAmonestador;
+    private Long jugadorSancionado;
+    private Long jugadorAmonestador;
     private String tipoTarjeta;
     private String motivo;
     private String comentario;
 
     //Constructor principal
-    public Tarjeta(Jugador jugadorSancionado, Jugador jugadorAmonestador, String tipoTarjeta, String motivo, String comentario) {
+    public Tarjeta(Long jugadorSancionado, Long jugadorAmonestador, String tipoTarjeta, String motivo, String comentario) {
         this.jugadorSancionado = jugadorSancionado;
         this.jugadorAmonestador = jugadorAmonestador;
         this.tipoTarjeta = tipoTarjeta;
@@ -37,11 +37,11 @@ public class Tarjeta {
         return idTarjeta;
     }
 
-    public Jugador getJugadorSancionado() {
+    public Long getJugadorSancionado() {
         return jugadorSancionado;
     }
 
-    public Jugador getJugadorAmonestador() {
+    public Long getJugadorAmonestador() {
         return jugadorAmonestador;
     }
 
@@ -64,11 +64,11 @@ public class Tarjeta {
         this.idTarjeta = idTarjeta;
     }
 
-    public void setJugadorSancionado(Jugador jugadorSancionado) {
+    public void setJugadorSancionado(Long jugadorSancionado) {
         this.jugadorSancionado = jugadorSancionado;
     }
 
-    public void setJugadorAmonestador(Jugador jugadorAmonestador) {
+    public void setJugadorAmonestador(Long jugadorAmonestador) {
         this.jugadorAmonestador = jugadorAmonestador;
     }
 

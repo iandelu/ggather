@@ -15,9 +15,9 @@ public class Puntuacion {
     private Long id = null;
     private int puntuacion;
     private String comentario;
-    private Pista pista;
+    private Long pista;
 
-    public Puntuacion(int puntuacion, String comentario, Pista pista) {
+    public Puntuacion(int puntuacion, String comentario, Long pista) {
         this.puntuacion = puntuacion;
         this.comentario = comentario;
         this.pista = pista;
@@ -36,7 +36,7 @@ public class Puntuacion {
         return comentario;
     }
 
-    public Pista getPista() {
+    public Long getPista() {
         return pista;
     }
     
@@ -56,7 +56,7 @@ public class Puntuacion {
         this.comentario = comentario;
     }
 
-    public void setPista(Pista pista) {
+    public void setPista(Long pista) {
         this.pista = pista;
     }
     

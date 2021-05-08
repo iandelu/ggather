@@ -12,12 +12,12 @@ package com.mycompany.iw;
 public class Valoracion {
     
     private Long id = null;
-    private Jugador jugadorValorado;
-    private Jugador jugadorValorador;
+    private Long jugadorValorado;
+    private Long jugadorValorador;
     private int valoracion;
     private String comentario;
 
-    public Valoracion(Jugador jugadorValorado, Jugador jugadorValorador, int valoracion, String comentario) {
+    public Valoracion(Long jugadorValorado, Long jugadorValorador, int valoracion, String comentario) {
         this.jugadorValorado = jugadorValorado;
         this.jugadorValorador = jugadorValorador;
         this.valoracion = valoracion;
@@ -30,11 +30,11 @@ public class Valoracion {
         return id;
     }
 
-    public Jugador getJugadorValorado() {
+    public Long getJugadorValorado() {
         return jugadorValorado;
     }
 
-    public Jugador getJugadorValorador() {
+    public Long getJugadorValorador() {
         return jugadorValorador;
     }
 
@@ -52,11 +52,11 @@ public class Valoracion {
         this.id = id;
     }
 
-    public void setJugadorValorado(Jugador jugadorValorado) {
+    public void setJugadorValorado(Long jugadorValorado) {
         this.jugadorValorado = jugadorValorado;
     }
 
-    public void setJugadorValorador(Jugador jugadorValorador) {
+    public void setJugadorValorador(Long jugadorValorador) {
         this.jugadorValorador = jugadorValorador;
     }
 

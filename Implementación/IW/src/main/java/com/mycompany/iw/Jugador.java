@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 
 /**
@@ -37,6 +38,7 @@ public class Jugador {
     private Date fechaNacimiento;
     private long edad;
     
+    /*
     //Nivel de cada deporte asociada a un jugador
     private Map<String, Integer> nivelesJugador = new HashMap();
     
@@ -67,32 +69,27 @@ public class Jugador {
     
     //Constructor completo de la clase Jugador
 
-    public Jugador(String usuario, String nombre, String apellidos, String email,int telefono, Date fechaNacimiento, ArrayList<Tarjeta> historialTarjetas
-                     ,ArrayList<Partido> historalPartidos, ArrayList<Valoracion> valoracionesJugador, Map<String,Integer> nivelesJugador, String contraseña) {
-        
+
+
+    
+    public Jugador(String usuario, String nombre, String apellidos, String email, int telefono, String contraseña, Date fechaNacimiento) {
         this.usuario = usuario;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
         this.telefono = telefono;
+        this.contraseña = contraseña;
         this.fechaNacimiento = fechaNacimiento;
         this.edad = calcularEdad();
-        this.nivelesJugador = nivelesJugador;
-        this.historialPartidos = historialPartidos;
-        this.valoracionesJugador = valoracionesJugador;
-        this.historialTarjetas = historialTarjetas;
-        this.contraseña = contraseña;
         
     }
 
-    
     public Jugador(String usuario, String nombre, String apellidos, String email, int telefono, int nivel, String deporte) {
         this.usuario = usuario;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
         this.telefono = telefono;
-        
     }
    
     
@@ -105,16 +102,6 @@ public class Jugador {
     
     
 //getters de la clase Jugador
-    
-    
-    public String getEmail(){
-        
-        return email;
-    }
-
-    public String getContraseña() {
-        return contraseña;
-    }
 
     public Long getId() {
         return id;
@@ -132,8 +119,16 @@ public class Jugador {
         return apellidos;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public int getTelefono() {
         return telefono;
+    }
+
+    public String getContraseña() {
+        return contraseña;
     }
 
     public Date getFechaNacimiento() {
@@ -143,37 +138,8 @@ public class Jugador {
     public long getEdad() {
         return edad;
     }
-
-    public Map<String, Integer> getNivelesJugador() {
-        return nivelesJugador;
-    }
-
-    public ArrayList<Valoracion> getValoracionesJugador() {
-        return valoracionesJugador;
-    }
-
-    public ArrayList<Partido> getHistorialPartidos() {
-        return historialPartidos;
-    }
-    
-    public Integer getNivelJugador(String deporte) {
-        return nivelesJugador.get(deporte);
-    }
-    
-    
-    
-    
-//setters de la clase Jugador
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
-
-    public void setEdad(long edad) {
-        this.edad = edad;
     }
 
     public void setUsuario(String usuario) {
@@ -196,23 +162,16 @@ public class Jugador {
         this.telefono = telefono;
     }
 
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+//setters de la clase Jugador
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+        this.edad = calcularEdad();
     }
 
-    public void setNivelesJugador(Map<String, Integer> nivelesJugador) {
-        this.nivelesJugador = nivelesJugador;
-    }
-
-    public void setValoracionesJugador(ArrayList<Valoracion> valoracionesJugador) {
-        this.valoracionesJugador = valoracionesJugador;
-    }
-
-    public void setHistorialPartidos(ArrayList<Partido> historialPartidos) {
-        this.historialPartidos = historialPartidos;
-    }
-
-    
     //to string
     @Override
     public String toString() {
@@ -230,6 +189,11 @@ public class Jugador {
         return edad;
     }
     
+    
+    
+    
+    
+    /*
     public void actualizarNivel(String deporte, Integer nivelNuevo){
         
         this.nivelesJugador.put(deporte, nivelNuevo);
@@ -250,5 +214,7 @@ public class Jugador {
         return suma;
         
     }
+    */
+    
     
 }

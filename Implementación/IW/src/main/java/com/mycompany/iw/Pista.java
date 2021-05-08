@@ -14,31 +14,31 @@ import java.time.LocalTime;
 public class Pista {
     
     private Long id;
-    private String deporte;
+    private Long deporte;
     private LocalTime horarioInicio;
     private LocalTime horarioFin;
     private float precioHora;
     private float puntuacionMedia;
-    private String propietario;
+    private Long Club;
     
     public Pista() {
     }
 
-    public Pista(Long id, String deporte, LocalTime horarioInicio, LocalTime horarioFin, float precioHora, float puntuacionMedia, String propietario) {
+    public Pista(Long id, Long deporte, LocalTime horarioInicio, LocalTime horarioFin, float precioHora, float puntuacionMedia, Long propietario) {
         this.id = id;
         this.deporte = deporte;
         this.horarioInicio = horarioInicio;
         this.horarioFin = horarioFin;
         this.precioHora = precioHora;
         this.puntuacionMedia = puntuacionMedia;
-        this.propietario = propietario;
+        this.Club = propietario;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getDeporte() {
+    public Long getDeporte() {
         return deporte;
     }
 
@@ -58,15 +58,15 @@ public class Pista {
         return puntuacionMedia;
     }
 
-    public String getPropietario() {
-        return propietario;
+    public Long getClub() {
+        return Club;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setDeporte(String deporte) {
+    public void setDeporte(Long deporte) {
         this.deporte = deporte;
     }
 
@@ -86,8 +86,8 @@ public class Pista {
         this.puntuacionMedia = puntuacionMedia;
     }
 
-    public void setPropietario(String propietario) {
-        this.propietario = propietario;
+    public void setClub(Long propietario) {
+        this.Club = propietario;
     }
 
     

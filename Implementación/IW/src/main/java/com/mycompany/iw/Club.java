@@ -11,6 +11,7 @@ package com.mycompany.iw;
  */
 public class Club {
     
+    private Long idClub;
     private String nombreClub;
     private String localizacion;
     private String email;
@@ -22,7 +23,8 @@ public class Club {
     public Club() {
     }
 
-    public Club(String nombreClub, String localizacion, String email, String contraseña, long telefono, String nombrePropietario, boolean alta) {
+    public Club(Long idClub, String nombreClub, String localizacion, String email, String contraseña, long telefono, String nombrePropietario, boolean alta) {
+        this.idClub = idClub;
         this.nombreClub = nombreClub;
         this.localizacion = localizacion;
         this.email = email;
@@ -30,6 +32,7 @@ public class Club {
         this.telefono = telefono;
         this.nombrePropietario = nombrePropietario;
         this.alta = alta;
+        
     }
 
     //getters de la clase
@@ -37,6 +40,9 @@ public class Club {
         return nombreClub;
     }
 
+    public Long getId() {
+        return idClub;
+    }
     public String getLocalizacion() {
         return localizacion;
     }
@@ -63,6 +69,10 @@ public class Club {
 
 
     //seters de la clase
+    public void setId(String idClub) {
+        this.idClub = idClub;
+    }
+    
     public void setNombreClub(String nombreClub) {
         this.nombreClub = nombreClub;
     }

@@ -148,6 +148,9 @@ public class Jugador {
         return nivelesJugador.get(deporte);
     }
     
+    
+    
+    
 //setters de la clase Jugador
     public void setId(Long id) {
         this.id = id;

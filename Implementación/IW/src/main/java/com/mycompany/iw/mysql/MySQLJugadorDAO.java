@@ -36,7 +36,6 @@ public class MySQLJugadorDAO implements JugadorDao{
         
     }
     
-    
 
     @Override
     public void insertar(Jugador j) throws DAOException {
@@ -44,15 +43,20 @@ public class MySQLJugadorDAO implements JugadorDao{
         PreparedStatement stat = null;
         
         try{
+            
             stat = conn.prepareStatement(INSERT);
-            stat.setString(1, j.getApellidos());
-            stat.setString(2, j.getContraseña());
-            stat.setString(3, j.getEmail());
-            stat.setDate(4, new Date(j.getFechaNacimiento().getTime()));
-            stat.setLong(5, j.getId());
-            stat.setString(6, j.getNombre());
-            stat.setInt(7, j.getTelefono());
-            stat.setString(8, j.getUsuario());
+            stat.setLong(1, j.getId());
+            stat.setString(2, j.getUsuario());
+            stat.setString(3, j.getNombre());
+            stat.setString(4, j.getEmail());
+            stat.setString(5, j.getApellidos());
+            stat.setDate(6, new Date(j.getFechaNacimiento().getTime()));
+            stat.setString(7, j.getContraseña());
+            stat.setInt(8, j.getTelefono());
+            
+            if(stat.executeUpdate() == 0){
+                throw new DAOException("Puede que no se haya guardado.");
+            }
             
         } catch(SQLException ex){
             throw new DAOException("Error en SQL", ex);
@@ -62,32 +66,94 @@ public class MySQLJugadorDAO implements JugadorDao{
                 try{
                     stat.close();
                 }catch(SQLException ex){
-                    
+                    throw new DAOException("Error en SQL", ex);
                 }
+            }
+        }
+    }
+
+    
+    @Override
+    public void modificar(Jugador j) throws DAOException{
+
+         PreparedStatement stat = null;
+        
+        try{
             
+            stat = conn.prepareStatement(UPDATE);
+            stat.setString(1, j.getUsuario());
+            stat.setString(2, j.getNombre());
+            stat.setString(3, j.getEmail());
+            stat.setString(4, j.getApellidos());
+            stat.setDate(5, new Date(j.getFechaNacimiento().getTime()));
+            stat.setString(6, j.getContraseña());
+            stat.setInt(7, j.getTelefono());
+            stat.setLong(8, j.getId());
+            
+            if(stat.executeUpdate() == 0){
+                throw new DAOException("Puede que no se haya guardado.");
+            }
+            
+        } catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+        } finally{
+            if (stat !=  null){
+                
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    throw new DAOException("Error en SQL", ex);
+                }
             }
         }
         
+    }
+
+
+    @Override
+    public void eliminar(Jugador j) throws DAOException{
+        
+        
+        PreparedStatement stat = null;
+        
+        try{
+            
+            stat = conn.prepareStatement(DELETE);
+            stat.setLong(1, j.getId());
+
+            if(stat.executeUpdate() == 0){
+                throw new DAOException("Puede que no se haya guardado.");
+            }
+            
+        } catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+        } finally{
+            if (stat !=  null){
+                
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    throw new DAOException("Error en SQL", ex);
+                }
+            }
+        }
+    }
+
+    private Jugador convertir(ResultSet rs){
+        
+        String nombre 
         
     }
-
+    
     @Override
-    public void modificar(Jugador j) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Jugador> obtenerTodos() throws DAOException{
+
+        
+
     }
 
     @Override
-    public void eliminar(Jugador j) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Jugador> obtenerTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Jugador obtener(Long id) {
+    public Jugador obtener(Long id) throws DAOException{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

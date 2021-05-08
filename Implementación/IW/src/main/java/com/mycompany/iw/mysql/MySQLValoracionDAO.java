@@ -157,44 +157,44 @@ public class MySQLValoracionDAO implements ValoracionDAO {
     public List<Valoracion> obtenerTodos() throws DAOException{
 
         PreparedStatement stat = null;
-       ResultSet rs = null;
-       List<Valoracion> valoraciones = new ArrayList<>();
-       
-       try{
-           
-           stat = conn.prepareStatement(GETALL);
-           rs = stat.executeQuery();
-           while(rs.next()){
-               
-               valoraciones.add(convertir(rs));
-               
-           }
-           
-       }catch(SQLException ex){
-            throw new DAOException("Error en SQL, ex");
-       }finally{
-           
-           if(rs != null){
-               
-               try{
-                   rs.close();
-               }catch(SQLException ex){
-                   new DAOException("Error en SQL, ex");
-               }
-               
-           }
-           if(stat != null){
-               
-               try{
-                   stat.close();
-               }catch(SQLException ex){
-                   new DAOException("Error en SQL, ex");
-               }
-               
-           }
-       }
-       
-        return valoraciones;
+        ResultSet rs = null;
+        List<Valoracion> valoraciones = new ArrayList<>();
+
+        try{
+
+            stat = conn.prepareStatement(GETALL);
+            rs = stat.executeQuery();
+            while(rs.next()){
+
+                valoraciones.add(convertir(rs));
+
+            }
+
+        }catch(SQLException ex){
+             throw new DAOException("Error en SQL, ex");
+        }finally{
+
+            if(rs != null){
+
+                try{
+                    rs.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL, ex");
+                }
+
+            }
+            if(stat != null){
+
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL, ex");
+                }
+
+            }
+        }
+
+         return valoraciones;
     
 
     }

@@ -53,7 +53,7 @@ public class MySQLJugadorDAO implements JugadorDao{
             stat.setString(5, j.getApellidos());
             stat.setDate(6, new Date(j.getFechaNacimiento().getTime()));
             stat.setString(7, j.getContraseña());
-            stat.setInt(8, j.getTelefono());
+            stat.setLong(8, j.getTelefono());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
@@ -88,7 +88,7 @@ public class MySQLJugadorDAO implements JugadorDao{
             stat.setString(4, j.getApellidos());
             stat.setDate(5, new Date(j.getFechaNacimiento().getTime()));
             stat.setString(6, j.getContraseña());
-            stat.setInt(7, j.getTelefono());
+            stat.setLong(7, j.getTelefono());
             stat.setLong(8, j.getId());
             
             if(stat.executeUpdate() == 0){
@@ -256,11 +256,14 @@ public class MySQLJugadorDAO implements JugadorDao{
         Connection conn = null;
         try{
             //
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/ej", "root", "1234");
-            JugadorDao alumnodao = new MySQLJugadorDAO(conn);
-            List<Jugador> jugadores = alumnodao.obtenerTodos();
-            for(Jugador j: jugadores){
-                System.out.println(j.toString());
+            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ggather", "root", "");
+            JugadorDao jugadordao = new MySQLJugadorDAO(conn);
+            Jugador j = new Jugador( "luisaneri",  "luis",  "aneri",  "luisaneri@uco.es", 601160060, "holaputa",  new Date(2000,9,13));
+            
+            jugadordao.insertar(j);
+            List<Jugador> jugadores = jugadordao.obtenerTodos();
+            for(Jugador a: jugadores){
+                System.out.println(a.toString());
             }
         }finally{
             if(conn != null){

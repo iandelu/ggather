@@ -20,6 +20,7 @@ import java.sql.Time;
  * @author LuisAneri
  */
 
+/*
 public class MySQLPistaDAO implements PistaDao{
     
     private Time timeInicio = Time.valueOf(pista.getHorarioInicio());
@@ -193,3 +194,4 @@ public class MySQLPistaDAO implements PistaDao{
     
     
 }
+*/

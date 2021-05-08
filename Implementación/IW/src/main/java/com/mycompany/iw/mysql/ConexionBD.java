@@ -1,4 +1,4 @@
-package com.mycompany.iw.dao;
+package com.mycompany.iw.mysql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -5,6 +5,8 @@
  */
 package com.mycompany.iw;
 
+import java.util.logging.Logger;
+
 /**
  *
  * @author LuisAneri
@@ -16,13 +18,17 @@ public class Puntuacion {
     private int puntuacion;
     private String comentario;
     private Long pista;
+    private Long idJugador;
 
-    public Puntuacion(int puntuacion, String comentario, Long pista) {
+    public Puntuacion(int puntuacion, String comentario, Long pista, Long idJugador) {
         this.puntuacion = puntuacion;
         this.comentario = comentario;
         this.pista = pista;
+        this.idJugador = idJugador;
     }
 
+    
+            
     //getter puntuacion
     public Long getId() {
         return id;
@@ -39,6 +45,11 @@ public class Puntuacion {
     public Long getPista() {
         return pista;
     }
+
+    public Long getIdJugador() {
+        return idJugador;
+    }
+ 
     
     
     
@@ -59,5 +70,11 @@ public class Puntuacion {
     public void setPista(Long pista) {
         this.pista = pista;
     }
+
+    public void setIdJugador(Long idJugador) {
+        this.idJugador = idJugador;
+    }
+    
+    
     
 }

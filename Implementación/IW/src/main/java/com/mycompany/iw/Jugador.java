@@ -32,7 +32,7 @@ public class Jugador {
     private String nombre;
     private String apellidos;
     private String email;
-    private int telefono;
+    private long telefono;
     private String contraseña;
 
     private Date fechaNacimiento;
@@ -54,7 +54,7 @@ public class Jugador {
     */
     
     //Constructor para el login de la clase Jugador
-    public Jugador(String usuario, String nombre, String apellidos, String email, int telefono, String contraseña, Date fechaNacimiento) {
+    public Jugador(String usuario, String nombre, String apellidos, String email, long telefono, String contraseña, Date fechaNacimiento) {
         this.usuario = usuario;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -67,7 +67,7 @@ public class Jugador {
     
     
 
-    public Jugador(String usuario, String nombre, String apellidos, String email, int telefono, int nivel, String deporte) {
+    public Jugador(String usuario, String nombre, String apellidos, String email, long telefono, int nivel, String deporte) {
         this.usuario = usuario;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -106,7 +106,7 @@ public class Jugador {
         return email;
     }
 
-    public int getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
@@ -141,7 +141,7 @@ public class Jugador {
         this.email = email;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 

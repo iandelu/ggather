@@ -15,7 +15,7 @@
     </context-param>
     <context-param>
         <param-name>url</param-name>
-        <param-value>jdbc:ggather.zapto.org/phpmyadmin</param-value>        
+        <param-value>jdbc:mysql://ggather.zapto.org/phpmyadmin</param-value>        
     </context-param>
     <context-param>
         <param-name>usuario</param-name>

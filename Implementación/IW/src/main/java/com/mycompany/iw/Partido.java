@@ -25,14 +25,14 @@ public class Partido {
     private int numeroJugadores;
     private int nivelPartido;
     
-    
+    /*
     private ArrayList<Jugador> jugadores;
     private ArrayList<Resultado> resultados;
-
+    */
     
     
     //Constructor 
-    public Partido(String deporte, Reserva reserva, Jugador creador, Pista pistaPartido, String estado, int numeroJugadores, int nivelPartido, ArrayList<Jugador> jugadores, ArrayList<Resultado> resultados) {
+    public Partido(String deporte, Reserva reserva, Jugador creador, Pista pistaPartido, String estado, int numeroJugadores, int nivelPartido) {
         this.deporte = deporte;
         this.reserva = reserva;
         this.creador = creador;
@@ -40,10 +40,8 @@ public class Partido {
         this.estado = estado;
         this.numeroJugadores = numeroJugadores;
         this.nivelPartido = nivelPartido;
-        this.jugadores = jugadores;
-        this.resultados = resultados;
     }
-    
+
     //Constructor vacio de la clase Partido
     public Partido() {
     }
@@ -83,15 +81,7 @@ public class Partido {
         return nivelPartido;
     }
 
-    public ArrayList<Jugador> getJugadores() {
-        return jugadores;
-    }
-
-    
-    public ArrayList<Resultado> getResultados() {
-        return resultados;
-    }
-    
+  
     
     
     
@@ -129,16 +119,10 @@ public class Partido {
         this.nivelPartido = nivelPartido;
     }
 
-    public void setJugadores(ArrayList<Jugador> jugadores) {
-        this.jugadores = jugadores;
-    }
-
-    public void setResultados(ArrayList<Resultado> resultados) {
-        this.resultados = resultados;
-    }
     
     
-
+    
+/*
 //Permite a un jugador (clase jugador) inscribirse en el partido
 //Una vez que el jugador añade un colega se actualiza el nivel medio del partido 
     
@@ -218,4 +202,5 @@ public class Partido {
         
         return resultadoPrimero;
     }
+    */
 }

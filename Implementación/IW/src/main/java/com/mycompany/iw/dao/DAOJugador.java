@@ -135,7 +135,32 @@ public class DAOJugador extends ConexionBD{
         
     }
     
-    
+    public Jugador loginJugador(Jugador jugador){
+        
+        PreparedStatement stmt = null;
+        Jugador resul = null;
+        ResultSet rs = null;
+        
+        try {
+            
+            Connection con = getConnection(url, usuario, password);
+            stmt = con.prepareStatement(sqlProperties.getProperty("loginJugador"));
+            stmt.setString(1, jugador.getEmail());
+            stmt.setString(2, jugador.getUsuario());
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                
+                resul = new Jugador(rs.getString("usuario"), rs.getString("nombre"), rs.getString("apellidos"), rs.getString("email"), rs.getInt("telefono"), rs.getString("contraseña"), rs.getDate("fechaNacimiento"));             
+            }
+            
+                   
+        } catch(Exception e) {System.out.println(e);}
+        
+        
+        return resul;
+        
+    }
     
     
     

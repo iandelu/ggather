@@ -48,6 +48,18 @@ public class Jugador {
     
     //
     private ArrayList<Tarjeta> historialTarjetas = new ArrayList<Tarjeta>();
+
+    
+    //Constructor para el login de la clase Jugador
+    public Jugador(String usuario, String nombre, String apellidos, String email, int telefono, String contraseña, Date fechaNacimiento) {
+        this.usuario = usuario;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+        this.telefono = telefono;
+        this.contraseña = contraseña;
+        this.fechaNacimiento = fechaNacimiento;
+    }
     
     
     

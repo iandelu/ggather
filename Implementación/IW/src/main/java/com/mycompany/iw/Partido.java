@@ -20,40 +20,48 @@ public class Partido {
     private Reserva reserva;
     private Jugador creador;
     private Pista pistaPartido;
-    private ArrayList<Jugador> jugadores;
+    private String estado;
+    
     private int numeroJugadores;
     private int nivelPartido;
     
+    
+    private ArrayList<Jugador> jugadores;
+    private ArrayList<Resultado> resultados;
 
     
-    //Constructor vacio de la clase Partido
-    public Partido() {
-    }
-
-    public Partido(Long id, String deporte, Reserva reserva, Jugador creador, Pista pistaPartido) {
-        this.id = id;
+    
+    //Constructor 
+    public Partido(String deporte, Reserva reserva, Jugador creador, Pista pistaPartido, String estado, int numeroJugadores, int nivelPartido, ArrayList<Jugador> jugadores, ArrayList<Resultado> resultados) {
         this.deporte = deporte;
         this.reserva = reserva;
         this.creador = creador;
         this.pistaPartido = pistaPartido;
+        this.estado = estado;
+        this.numeroJugadores = numeroJugadores;
+        this.nivelPartido = nivelPartido;
+        this.jugadores = jugadores;
+        this.resultados = resultados;
     }
-
-    public Long getId() {
+    
+    //Constructor vacio de la clase Partido
+    public Partido() {
+    }
+    
+    
+    
+    //Getters de la clase
+    public Long getId(){
         return id;
     }
 
-    public String getDeporte() {
+    public String getDeporte() {    
         return deporte;
     }
-    
-    public int getNivelPartido() {
-        return nivelPartido;
-    }
 
-    public Reserva getFechaHora() {
+    public Reserva getReserva() {
         return reserva;
     }
-    
 
     public Jugador getCreador() {
         return creador;
@@ -63,10 +71,32 @@ public class Partido {
         return pistaPartido;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public int getNumeroJugadores() {
+        return numeroJugadores;
+    }
+
+    public int getNivelPartido() {
+        return nivelPartido;
+    }
+
     public ArrayList<Jugador> getJugadores() {
         return jugadores;
     }
+
     
+    public ArrayList<Resultado> getResultados() {
+        return resultados;
+    }
+    
+    
+    
+    
+    //setter de la clase
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -75,7 +105,7 @@ public class Partido {
         this.deporte = deporte;
     }
 
-    public void setFechaHora(Reserva reserva) {
+    public void setReserva(Reserva reserva) {
         this.reserva = reserva;
     }
 
@@ -87,14 +117,32 @@ public class Partido {
         this.pistaPartido = pistaPartido;
     }
 
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public void setNumeroJugadores(int numeroJugadores) {
+        this.numeroJugadores = numeroJugadores;
+    }
+
+    public void setNivelPartido(int nivelPartido) {
+        this.nivelPartido = nivelPartido;
+    }
+
     public void setJugadores(ArrayList<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
+
+    public void setResultados(ArrayList<Resultado> resultados) {
+        this.resultados = resultados;
+    }
     
     
-    //Permite a un jugador (clase jugador) inscribirse en el partido
-    public boolean inscribirsePartido(Jugador jugador){
-        
+
+//Permite a un jugador (clase jugador) inscribirse en el partido
+//Una vez que el jugador añade un colega se actualiza el nivel medio del partido 
+    
+    public boolean inscribirsePartido(Jugador jugador) {
         if(jugadores.size() <= numeroJugadores){
             
             jugadores.add(jugador);
@@ -103,8 +151,11 @@ public class Partido {
         
         calcularNivelPartido();
         return false;
-        
     }
+    
+//Permite añadir a un colega pasando unicamente nombre, apellidos y un nivel
+//En la base de datos aquellos jugadores que sean colegas se guardaran con nombre de usurio "COLEGA"
+//Una vez que el jugador añade un colega se actualiza el nivel medio del partido 
     
     public boolean inscribirColega(String nombre, String apellidos, int nivel){
         
@@ -120,7 +171,8 @@ public class Partido {
         return false;
         
     }
-    
+
+//Recorre los jugadores y calcula la media del nivel de cada jugador
     public void calcularNivelPartido(){
         
         int media = 0;
@@ -129,8 +181,17 @@ public class Partido {
             media = jugadores.get(i).getNivelJugador(deporte);
         }
         
-        media = media/judadores.size();
+        media = media/judarores.size();
         
         this.nivelPartido = media;
     }
+    
+//Añade un resultado por jugador
+    
+    public boolean añadirResultado(Resultado resultado){
+        
+        
+        
+    }
+            
 }

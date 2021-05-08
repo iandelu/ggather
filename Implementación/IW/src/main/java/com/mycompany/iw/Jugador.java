@@ -10,7 +10,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Iterator;
+import java.util.ArrayList;
 
 
 /**
@@ -40,23 +40,22 @@ public class Jugador {
     //Nivel de cada deporte asociada a un jugador
     private Map<String, Integer> nivelesJugador = new HashMap();
     
-    
     //Valoración del resto de Jugadores
-    private LinkedList<Long> valoracionesJugador = new LinkedList<Long>();
+    private ArrayList<Valoracion> valoracionesJugador = new ArrayList<Valoracion>();
     
     //Historial de partidos del jugador
-    private LinkedList<Long> historialPartidos = new LinkedList<Long>();
+    private ArrayList<Partido> historialPartidos = new ArrayList<Partido>();
     
     //
-    
+    private ArrayList<Tarjeta> historialTarjetas = new ArrayList<Tarjeta>();
     
     
     
     
     //Constructor completo de la clase Jugador
 
-    public Jugador(String usuario, String nombre, String apellidos, String email,int telefono, Date fechaNacimiento
-                     ,LinkedList<Long> historialPartidos, LinkedList<Long> valoracionesJugador, Map<String,Integer> nivelesJugador, String contraseña) {
+    public Jugador(String usuario, String nombre, String apellidos, String email,int telefono, Date fechaNacimiento, ArrayList<Tarjeta> historialTarjetas
+                     ,ArrayList<Partido> historalPartidos, ArrayList<Valoracion> valoracionesJugador, Map<String,Integer> nivelesJugador, String contraseña) {
         
         this.usuario = usuario;
         this.nombre = nombre;
@@ -68,10 +67,12 @@ public class Jugador {
         this.nivelesJugador = nivelesJugador;
         this.historialPartidos = historialPartidos;
         this.valoracionesJugador = valoracionesJugador;
+        this.historialTarjetas = historialTarjetas;
         this.contraseña = contraseña;
         
     }
 
+    
     public Jugador(String usuario, String nombre, String apellidos, String email, int telefono, int nivel, String deporte) {
         this.usuario = usuario;
         this.nombre = nombre;
@@ -134,14 +135,17 @@ public class Jugador {
         return nivelesJugador;
     }
 
-    public LinkedList<Long> getValoracionesJugador() {
+    public ArrayList<Valoracion> getValoracionesJugador() {
         return valoracionesJugador;
     }
 
-    public LinkedList<Long> getHistorialPartidos() {
+    public ArrayList<Partido> getHistorialPartidos() {
         return historialPartidos;
     }
     
+    public Integer getNivelJugador(String deporte) {
+        return nivelesJugador.get(deporte);
+    }
     
 //setters de la clase Jugador
     public void setId(Long id) {
@@ -184,11 +188,11 @@ public class Jugador {
         this.nivelesJugador = nivelesJugador;
     }
 
-    public void setValoracionesJugador(LinkedList<Long> valoracionesJugador) {
+    public void setValoracionesJugador(ArrayList<Valoracion> valoracionesJugador) {
         this.valoracionesJugador = valoracionesJugador;
     }
 
-    public void setHistorialPartidos(LinkedList<Long> historialPartidos) {
+    public void setHistorialPartidos(ArrayList<Partido> historialPartidos) {
         this.historialPartidos = historialPartidos;
     }
 
@@ -216,21 +220,19 @@ public class Jugador {
         
     }
     
-    //
+    //Calcula las estrellas en funcion de las valoraciones
     public double calcularEstrellas(){
         
-        double suma = 0;
-        Iterator iterador = this.valoracionesJugador.iterator();
+        int suma = 0;
         
-        while(iterador.hasNext()){
+        for(int i = 0; i < valoracionesJugador.size();i++){
             
-            suma = suma + iterador.next();
-            
+            suma = suma + this.valoracionesJugador(i).getValoracion();
         }
     
         suma = Math.round((suma/this.valoracionesJugador.size())%5);
-        
         return suma;
         
     }
+    
 }

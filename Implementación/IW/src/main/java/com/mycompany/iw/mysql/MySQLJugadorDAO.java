@@ -11,6 +11,7 @@ import com.mycompany.iw.daos.JugadorDao;
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -139,32 +140,133 @@ public class MySQLJugadorDAO implements JugadorDao{
         }
     }
 
-    private Jugador convertir(ResultSet rs){
+    
+    private Jugador convertir(ResultSet rs) throws SQLException{
         
-        String usuraio = rs.getString("usuario");
+        String usuario = rs.getString("usuario");
         String nombre = rs.getString("nombre");
         String apellidos = rs.getString("apellidos");
         String contraseña = rs.getString("contraseña");
         String email = rs.getString("email");
-        LocalDate fechaNacimiento = rs.getDate("fechaNacimiento").toLocalDate;
+        Date fechaNacimiento = rs.getDate("fechaNacimiento");
         int telefono = rs.getInt("telefono");
         
-        Alumno alumno = new Alumno(usuario, nombre, apellidos, email, telefono, contraseña, fechaNacimiento);
+        Jugador j = new Jugador(usuario, nombre, apellidos, email, telefono, contraseña, fechaNacimiento);
+        j.setId(rs.getLong("idJujador"));
         
-        
+        return j;
         
     }
     
     @Override
     public List<Jugador> obtenerTodos() throws DAOException{
 
-        
-
+       PreparedStatement stat = null;
+       ResultSet rs = null;
+       List<Jugador> jugadores = new ArrayList<>();
+       
+       try{
+           
+           stat = conn.prepareStatement(GETALL);
+           rs = stat.executeQuery();
+           while(rs.next()){
+               
+               jugadores.add(convertir(rs));
+               
+           }
+           
+       }catch(SQLException ex){
+            throw new DAOException("Error en SQL, ex");
+       }finally{
+           
+           if(rs != null){
+               
+               try{
+                   rs.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL, ex");
+               }
+               
+           }
+           if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL, ex");
+               }
+               
+           }
+       }
+       
+        return jugadores;
     }
+
 
     @Override
     public Jugador obtener(Long id) throws DAOException{
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+       PreparedStatement stat = null;
+       ResultSet rs = null;
+       Jugador j;
+       
+       try{
+           
+           stat = conn.prepareStatement(GETONE);
+           stat.setLong(1, id);
+           rs = stat.executeQuery();
+           if(rs.next()){
+               
+               j = convertir(rs);
+               
+           }else{
+               throw new DAOException("No se ha encontrado ese registro.");
+           }
+           
+       }catch(SQLException ex){
+            throw new DAOException("Error en SQL, ex");
+       }finally{
+           
+           if(rs != null){
+               
+               try{
+                   rs.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL, ex");
+               }
+               
+           }
+           if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL, ex");
+               }
+               
+           }
+       }
+       
+        return j;
     }
     
+    
+    public static void main(String[] args) throws SQLException, DAOException{
+        
+        Connection conn = null;
+        try{
+            //
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/ej", "root", "1234");
+            JugadorDao alumnodao = new MySQLJugadorDAO(conn);
+            List<Jugador> jugadores = alumnodao.obtenerTodos();
+            for(Jugador j: jugadores){
+                System.out.println(j.toString());
+            }
+        }finally{
+            if(conn != null){
+                conn.close();
+            }
+        }
+        
+    }
 }

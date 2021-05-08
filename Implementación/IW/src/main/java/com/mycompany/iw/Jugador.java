@@ -52,6 +52,7 @@ public class Jugador {
     
     
     
+    
     //Constructor completo de la clase Jugador
 
     public Jugador(String usuario, String nombre, String apellidos, String email,int telefono, Date fechaNacimiento, ArrayList<Tarjeta> historialTarjetas

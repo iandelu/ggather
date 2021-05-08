@@ -188,10 +188,34 @@ public class Partido {
     
 //Añade un resultado por jugador
     
-    public boolean añadirResultado(Resultado resultado){
+    public boolean añadirResultado(Resultado resultado, Jugador jugador){
         
-        
-        
-    }
+        for(int i = 0; i < resultados.size();i++){
             
+            if(resultados.get(i).getJugadorPoniente() == jugador){
+                return false;
+            }
+        }
+        
+        if(resultados.size() >= jugadores.size()){
+            return false;
+        }
+        
+        resultados.add(resultado);
+        return true;
+    }
+    
+    public String getResultadoFinal(){
+        
+        String resultadoPrimero = resultados.get(0).getResultado();
+        
+        for(int i = 0; i < resultados.size(); i++){
+            
+            if(resultadoPrimero != resultados.get(i).getResultado()){
+                return "Resultados_no_coinciden";
+            }
+        }
+        
+        return resultadoPrimero;
+    }
 }

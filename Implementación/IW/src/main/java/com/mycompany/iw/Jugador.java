@@ -59,7 +59,7 @@ public class Jugador {
 
 
     
-    public Jugador(String usuario, String nombre, String apellidos, String email, int telefono, String contraseña, Date fechaNacimiento, long edad) {
+    public Jugador(String usuario, String nombre, String apellidos, String email, int telefono, String contraseña, Date fechaNacimiento) {
         this.usuario = usuario;
         this.nombre = nombre;
         this.apellidos = apellidos;

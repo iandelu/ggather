@@ -141,7 +141,17 @@ public class MySQLJugadorDAO implements JugadorDao{
 
     private Jugador convertir(ResultSet rs){
         
-        String nombre 
+        String usuraio = rs.getString("usuario");
+        String nombre = rs.getString("nombre");
+        String apellidos = rs.getString("apellidos");
+        String contraseña = rs.getString("contraseña");
+        String email = rs.getString("email");
+        LocalDate fechaNacimiento = rs.getDate("fechaNacimiento").toLocalDate;
+        int telefono = rs.getInt("telefono");
+        
+        Alumno alumno = new Alumno(usuario, nombre, apellidos, email, telefono, contraseña, fechaNacimiento);
+        
+        
         
     }
     

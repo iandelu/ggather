@@ -46,12 +46,15 @@ public class DAOPista extends ConexionBD{
             
             Connection con = getConnection(url, usuario, password);
             PreparedStatement ps = con.prepareStatement(sqlProperties.getProperty("insertarPista"));
-            ps.setString(1, pista.getClub());
-            ps.setString(2, pista.getDeporte());
-            ps.setTime(3, pista.getHorarioInicio());
-            ps.setTime(4, pista.getHorarioFin());
-            ps.setFloat(6, pista.getPrecioHora());
             
+            Time timeInicio = Time.valueOf(pista.getHorarioInicio());
+            Time timeFin = Time.valueOf(pista.getHorarioFin());
+            
+            ps.setTime(3, timeInicio);
+            ps.setTime(4, timeFin);
+            ps.setFloat(5, pista.getPrecioHora());
+            //ps.setFloat(6,pista.getPuntuacionMedia());
+
             status = ps.executeUpdate();
             
         } catch (Exception e){System.out.println(e);}
@@ -67,17 +70,67 @@ public class DAOPista extends ConexionBD{
         try {
             Connection con = getConnection(url,usuario,password);
             PreparedStatement ps = con.prepareStatement(sqlProperties.getProperty("modificarPista"));
-            ps.setString(1, pista.getClub());
-            ps.setString(2, pista.getDeporte());
-            ps.setTime(3, pista.getHorarioInicio());
-            ps.setTime(4, pista.getHorarioFin());
-            ps.setFloat(6, pista.getPrecioHora());
+            
+            Time timeInicio = Time.valueOf(pista.getHorarioInicio());
+            Time timeFin = Time.valueOf(pista.getHorarioFin());
+            
+            ps.setTime(1, timeInicio);
+            ps.setTime(2, timeFin);
+            ps.setFloat(3, pista.getPrecioHora());
+            ps.setLong(4,pista.getId());
+            //ps.setFloat(6,pista.getPuntuacionMedia());
             
             status = ps.executeUpdate();
             
         } catch (Exception e) {System.out.print(e);}
         return status;
     }
+    
+    public int borrarPista(Pista pista) {
+        int status = 0;
+        
+        try  {
+            
+            Connection con = getConnection(url,usuario,password);
+            PreparedStatement ps = con.prepareStatement(sqlProperties.getProperty("borrarPista"));
+            
+            ps.setLong(1,pista.getId());
+            
+            status = ps.executeUpdate();
+            
+        } catch (Exception e) {System.out.print(e);}
+        
+       return status;
+    }
+    
+    public Pista buscarPista(Pista pista){
+        
+        PreparedStatement stmt = null;
+        Pista resul = null;
+        ResultSet rs = null;
+        
+        try {
+            
+            Connection con = getConnection(url, usuario, password);
+            stmt = con.prepareStatement(sqlProperties.getProperty("buscarPista"));
+            stmt.setLong(1, pista.getId());
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                
+                resul = new Pista(rs.getTime("horarioInicio"), rs.getTime("horarioFin"), rs.getFloat("precioHora"),rs.getFloat("puntuacionMedia"));             
+            }
+            
+                   
+        } catch(Exception e) {System.out.println(e);}
+        
+        
+        return resul;
+        
+        
+        
+    }
+    
     
     
 }

@@ -25,19 +25,19 @@ import java.util.List;
 
 public class MySQLValoracionDAO implements ValoracionDAO {
 
+    
     final String INSERT = "INSERT INTO valoraciones_jugadores(idValoracionesJugadores, usuarioValorador, puntuacion, idJugadorValorado, comentario) VALUES (?,?,?,?,?)"; 
     final String UPDATE = "UPDATE valoraciones_jugadores usuarioValorador = ?, puntuacion = ?, idJugadorValorado = ?, comentario = ? WHERE idValoracionesJugadores = ?";
     final String DELETE = "DELETE FROM valoraciones_jugadores WHERE idValoracionesJugadores = ?";
-    final String GETALL = "SELECT idValoracionesJugadores, usuarioValorador, puntuacion, idJugadorValorado, comentario";
-    final String GETONE = "SELECT idValoracionesJugadores, usuarioValorador, puntuacion, idJugadorValorado, comentario WHERE idValoracionesJugadores = ?";
-    
+    final String GETALL = "SELECT idValoracionesJugadores, usuarioValorador, puntuacion, idJugadorValorado, comentario FROM valoraciones_jugadores";
+    final String GETONE = "SELECT idValoracionesJugadores, usuarioValorador, puntuacion, idJugadorValorado, comentario FROM valoraciones_jugadores WHERE idValoracionesJugadores = ?";
     
     
     private Connection conn;
     
     public MySQLValoracionDAO(Connection conn) {
         
-        
+        this.conn = conn;
         
     }
     

@@ -6,13 +6,14 @@
 package com.mycompany.iw.daos;
 
 import com.mycompany.iw.Jugador;
+import com.mycompany.iw.Pista;
 import java.util.List;
 
 /**
  *
  * @author LuisAneri
  */
-public class PistaDao extends DAO<Pista, Long>{
+public interface PistaDao extends DAO<Pista, Long>{
     
    
 }

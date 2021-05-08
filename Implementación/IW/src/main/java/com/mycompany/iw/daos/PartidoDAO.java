@@ -6,13 +6,14 @@
 package com.mycompany.iw.daos;
 
 import com.mycompany.iw.Jugador;
+import com.mycompany.iw.Partido;
 import java.util.List;
 
 /**
  *
  * @author LuisAneri
  */
-public class PartidoDAO extends DAO<Partido, Long>{
+public interface PartidoDAO extends DAO<Partido, Long>{
     
    
 }

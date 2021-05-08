@@ -5,14 +5,15 @@
  */
 package com.mycompany.iw.daos;
 
-import com.mycompany.iw.Jugador;
-import java.util.List;
+
+import com.mycompany.iw.Reserva;
+
 
 /**
  *
  * @author LuisAneri
  */
-public interface JugadorDao extends DAO<Jugador, Long>{
+public interface ReservaDAO extends DAO<Reserva, Long>{
     
    
 }

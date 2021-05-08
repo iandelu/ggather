@@ -1,7 +1,7 @@
 
 package com.mycompany.iw.daos;
 
-import com.mycompany.iw.Jugador;
+
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ public interface DAO<T, K >{
     
     void modificar(T j);
     
-    void eliminar (T j);
+    void eliminar(T j);
     
     List<T> obtenerTodos();
     

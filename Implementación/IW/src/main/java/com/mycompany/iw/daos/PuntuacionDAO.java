@@ -3,12 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.iw.mysql;
+package com.mycompany.iw.daos;
+
+
+import com.mycompany.iw.Puntuacion;
+import java.util.List;
 
 /**
  *
  * @author LuisAneri
  */
-public class MySQLAlumnoDAO implements AlumnoDAO{
+public interface PuntuacionDAO extends DAO<Puntuacion, Long>{
     
+   
 }

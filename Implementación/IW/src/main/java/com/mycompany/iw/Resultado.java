@@ -15,11 +15,11 @@ import java.util.logging.Logger;
 public class Resultado {
     
     private Long idResultado = null;
-    private Jugador jugadorPoniente;
-    private Partido partido;
+    private Long jugadorPoniente;
+    private Long partido;
     private String resultado;
 
-    public Resultado(Jugador jugadorPoniente, Partido partido, String resultado) {
+    public Resultado(Long jugadorPoniente, Long partido, String resultado) {
         this.jugadorPoniente = jugadorPoniente;
         this.partido = partido;
         this.resultado = resultado;
@@ -31,11 +31,11 @@ public class Resultado {
         return idResultado;
     }
 
-    public Jugador getJugadorPoniente() {
+    public Long getJugadorPoniente() {
         return jugadorPoniente;
     }
 
-    public Partido getPartido() {
+    public Long getPartido() {
         return partido;
     }
 
@@ -50,11 +50,11 @@ public class Resultado {
         this.idResultado = idResultado;
     }
 
-    public void setJugadorPoniente(Jugador jugadorPoniente) {
+    public void setJugadorPoniente(Long jugadorPoniente) {
         this.jugadorPoniente = jugadorPoniente;
     }
 
-    public void setPartido(Partido partido) {
+    public void setPartido(Long partido) {
         this.partido = partido;
     }
 

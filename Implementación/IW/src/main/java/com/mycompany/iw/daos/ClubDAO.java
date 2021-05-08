@@ -5,6 +5,7 @@
  */
 package com.mycompany.iw.daos;
 
+import com.mycompany.iw.Club;
 import com.mycompany.iw.Jugador;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author LuisAneri
  */
-public class ClubDAO extends DAO<Club, Long>{
+public interface ClubDAO extends DAO<Club, Long>{
     
    
 }

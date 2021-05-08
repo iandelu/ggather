@@ -5,14 +5,14 @@
  */
 package com.mycompany.iw.daos;
 
-import com.mycompany.iw.Jugador;
-import java.util.List;
+import com.mycompany.iw.Tarjeta;
+
 
 /**
  *
  * @author LuisAneri
  */
-public interface JugadorDao extends DAO<Jugador, Long>{
+public interface TarjetaDAO extends DAO<Tarjeta, Long>{
     
    
 }

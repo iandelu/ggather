@@ -17,9 +17,9 @@ public class Partido {
     
     private Long id = null;
     private String deporte;
-    private Reserva reserva;
-    private Jugador creador;
-    private Pista pistaPartido;
+    private Long reserva;
+    private Long creador;
+    private Long pistaPartido;
     private String estado;
     
     private int numeroJugadores;
@@ -32,7 +32,7 @@ public class Partido {
     
     
     //Constructor 
-    public Partido(String deporte, Reserva reserva, Jugador creador, Pista pistaPartido, String estado, int numeroJugadores, int nivelPartido) {
+    public Partido(String deporte, Long reserva, Long creador, Long pistaPartido, String estado, int numeroJugadores, int nivelPartido) {
         this.deporte = deporte;
         this.reserva = reserva;
         this.creador = creador;
@@ -57,15 +57,15 @@ public class Partido {
         return deporte;
     }
 
-    public Reserva getReserva() {
+    public Long getReserva() {
         return reserva;
     }
 
-    public Jugador getCreador() {
+    public Long getCreador() {
         return creador;
     }
 
-    public Pista getPistaPartido() {
+    public Long getPistaPartido() {
         return pistaPartido;
     }
 
@@ -95,15 +95,15 @@ public class Partido {
         this.deporte = deporte;
     }
 
-    public void setReserva(Reserva reserva) {
+    public void setReserva(Long reserva) {
         this.reserva = reserva;
     }
 
-    public void setCreador(Jugador creador) {
+    public void setCreador(Long creador) {
         this.creador = creador;
     }
 
-    public void setPistaPartido(Pista pistaPartido) {
+    public void setPistaPartido(Long pistaPartido) {
         this.pistaPartido = pistaPartido;
     }
 

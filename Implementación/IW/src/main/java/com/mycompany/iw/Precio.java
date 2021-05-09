@@ -11,4 +11,15 @@ package com.mycompany.iw;
  */
 public class Precio {
     
+    private Long id = null;
+    private Long idClub;
+    private Long idDeporte;
+    private String mañanaTarde;
+    
+    public Precio(){
+        
+    }
+    
+    
+    
 }

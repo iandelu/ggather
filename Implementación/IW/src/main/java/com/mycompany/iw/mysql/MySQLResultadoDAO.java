@@ -61,9 +61,9 @@ public class MySQLResultadoDAO implements ResultadoDAO{
             }
             
             stat.setLong(1, r.getIdResultado());
-            stat.setLong(2, r.getIdJugadorPoniente());
+            stat.setLong(2, r.getJugadorPoniente());
             stat.setLong(3, r.getPartido());
-            stat.setFloat(4, r.getResultado());
+            stat.setString(4, r.getResultado());
             stat.setLong(5, r.getMVP());
             
             if(stat.executeUpdate() == 0){
@@ -91,7 +91,7 @@ public class MySQLResultadoDAO implements ResultadoDAO{
         try{
             
             stat = conn.prepareStatement(UPDATE);
-            stat.setLong(1, r.JugadorPoniente());
+            stat.setLong(1, r.getJugadorPoniente());
             stat.setLong(2, r.getPartido());
             stat.setString(3, r.getResultado());
             stat.setLong(4, r.getMVP());
@@ -148,7 +148,7 @@ public class MySQLResultadoDAO implements ResultadoDAO{
         String resultados = rs.getString("resultados");
         Long mvp = rs.getLong("mvp");
         
-        Resultado r = new Resultado(Long jugadorPoniente, Long partido, String resultado, Long mvp);
+        Resultado r = new Resultado(jugadorPoniente, partido, resultado, mvp);
         r.setIdResultado(rs.getLong("idResultados"));
         
         return r;

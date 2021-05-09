@@ -260,6 +260,7 @@ public class MySQLPistaDAO implements PistaDao{
     final String GETNOMBRECLUB = "SELECT c.nombreClub FROM club c, pistas p WHERE p.idClub = c.idClub AND p.idClub = ?";
     final String GETNOMBREDEPORTE = "SELECT d.nombreDeporte FROM deportes d, pistas p WHERE p.idDeporte = d.idDeporte AND p.idDeporte = ?";
     final String SEARCH = "SELECT p.idPista FROM pistas p, club c, deportes d WHERE c.localizacion = ? AND d.nombreDeporte = ?";
+    final String GETMISPISTAS = "SELECT p.idPista FROM pistas p, club c WHERE p.idClub = ? AND p.idClub = c.idClub";
     
     public String getNombreClub(Pista pista) throws DAOException {
         PreparedStatement stat = null;
@@ -396,6 +397,57 @@ public class MySQLPistaDAO implements PistaDao{
        
         return pistas;
        
-    } 
+    }
+    
+    /**
+     * Devuelve una lista de pistas con todas las pistas del club con la id que se le pasa
+     * @param id
+     * @return pistas
+     * @throws DAOException 
+     */
+    public List<Pista> getMisPistas(Long id) throws DAOException  {
+       PreparedStatement stat = null;
+       ResultSet rs = null;
+       List<Pista> pistas = new ArrayList<>();
+       
+       try{
+           
+           stat = conn.prepareStatement(GETMISPISTAS);
+           rs = stat.executeQuery();
+           while(rs.next()){
+               
+               pistas.add(convertir(rs));
+               
+           }
+           
+       }catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+       }finally{
+           
+           if(rs != null){
+               
+               try{
+                   rs.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+           if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+       }
+       
+        return pistas;
+       
+    }
+    
+    
     
 }

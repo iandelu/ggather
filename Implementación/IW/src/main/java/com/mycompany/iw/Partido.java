@@ -16,13 +16,10 @@ import java.util.ArrayList;
 public class Partido {
     
     private Long id = null;
-    private String deporte;
     private Long reserva;
     private Long creador;
     private Long pistaPartido;
     private String estado;
-    
-    private int numeroJugadores;
     private int nivelPartido;
     
     /*
@@ -32,13 +29,11 @@ public class Partido {
     
     
     //Constructor 
-    public Partido(String deporte, Long reserva, Long creador, Long pistaPartido, String estado, int numeroJugadores, int nivelPartido) {
-        this.deporte = deporte;
+    public Partido(Long reserva, Long creador, Long pistaPartido, String estado, int nivelPartido) {
         this.reserva = reserva;
         this.creador = creador;
         this.pistaPartido = pistaPartido;
         this.estado = estado;
-        this.numeroJugadores = numeroJugadores;
         this.nivelPartido = nivelPartido;
     }
 
@@ -51,10 +46,6 @@ public class Partido {
     //Getters de la clase
     public Long getId(){
         return id;
-    }
-
-    public String getDeporte() {    
-        return deporte;
     }
 
     public Long getReserva() {
@@ -73,10 +64,6 @@ public class Partido {
         return estado;
     }
 
-    public int getNumeroJugadores() {
-        return numeroJugadores;
-    }
-
     public int getNivelPartido() {
         return nivelPartido;
     }
@@ -89,10 +76,6 @@ public class Partido {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public void setDeporte(String deporte) {
-        this.deporte = deporte;
     }
 
     public void setReserva(Long reserva) {
@@ -109,10 +92,6 @@ public class Partido {
 
     public void setEstado(String estado) {
         this.estado = estado;
-    }
-
-    public void setNumeroJugadores(int numeroJugadores) {
-        this.numeroJugadores = numeroJugadores;
     }
 
     public void setNivelPartido(int nivelPartido) {

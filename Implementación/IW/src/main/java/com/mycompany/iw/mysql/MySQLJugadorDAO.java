@@ -47,7 +47,9 @@ public class MySQLJugadorDAO implements JugadorDao{
         ResultSet rs;
         
         try{
-             
+            
+            stat = conn.prepareStatement(INSERT);
+            
             rs = stat.getGeneratedKeys();
             if(rs.next()){
                 j.setId(rs.getLong(1) + 1);
@@ -55,7 +57,7 @@ public class MySQLJugadorDAO implements JugadorDao{
                 throw new DAOException("No se pudo asignar una ID a este alumno");  
             }
             
-            stat = conn.prepareStatement(INSERT);
+           
             stat.setLong(1, j.getId());
             stat.setString(2, j.getUsuario());
             stat.setString(3, j.getNombre());

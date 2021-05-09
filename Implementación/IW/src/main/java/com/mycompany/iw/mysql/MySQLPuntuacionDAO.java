@@ -49,6 +49,8 @@ public class MySQLPuntuacionDAO implements PuntuacionDAO{
         ResultSet rs;
         try{
             
+            stat = conn.prepareStatement(INSERT);
+            
             rs = stat.getGeneratedKeys();
             if(rs.next()){
                 j.setId(rs.getLong(1) + 1);

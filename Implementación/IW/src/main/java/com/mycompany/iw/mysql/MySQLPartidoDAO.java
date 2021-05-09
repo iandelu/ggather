@@ -249,4 +249,66 @@ public class MySQLPartidoDAO implements PartidoDAO{
         return p;
     }
    
+    
+    /*
+    *   ------------------------------------
+    *   SENTENCIAS PARA LAS TABLAS DE AMIGOS
+    *   ------------------------------------
+    */
+    
+    final String GETHISTORY = "SELECT p.idPartido, p.idCreador, p.idPista, p.idReserva, p.estado, p.nivelPartido FROM partidos p, partidos_jugador pj"
+                               + "WHERE  ";
+    
+    /*
+    *   ----------------------------------------------------------
+    *   Funciones que se encargan lso partidos asociados a un Jugador
+    *   ----------------------------------------------------------
+    */
+    
+    public List<Partido> historialJugador() throws DAOException{
+
+       PreparedStatement stat = null;
+       ResultSet rs = null;
+       List<Partido> partidos = new ArrayList<>();
+       
+       try{
+           
+           stat = conn.prepareStatement(GETHISTORY);
+           rs = stat.executeQuery();
+           while(rs.next()){
+               
+               partidos.add(convertir(rs));
+               
+           }
+           
+       }catch(SQLException ex){
+            throw new DAOException("Error en SQL, ex");
+       }finally{
+           
+           if(rs != null){
+               
+               try{
+                   rs.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL, ex");
+               }
+               
+           }
+           if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL, ex");
+               }
+               
+           }
+       }
+        
+        return partidos;
+    }
+    
+    
+    
+    
 }

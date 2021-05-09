@@ -7,6 +7,7 @@ package com.mycompany.iw.mysql;
 
 
 import com.mycompany.iw.Jugador;
+import com.mycompany.iw.Partido;
 import com.mycompany.iw.daos.DAOException;
 import com.mycompany.iw.daos.JugadorDao;
 import java.sql.Connection;
@@ -137,8 +138,8 @@ public class MySQLDaoManager  {
             Class.forName("com.mysql.jdbc.Driver");
             MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
             
-            JugadorDao jugadordao = new MySQLJugadorDAO(conn);
-            Jugador j = new Jugador( "luisaneri",  "luis",  "aneri",  "luisaneri@uco.es", 601160060, "holaputa",  new Date(2000,9,13), 3);
+            
+            Jugador j = new Jugador( "thyrfin",  "antonio",  "raso",  "antonioraso@uco.es", 635062813, "asdafdf",  new Date(2000,9,13), 0);
             
             man.getJugadorDAO().insertar(j);
             List<Jugador> jugadores = man.getJugadorDAO().obtenerTodos();
@@ -147,6 +148,12 @@ public class MySQLDaoManager  {
             for(Jugador a: jugadores){
                 System.out.println(a.toString());
             }
+            
+            Partido p = new Partido( (long)2, (long) 3, (long) 17,  "PENDIENTE",  1600);
+            man.getJugadorDAO().insertar(j);
+            
+            man.getPartidoDAO().insertar(p);
+            
             
         }finally{
             if(conn != null){

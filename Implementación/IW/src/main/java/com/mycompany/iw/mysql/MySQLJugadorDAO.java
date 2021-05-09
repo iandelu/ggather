@@ -67,7 +67,7 @@ public class MySQLJugadorDAO implements JugadorDao{
             stat.setString(4, j.getApellidos());
             stat.setDate(5, new Date(j.getFechaNacimiento().getTime()));
             stat.setString(6, j.getContraseña());
-            stat.setFloat(7, j.getValoracionMedia());
+            stat.setFloat(7, j.getValoracionMedia()); //Esto abria que modificarlopor que al crear un usuario no posee valoracion
             stat.setLong(8, j.getTelefono());
             
             
@@ -513,6 +513,8 @@ public class MySQLJugadorDAO implements JugadorDao{
             }
         }
     }
+    
+    
     
     
 }

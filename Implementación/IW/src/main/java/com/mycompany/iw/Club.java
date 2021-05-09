@@ -69,7 +69,7 @@ public class Club {
 
 
     //seters de la clase
-    public void setId(String idClub) {
+    public void setId(Long idClub) {
         this.idClub = idClub;
     }
     

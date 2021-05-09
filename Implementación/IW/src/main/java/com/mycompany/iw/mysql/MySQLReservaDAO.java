@@ -21,7 +21,19 @@ public class MySQLReservaDAO implements ReservaDAO{
 
     @Override
     public void insertar(Reserva j) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        final String INSERT = "INSERT INTO reservas(idReservas, horaInicio, horaFin, fecha, idPistas) VALUES (?,?,?,?,?)"; 
+        final String UPDATE = "UPDATE reservas horaInicio = ? , horaFin = ?, fecha = ? WHERE idReserva = ?";
+        final String DELETE = "DELETE FROM reservas WHERE idReservas = ?";
+        final String GETALL = "SELECT idReservas, horaInicio, horaFin, fecha, idPistas FROM reservas";
+        final String GETONE = "SELECT * FROM reservas WHERE idReservas = ?";
+        
+         private Connection conn;
+        
+        public MySQLJugadorDAO(Connection conn) {
+        
+            this.conn = conn;
+        
+        }    
     }
 
     @Override

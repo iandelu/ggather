@@ -57,8 +57,8 @@ public class MySQLClubDAO implements ClubDAO{
             stat.setString(4, c.getEmail());
             stat.setLong(5, c.getTelefono());
             stat.setString(6, c.getNombrePropietario());
-            stat.setString(7, c.getContraseña());
-            stat.setInt(8, c.getTelefono());
+            stat.setBool(7, c.getAlta());
+            stat.setString(8, c.getContraseña());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
@@ -87,14 +87,14 @@ public class MySQLClubDAO implements ClubDAO{
         try{
             
             stat = conn.prepareStatement(UPDATE);
-            stat.setLong(1, c.getId());
-            stat.setString(2, c.getNombreClub());
-            stat.setString(3, c.getLocalizacion());
-            stat.setString(4, c.getEmail());
-            stat.setLong(5, c.getTelefono());
-            stat.setDate(6, new Date(c.getFechaNacimiento().getTime()));
+            stat.setLong(1, c.getNombreClub());
+            stat.setString(2, c.getLocalizacion());
+            stat.setString(3, c.getEmail());
+            stat.setDouble(4, c.getTelefono());
+            stat.setLong(5, c.getNombrePropietario());
+            stat.setBool(6,c.getAlta());
             stat.setString(7, c.getContraseña());
-            stat.setInt(8, c.getTelefono());
+            stat.setLong(8, c.getIDd());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
@@ -148,18 +148,18 @@ public class MySQLClubDAO implements ClubDAO{
     
     private Club convertir(ResultSet rs) throws SQLException{
         
-        String usuario = rs.getString("usuario");
-        String nombre = rs.getString("nombre");
-        String apellidos = rs.getString("apellidos");
-        String contraseña = rs.getString("contraseña");
+        String nombreClub = rs.getString("nombreClub");
+        String localizacion = rs.getString("localizacion");
         String email = rs.getString("email");
-        Date fechaNacimiento = rs.getDate("fechaNacimiento");
-        int telefono = rs.getInt("telefono");
+        String contraseña = rs.getString("contraseña");
+        double telefono = rs.getDouble("telefono");
+        String nombrePropietario = rs.getString("nombrePropietario");
+        Boolean alta = rs.getBool("alta");
         
-        Jugador j = new Jugador(usuario, nombre, apellidos, email, telefono, contraseña, fechaNacimiento);
-        j.setId(rs.getLong("idJujador"));
+        Club c = new Club(nombreClub, localizacion, email, contraseña, telefono, nombrePropietario, alta);
+        c.setId(rs.getLong("idClub"));
         
-        return j;
+        return c;
         
     }
     
@@ -168,7 +168,7 @@ public class MySQLClubDAO implements ClubDAO{
 
        PreparedStatement stat = null;
        ResultSet rs = null;
-       List<Jugador> jugadores = new ArrayList<>();
+       List<Club> clubes = new ArrayList<>();
        
        try{
            
@@ -176,7 +176,7 @@ public class MySQLClubDAO implements ClubDAO{
            rs = stat.executeQuery();
            while(rs.next()){
                
-               jugadores.add(convertir(rs));
+               clubes.add(convertir(rs));
                
            }
            
@@ -204,7 +204,7 @@ public class MySQLClubDAO implements ClubDAO{
            }
        }
        
-        return jugadores;
+        return clubes;
     }
 
 
@@ -213,7 +213,7 @@ public class MySQLClubDAO implements ClubDAO{
         
        PreparedStatement stat = null;
        ResultSet rs = null;
-       Jugador j;
+       Clubes c;
        
        try{
            
@@ -222,7 +222,7 @@ public class MySQLClubDAO implements ClubDAO{
            rs = stat.executeQuery();
            if(rs.next()){
                
-               j = convertir(rs);
+               c = convertir(rs);
                
            }else{
                throw new DAOException("No se ha encontrado ese registro.");
@@ -252,7 +252,7 @@ public class MySQLClubDAO implements ClubDAO{
            }
        }
        
-        return j;
+        return c;
     }
     
 }

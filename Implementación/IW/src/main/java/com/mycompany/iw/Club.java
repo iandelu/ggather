@@ -23,7 +23,7 @@ public class Club {
     public Club() {
     }
 
-    public Club(Long idClub, String nombreClub, String localizacion, String email, String contraseña, long telefono, String nombrePropietario, boolean alta) {
+    public Club(String nombreClub, String localizacion, String email, String contraseña, long telefono, String nombrePropietario, boolean alta) {
         this.idClub = idClub;
         this.nombreClub = nombreClub;
         this.localizacion = localizacion;

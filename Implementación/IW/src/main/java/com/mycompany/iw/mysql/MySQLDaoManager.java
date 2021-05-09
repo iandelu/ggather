@@ -6,6 +6,7 @@
 package com.mycompany.iw.mysql;
 
 
+import com.mycompany.iw.Club;
 import com.mycompany.iw.Jugador;
 import com.mycompany.iw.Partido;
 import com.mycompany.iw.daos.DAOException;
@@ -138,8 +139,8 @@ public class MySQLDaoManager  {
             Class.forName("com.mysql.jdbc.Driver");
             MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
             
-            
-            Jugador j = new Jugador( "thyrfin",  "antonio",  "raso",  "antonioraso@uco.es", 635062813, "asdafdf",  new Date(2000,9,13), 0);
+            //TEST JUGADOR
+            /*Jugador j = new Jugador( "thyrfin",  "antonio",  "raso",  "antonioraso@uco.es", 635062813, "asdafdf",  new Date(2000,9,13), 0);
             
             man.getJugadorDAO().insertar(j);
             List<Jugador> jugadores = man.getJugadorDAO().obtenerTodos();
@@ -148,12 +149,32 @@ public class MySQLDaoManager  {
             for(Jugador a: jugadores){
                 System.out.println(a.toString());
             }
+            */
             
-            Partido p = new Partido( (long)2, (long) 3, (long) 17,  "PENDIENTE",  1600);
-            man.getJugadorDAO().insertar(j);
             
+            //TEST PARTIDO
+           /* Partido p = new Partido( (long)2, (long) 3, (long) 17,  "PENDIENTE",  1600);
+   
             man.getPartidoDAO().insertar(p);
             
+            List<Partido> partidos = man.getPartidoDAO().obtenerTodos();
+            
+            for(Partido a: partidos){
+                System.out.println(a.toString());
+            }*/
+           
+           
+           //TEST CLUB
+           Club c = new Club( "Club", "localizacion", "email", "1234", (long) 123, "Propietario", true );
+           man.getClubDAO().insertar(c);
+           c = man.getClubDAO().obtener((long)1);
+           c.setNombreClub("Hola");
+           c.setLocalizacion("Localizacion");
+           
+           
+           man.getClubDAO().modificar(c);
+           
+           
             
         }finally{
             if(conn != null){

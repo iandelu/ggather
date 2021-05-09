@@ -17,7 +17,7 @@ import java.util.List;
 
 public class MySQLPartidoDAO implements PartidoDAO{
     
-    final String INSERT = "INSERT INTO partidos(idPartido, idCreador, idPista, idReserva, estado, nivelPartido) VALUES (?,?,?,?,?,?)"; 
+    final String INSERT = "INSERT INTO partidos(idCreador, idPista, idReserva, estado, nivelPartido) VALUES (?,?,?,?,?)"; 
     final String UPDATE = "UPDATE partidos idCreador = ? , idPista = ?, idReserva = ?, estado = ?, nivelPartido = ? WHERE idJugador = ?";
     final String DELETE = "DELETE FROM partidos WHERE idPartido = ?";
     final String GETALL = "SELECT * FROM partidos";
@@ -38,25 +38,17 @@ public class MySQLPartidoDAO implements PartidoDAO{
     public void insertar(Partido p) throws DAOException {
         
         PreparedStatement stat = null;
-        ResultSet rs;
+
         
         try{
             
             stat = conn.prepareStatement(INSERT);
             
-            rs = stat.getGeneratedKeys();
-            if(rs.next()){
-                p.setId(rs.getLong(1) + 1);
-            }else{
-                throw new DAOException("No se pudo asignar una ID a este alumno");  
-            }
-            
-            stat.setLong(1, p.getId());
-            stat.setLong(2, p.getCreador());
-            stat.setLong(3, p.getPistaPartido());
-            stat.setLong(4, p.getReserva());
-            stat.setString(5, p.getEstado());
-            stat.setInt(6, p.getNivelPartido());
+            stat.setLong(1, p.getCreador());
+            stat.setLong(2, p.getPistaPartido());
+            stat.setLong(3, p.getReserva());
+            stat.setString(4, p.getEstado());
+            stat.setInt(5, p.getNivelPartido());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");

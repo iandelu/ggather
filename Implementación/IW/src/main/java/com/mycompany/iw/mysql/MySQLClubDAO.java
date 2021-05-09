@@ -19,8 +19,8 @@ import java.util.List;
 
 public class MySQLClubDAO implements ClubDAO{
     
-    final String INSERT = "INSERT INTO club(idClub, nombreClub, localización, email, telefono, nombrePropietario, alta, contraseña) VALUES (?,?,?,?,?,?,?,?)"; 
-    final String UPDATE = "UPDATE club nombreClub = ? , localización = ?, email = ?, teléfono = ?, nombrePropietario = ?, alta = ?,contraseña = ? WHERE idClub = ?";
+    final String INSERT = "INSERT INTO club(alta, contraseña, email, localizacion, nombreClub, nombrePropietario, telefono) VALUES (?,?,?,?,?,?,?)"; 
+    final String UPDATE = "UPDATE club alta = ? , contraseña = ?, email = ?, localizacion = ?, nombreClub = ?, nombrePropietario = ?,telefono = ? WHERE idClub = ?";
     final String DELETE = "DELETE FROM club WHERE idClub = ?";
     final String GETALL = "SELECT * FROM club";
     final String GETONE = "SELECT * FROM club WHERE idClub = ?";
@@ -44,14 +44,13 @@ public class MySQLClubDAO implements ClubDAO{
         try{
             
             stat = conn.prepareStatement(INSERT);
-            stat.setLong(1, c.getId());
-            stat.setString(2, c.getNombreClub());
-            stat.setString(3, c.getLocalizacion());
-            stat.setString(4, c.getEmail());
-            stat.setLong(5, c.getTelefono());
+            stat.setBoolean(1, c.getAlta());
+            stat.setString(2, c.getContraseña());
+            stat.setString(3, c.getEmail());
+            stat.setString(4, c.getLocalizacion());
+            stat.setString(5, c.getNombreClub());
             stat.setString(6, c.getNombrePropietario());
-            stat.setBoolean(7, c.getAlta());
-            stat.setString(8, c.getContraseña());
+            stat.setLong(7, c.getTelefono());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
@@ -80,13 +79,13 @@ public class MySQLClubDAO implements ClubDAO{
         try{
             
             stat = conn.prepareStatement(UPDATE);
-            stat.setString(1, c.getNombreClub());
-            stat.setString(2, c.getLocalizacion());
+            stat.setBoolean(1,c.getAlta());
+            stat.setString(2, c.getContraseña());
             stat.setString(3, c.getEmail());
-            stat.setDouble(4, c.getTelefono());
-            stat.setString(5, c.getNombrePropietario());
-            stat.setBoolean(6,c.getAlta());
-            stat.setString(7, c.getContraseña());
+            stat.setString(4, c.getLocalizacion());
+            stat.setString(5, c.getNombreClub());
+            stat.setString(6, c.getNombrePropietario());
+            stat.setLong(7, c.getTelefono());
             stat.setLong(8, c.getId());
             
             if(stat.executeUpdate() == 0){

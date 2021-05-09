@@ -8,6 +8,7 @@ package com.mycompany.iw.mysql;
 
 import com.mycompany.iw.Reserva;
 import com.mycompany.iw.daos.ReservaDAO;
+import com.mycompany.iw.daos.DAOException;
 import java.util.List;
 import java.sql.*;
 import java.sql.Connection;
@@ -34,7 +35,7 @@ public class MySQLReservaDAO implements ReservaDAO{
         
     private Connection conn;
         
-    public MySQLJugadorDAO(Connection conn) {
+    public MySQLReservaAO(Connection conn) {
         
         this.conn = conn;
         
@@ -86,11 +87,11 @@ public class MySQLReservaDAO implements ReservaDAO{
             Time timeInicio = Time.valueOf(reserva.getHoraInicio());
             Time timeFin = Time.valueOf(reserva.getHoraFin());
 
-            stat.setDate(1, timeInicio);
-            stat.setDate(2, timeFin);
+            stat.setTime(1, timeInicio);
+            stat.setTime(2, timeFin);
             stat.setDate(3, new Date(reserva.getFecha().getTime()));
-            stat.setLong(4, reserva.getIdPistas());
-            stat.setLong(5, reserva.getId());
+            stat.setLong(4, reserva.getIdPista());
+            stat.setLong(5, reserva.getIdReserva());
            
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
@@ -117,7 +118,7 @@ public class MySQLReservaDAO implements ReservaDAO{
         try{
             
             stat = conn.prepareStatement(DELETE);
-            stat.setLong(1, reserva.getId());
+            stat.setLong(1, reserva.getIdReserva());
 
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
@@ -144,10 +145,10 @@ public class MySQLReservaDAO implements ReservaDAO{
         Time horaFinal = rs.getTime("horaFinal");
         Date fecha = rs.getDate("fecha");
         
-        Reserva reserva = new Reserva(idPistas, horaInicio, horaFinal, fecha);
-        reserva.setId(rs.getLong("idReservas"));
+        Reserva reserva = new Reserva(idPistas, horaInicio, horaFin, fecha);
+        reserva.setIdReserva(rs.getLong("idReservas"));
         
-        return j;
+        return reserva;
         
     }
 
@@ -155,7 +156,7 @@ public class MySQLReservaDAO implements ReservaDAO{
     public List<Reserva> obtenerTodos() throws DAOException {
         PreparedStatement stat = null;
         ResultSet rs = null;
-        List<Reservas> reservas = new ArrayList<>();
+        List<Reserva> reservas = new ArrayList<>();
        
         try{
            
@@ -191,14 +192,14 @@ public class MySQLReservaDAO implements ReservaDAO{
            }
        }
        
-        return reservas;
+        return reserva;
     }
 
     @Override
     public Reserva obtener(Long id) throws DAOException {
         PreparedStatement stat = null;
         ResultSet rs = null;
-        Reservas reserva;
+        Reserva reserva;
         
         try{
             

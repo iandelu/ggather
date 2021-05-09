@@ -49,10 +49,20 @@ public class MySQLTarjetaDAO implements TarjetaDAO{
     public void insertar(Tarjeta j) throws DAOException {
 
         PreparedStatement stat = null;
+        ResultSet rs;
         
         try{
             
             stat = conn.prepareStatement(INSERT);
+            
+            rs = stat.getGeneratedKeys();
+            if(rs.next()){
+                j.setIdTarjeta(rs.getLong(1) + 1);
+            }else{
+                throw new DAOException("No se pudo asignar una ID a este alumno");  
+            }
+            
+            
             stat.setLong(1, j.getIdTarjeta());
             stat.setString(2, j.getTipoTarjeta());
             stat.setLong(3, j.getJugadorSancionado());

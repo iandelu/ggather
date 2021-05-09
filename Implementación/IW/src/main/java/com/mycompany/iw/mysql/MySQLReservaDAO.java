@@ -46,10 +46,17 @@ public class MySQLReservaDAO implements ReservaDAO{
     @Override
     public void insertar(Reserva reserva) throws DAOException {
        PreparedStatement stat = null;
-       
+       ResultSet rs;
         
         try{
             stat = conn.prepareStatement(INSERT);
+            
+            rs = stat.getGeneratedKeys();
+            if(rs.next()){
+                reserva.setIdReserva(rs.getLong(1) + 1);
+            }else{
+                throw new DAOException("No se pudo asignar una ID a este alumno");  
+            }
             
             Time timeInicio = Time.valueOf(reserva.getHoraInicio());
             Time timeFin = Time.valueOf(reserva.getHoraFin());

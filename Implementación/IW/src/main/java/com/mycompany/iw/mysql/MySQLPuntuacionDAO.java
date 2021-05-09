@@ -46,8 +46,15 @@ public class MySQLPuntuacionDAO implements PuntuacionDAO{
     public void insertar(Puntuacion j) throws DAOException{
 
         PreparedStatement stat = null;
-        
+        ResultSet rs;
         try{
+            
+            rs = stat.getGeneratedKeys();
+            if(rs.next()){
+                j.setId(rs.getLong(1) + 1);
+            }else{
+                throw new DAOException("No se pudo asignar una ID a este alumno");  
+            }
             
             stat = conn.prepareStatement(INSERT);
             stat.setLong(1, j.getId());

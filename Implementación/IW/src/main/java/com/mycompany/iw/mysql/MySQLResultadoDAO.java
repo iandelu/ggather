@@ -7,6 +7,7 @@ package com.mycompany.iw.mysql;
         
 
 import com.mycompany.iw.Resultado;
+import com.mycompany.iw.daos.DAOException;
 import com.mycompany.iw.daos.ResultadoDAO;
 import java.util.List;
 import java.sql.Connection;
@@ -45,15 +46,23 @@ public class MySQLResultadoDAO implements ResultadoDAO{
     @Override
     public void insertar(Resultado r) {
         PreparedStatement stat = null;
-        
+        ResultSet rs;
         try{
             
             stat = conn.prepareStatement(INSERT);
-            stat.setLong(1, j.getIdResultado());
-            stat.setLong(2, j.getJugadorValorador());
-            stat.setInt(3, j.getValoracion());
-            stat.setLong(4, j.getJugadorValorado());
-            stat.setString(5, j.getComentario());
+            
+            rs = stat.getGeneratedKeys();
+            if(rs.next()){
+                r.setId(rs.getLong(1) + 1);
+            }else{
+                throw new DAOException("No se pudo asignar una ID a este alumno");  
+            }
+            
+            stat.setLong(1, r.getIdResultado());
+            stat.setLong(2, r.getJugadorValorador());
+            stat.setInt(3, r.getValoracion());
+            stat.setLong(4, r.getJugadorValorado());
+            stat.setString(5, r.getComentario());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");

@@ -46,10 +46,19 @@ public class MySQLValoracionDAO implements ValoracionDAO {
     public void insertar(Valoracion j) throws DAOException {
 
         PreparedStatement stat = null;
-        
+        ResultSet rs;
         try{
             
             stat = conn.prepareStatement(INSERT);
+            
+            rs = stat.getGeneratedKeys();
+            if(rs.next()){
+                j.setId(rs.getLong(1) + 1);
+            }else{
+                throw new DAOException("No se pudo asignar una ID a este alumno");  
+            }
+            
+            
             stat.setLong(1, j.getId());
             stat.setLong(2, j.getJugadorValorador());
             stat.setInt(3, j.getValoracion());

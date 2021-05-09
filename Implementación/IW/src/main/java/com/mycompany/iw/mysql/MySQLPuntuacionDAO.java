@@ -257,5 +257,65 @@ public class MySQLPuntuacionDAO implements PuntuacionDAO{
 
     }
     
+    String GETPUNTUACIONES = "SELECT idPuntuacion, idPista, idJugador, puntuacion, comentario FROM puntuaciones WHERE idPista = ?";
+
+    public List<Puntuacion> getPuntuacionesPista(Long id) throws DAOException{
+
+        PreparedStatement stat = null;
+        ResultSet rs = null;
+        List<Puntuacion> puntuaciones = new ArrayList<>();
+
+        try{
+
+            stat = conn.prepareStatement(GETPUNTUACIONES);
+            stat.setLong(1, id);
+            rs = stat.executeQuery();
+            while(rs.next()){
+
+                puntuaciones.add(convertir(rs));
+
+            }
+
+        }catch(SQLException ex){
+             throw new DAOException("Error en SQL", ex);
+        }finally{
+
+            if(rs != null){
+
+                try{
+                    rs.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL, ex");
+                }
+
+            }
+            if(stat != null){
+
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL, ex");
+                }
+
+            }
+        }
+
+         return puntuaciones;
+    
+    }
+    
+    public float calcularPuntuacion(List<Puntuacion> p){
+        
+        float puntuacionMedia = 0;
+        
+        for (Puntuacion puntuacion : p)
+        {
+            puntuacionMedia = puntuacionMedia + puntuacion.getPuntuacion();
+        }
+        
+        puntuacionMedia = puntuacionMedia /p.size();
+        
+        return puntuacionMedia;
+    }
     
 }

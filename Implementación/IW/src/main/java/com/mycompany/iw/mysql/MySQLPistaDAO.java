@@ -164,7 +164,7 @@ public class MySQLPistaDAO implements PistaDao{
            }
            
        }catch(SQLException ex){
-            throw new DAOException("Error en SQL, ex");
+            throw new DAOException("Error en SQL", ex);
        }finally{
            
            if(rs != null){
@@ -172,7 +172,7 @@ public class MySQLPistaDAO implements PistaDao{
                try{
                    rs.close();
                }catch(SQLException ex){
-                   new DAOException("Error en SQL, ex");
+                   new DAOException("Error en SQL", ex);
                }
                
            }
@@ -181,7 +181,7 @@ public class MySQLPistaDAO implements PistaDao{
                try{
                    stat.close();
                }catch(SQLException ex){
-                   new DAOException("Error en SQL, ex");
+                   new DAOException("Error en SQL", ex);
                }
                
            }
@@ -211,7 +211,7 @@ public class MySQLPistaDAO implements PistaDao{
            }
            
        }catch(SQLException ex){
-            throw new DAOException("Error en SQL, ex");
+            throw new DAOException("Error en SQL", ex);
        }finally{
            
            if(rs != null){
@@ -219,7 +219,7 @@ public class MySQLPistaDAO implements PistaDao{
                try{
                    rs.close();
                }catch(SQLException ex){
-                   new DAOException("Error en SQL, ex");
+                   new DAOException("Error en SQL", ex);
                }
                
            }
@@ -228,7 +228,7 @@ public class MySQLPistaDAO implements PistaDao{
                try{
                    stat.close();
                }catch(SQLException ex){
-                   new DAOException("Error en SQL, ex");
+                   new DAOException("Error en SQL", ex);
                }
                
            }

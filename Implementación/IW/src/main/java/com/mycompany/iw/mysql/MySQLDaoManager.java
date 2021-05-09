@@ -147,6 +147,7 @@ public class MySQLDaoManager  {
             for(Jugador a: jugadores){
                 System.out.println(a.toString());
             }
+            
         }finally{
             if(conn != null){
                 conn.close();

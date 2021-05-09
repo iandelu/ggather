@@ -1,27 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.iw.mysql;
 
 import com.mycompany.iw.Club;
-import com.mycompany.iw.Jugador;
 import com.mycompany.iw.daos.ClubDAO;
 import com.mycompany.iw.daos.DAOException;
-import com.mycompany.iw.daos.JugadorDao;
 import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  *
- * @author LuisAneri
+ * @author LuisAneria
  */
 
 public class MySQLClubDAO implements ClubDAO{
@@ -254,5 +247,7 @@ public class MySQLClubDAO implements ClubDAO{
        
         return c;
     }
+    
+    
     
 }

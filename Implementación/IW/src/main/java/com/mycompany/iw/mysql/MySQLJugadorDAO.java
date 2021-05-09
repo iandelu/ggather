@@ -26,8 +26,17 @@ public class MySQLJugadorDAO implements JugadorDao{
     final String DELETE = "DELETE FROM jugadores WHERE idJugador = ?";
     final String GETALL = "SELECT idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono, valoracionMedia FROM jugadores";
     final String GETONE = "SELECT * FROM jugadores WHERE idJugador = ?";
-    final String GETREQUEST = "SELECT idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono FROM jugadores, amigos "
-            + "WHERE idJugador = idAmigo2 and idAmigo1 = ?";
+    
+    
+    
+    final String GETREQUEST = "SELECT j.idJugador, j.usuario, j.nombre, j.email, j.apellidos, j.fechaNacimiento, j.contraseña, j.telefono FROM  jugadores j, amigos a "
+            + "WHERE j.idJugador = a.idAmigo2 and a.idAmigo1 = ?";
+    final String GETRPENDIENTES = "SELECT j.idJugador, j.usuario, j.nombre, j.email, j.apellidos, j.fechaNacimiento, j.contraseña, j.telefono FROM jugadores j, amigos a"
+            + "WHERE j.idJugador = a.idAmigo1 and a.idAmigo2 = ?";
+    final String GETUPLAAMIGO = "SELECT j.idJugador, j.usuario, j.nombre, j.email, j.apellidos, j.fechaNacimiento, j.contraseña, j.telefono FROM jugaodres j, amigos a "
+             + "WHERE j.idJugador and = a.idAmigo2 a.idAmigo1 = ? and a.idAmigo2 = ?";
+    final String INSERTAMIGO = "INSERT INTO amigos(idAmigo1, idAmigo2) VALUES(?,?)";
+    final String DELETEAMIGO = "DELETE FROM amigos WHERE idAmigo1 = ? and idAmigo2 = ?";
     
     
     
@@ -60,6 +69,7 @@ public class MySQLJugadorDAO implements JugadorDao{
             
            
             stat.setLong(1, j.getId());*/
+            
             stat.setString(1, j.getUsuario());
             stat.setString(2, j.getNombre());
             stat.setString(3, j.getEmail());
@@ -277,6 +287,13 @@ public class MySQLJugadorDAO implements JugadorDao{
     
     
     
+    /*
+    *
+    *   Funciones que se encargan de las relaciones entre jugadores
+    *
+    */
+    
+    
     
     /* Funcion basica para obtener una lista con tus solicitudes*/
     public List<Jugador> obtenerSolicitudesAmistad(Long idJugador) throws DAOException{
@@ -321,6 +338,152 @@ public class MySQLJugadorDAO implements JugadorDao{
        }
        
         return jugadores;
+    }
+    
+    /* Funcion basica para obtener una lista con tus solicitudes pendientes*/
+    public List<Jugador> obtenerSolicitudesPendientes(Long idJugador) throws DAOException{
+
+       PreparedStatement stat = null;
+       ResultSet rs = null;
+       List<Jugador> jugadores = new ArrayList<>();
+       
+       try{
+           
+           stat = conn.prepareStatement(GETRPENDIENTES);
+           stat.setLong(1, idJugador);
+           rs = stat.executeQuery();
+           while(rs.next()){
+               
+               jugadores.add(convertir(rs));
+               
+           }
+           
+       }catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+       }finally{
+           
+           if(rs != null){
+               
+               try{
+                   rs.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+           if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+       }
+       
+        return jugadores;
+    }
+    
+    /* Funcion basica para obtener una lista con tus amigos*/
+    public List<Jugador> obtenerAmigos(Long idJugador) throws DAOException{
+
+       PreparedStatement stat = null, stat2 = null;
+       ResultSet rs = null, rs2 = null;
+       List<Jugador> jugadores = new ArrayList<>();
+       
+       try{
+           
+            stat = conn.prepareStatement(GETREQUEST);
+            
+            stat.setLong(1, idJugador);
+            rs = stat.executeQuery();
+            while(rs.next()){
+
+                stat2 = conn.prepareStatement(GETUPLAAMIGO);
+                stat2.setLong(1, idJugador);
+                stat2.setLong(1, convertir(rs).getId());
+                rs2 = stat.executeQuery();
+                
+                if(rs2.next()){
+                    jugadores.add(convertir(rs));
+                }
+                
+            }
+            
+            
+       }catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+       }finally{
+           
+           if(rs != null){
+               
+               try{
+                   rs.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+           if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+       }
+       
+        return jugadores;
+    }
+    
+    public void insertarAmigo(Jugador j, Long id) throws DAOException {
+        
+        PreparedStatement stat = null;
+        ResultSet rs;
+        
+        try{
+            
+            stat = conn.prepareStatement(INSERT);
+            
+
+            
+            stat.setString(1, j.getUsuario());
+            stat.setString(2, j.getNombre());
+            stat.setString(3, j.getEmail());
+            stat.setString(4, j.getApellidos());
+            stat.setDate(5, new Date(j.getFechaNacimiento().getTime()));
+            stat.setString(6, j.getContraseña());
+            stat.setFloat(7, j.getValoracionMedia());
+            stat.setLong(8, j.getTelefono());
+            
+            
+            if(stat.executeUpdate() == 0){
+                throw new DAOException("Puede que no se haya guardado.");
+            }
+            
+        } catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+        } finally{
+            if (stat !=  null){
+                
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    throw new DAOException("Error en SQL", ex);
+                }
+            }if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+        }
     }
     
     

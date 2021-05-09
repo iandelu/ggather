@@ -69,8 +69,6 @@ public class MySQLJugadorDAO implements JugadorDao{
             stat.setLong(9, j.getTelefono());
             
             
-            
-            stat.setLong(1, j.getId());
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
             }

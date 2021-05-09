@@ -55,10 +55,10 @@ public class MySQLClubDAO implements ClubDAO{
             stat.setString(2, c.getNombreClub());
             stat.setString(3, c.getLocalizacion());
             stat.setString(4, c.getEmail());
-            stat.setString(5, c.getApellidos());
-            stat.setDate(6, new Date(j.getFechaNacimiento().getTime()));
-            stat.setString(7, j.getContraseña());
-            stat.setInt(8, j.getTelefono());
+            stat.setLong(5, c.getTelefono());
+            stat.setString(6, c.getNombrePropietario());
+            stat.setString(7, c.getContraseña());
+            stat.setInt(8, c.getTelefono());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
@@ -87,14 +87,14 @@ public class MySQLClubDAO implements ClubDAO{
         try{
             
             stat = conn.prepareStatement(UPDATE);
-            stat.setString(1, j.getUsuario());
-            stat.setString(2, j.getNombre());
-            stat.setString(3, j.getEmail());
-            stat.setString(4, j.getApellidos());
-            stat.setDate(5, new Date(j.getFechaNacimiento().getTime()));
-            stat.setString(6, j.getContraseña());
-            stat.setInt(7, j.getTelefono());
-            stat.setLong(8, j.getId());
+            stat.setLong(1, c.getId());
+            stat.setString(2, c.getNombreClub());
+            stat.setString(3, c.getLocalizacion());
+            stat.setString(4, c.getEmail());
+            stat.setLong(5, c.getTelefono());
+            stat.setDate(6, new Date(c.getFechaNacimiento().getTime()));
+            stat.setString(7, c.getContraseña());
+            stat.setInt(8, c.getTelefono());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
@@ -125,7 +125,7 @@ public class MySQLClubDAO implements ClubDAO{
         try{
             
             stat = conn.prepareStatement(DELETE);
-            stat.setLong(1, j.getId());
+            stat.setLong(1, c.getId());
 
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");

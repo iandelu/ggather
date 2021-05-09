@@ -322,25 +322,5 @@ public class MySQLJugadorDAO implements JugadorDao{
         return jugadores;
     }
     
-    public static void main(String[] args) throws SQLException, DAOException, ClassNotFoundException{
-        
-        Connection conn = null;
-        try{
-            //
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://ggather.zapto.org:3306/ggather", "root", "1234");
-            JugadorDao jugadordao = new MySQLJugadorDAO(conn);
-            Jugador j = new Jugador( "luisaneri",  "luis",  "aneri",  "luisaneri@uco.es", 601160060, "holaputa",  new Date(2000,9,13), 3);
-            jugadordao.insertar(j);
-            List<Jugador> jugadores = jugadordao.obtenerTodos();
-            for(Jugador a: jugadores){
-                System.out.println(a.toString());
-            }
-        }finally{
-            if(conn != null){
-                conn.close();
-            }
-        }
-        
-    }
+    
 }

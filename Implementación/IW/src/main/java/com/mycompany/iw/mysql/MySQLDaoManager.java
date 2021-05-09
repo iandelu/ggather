@@ -6,9 +6,14 @@
 package com.mycompany.iw.mysql;
 
 
+import com.mycompany.iw.Jugador;
+import com.mycompany.iw.daos.DAOException;
+import com.mycompany.iw.daos.JugadorDao;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 
 /**
@@ -37,6 +42,7 @@ public class MySQLDaoManager  {
         
     }    
  
+    /*
     public MySQLClubDAO getClubDAO(){
         
         if(clubs == null){
@@ -44,7 +50,7 @@ public class MySQLDaoManager  {
         }
         return clubs;
     }
-    
+    */
     public MySQLJugadorDAO getJugadorDAO(){
         
         if(jugadores == null){
@@ -53,6 +59,7 @@ public class MySQLDaoManager  {
         return jugadores;
     }
     
+    /*
     public MySQLPartidoDAO getPartidoDAO(){
         
         if(partidos == null){
@@ -60,6 +67,7 @@ public class MySQLDaoManager  {
         }
         return partidos;
     }
+    */
     
     public MySQLPistaDAO getPistaDAO(){
         
@@ -115,6 +123,36 @@ public class MySQLDaoManager  {
             valoraciones = new MySQLValoracionDAO(conn);
         }
         return valoraciones;
+    }
+    
+    
+    
+    
+    
+    public static void main(String[] args) throws SQLException, DAOException, ClassNotFoundException{
+        
+        Connection conn = null;
+        try{
+            //
+            Class.forName("com.mysql.jdbc.Driver");
+            MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
+            
+            JugadorDao jugadordao = new MySQLJugadorDAO(conn);
+            Jugador j = new Jugador( "luisaneri",  "luis",  "aneri",  "luisaneri@uco.es", 601160060, "holaputa",  new Date(2000,9,13), 3);
+            
+            man.getJugadorDAO().insertar(j);
+            List<Jugador> jugadores = man.getJugadorDAO().obtenerTodos();
+            
+            
+            for(Jugador a: jugadores){
+                System.out.println(a.toString());
+            }
+        }finally{
+            if(conn != null){
+                conn.close();
+            }
+        }
+        
     }
     
 }

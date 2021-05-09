@@ -247,7 +247,7 @@ public class MySQLValoracionDAO implements ValoracionDAO {
 
     }
     
-    String GETVALORACIONES = "SELECT ipValoracionesJugadores FROM valoraciones_jugadores WHERE ipJugadorValorado = ? ";
+    String GETVALORACIONES = "SELECT idValoracionesJugadores, usuarioValorador, puntuacion, idJugadorValorado, comentario FROM valoraciones_jugadores WHERE idJugadorValorado = ?";
     String UPDATEPUNTUACION = "UPDATE jugadores set valoracionMedia = ? WHERE idJugador = ?";
     
     public List<Valoracion> getValoracionesJugador(Long id) throws DAOException{
@@ -259,6 +259,7 @@ public class MySQLValoracionDAO implements ValoracionDAO {
         try{
 
             stat = conn.prepareStatement(GETVALORACIONES);
+            stat.setLong(1, id);
             rs = stat.executeQuery();
             while(rs.next()){
 
@@ -292,6 +293,20 @@ public class MySQLValoracionDAO implements ValoracionDAO {
 
          return valoraciones;
     
-
     }
+    
+    public float calcularValoracion(List<Valoracion> v){
+        
+        float valoracionMedia = 0;
+        
+        for (Valoracion valoracion : v)
+        {
+            valoracionMedia = valoracionMedia + valoracion.getValoracion();
+        }
+        
+        valoracionMedia = valoracionMedia /v.size();
+        
+        return valoracionMedia;
+    }
+    
 }

@@ -1,4 +1,4 @@
-package com.mycompany.iw.mysql;
+    package com.mycompany.iw.mysql;
 
 import com.mycompany.iw.Jugador;
 import com.mycompany.iw.Partido;

@@ -24,8 +24,7 @@ public class Pista {
     public Pista() {
     }
 
-    public Pista(Long id, Long deporte, LocalTime horarioInicio, LocalTime horarioFin, float precioHora, float puntuacionMedia, Long propietario) {
-        this.id = id;
+    public Pista( Long deporte, LocalTime horarioInicio, LocalTime horarioFin, float precioHora, float puntuacionMedia, Long propietario) {
         this.deporte = deporte;
         this.horarioInicio = horarioInicio;
         this.horarioFin = horarioFin;

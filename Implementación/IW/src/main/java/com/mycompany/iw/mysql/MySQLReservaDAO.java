@@ -16,6 +16,8 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 
 /**
@@ -35,7 +37,7 @@ public class MySQLReservaDAO implements ReservaDAO{
         
     private Connection conn;
         
-    public MySQLReservaAO(Connection conn) {
+    public MySQLReservaDAO(Connection conn) {
         
         this.conn = conn;
         
@@ -52,11 +54,11 @@ public class MySQLReservaDAO implements ReservaDAO{
             Time timeInicio = Time.valueOf(reserva.getHoraInicio());
             Time timeFin = Time.valueOf(reserva.getHoraFin());
    
-            stat.setLong(1, reserva.getId());
+            stat.setLong(1, reserva.getIdReserva());
             stat.setTime(2, timeInicio);
             stat.setTime(3, timeFin);
-            stat.setDate(4, new Date(reserva.getFecha().getTime()));
-            stat.setLong(5, reserva.getIdPistas());
+            stat.setDate(4, Date.valueOf(reserva.getFecha()));
+            stat.setLong(5, reserva.getPista());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
@@ -89,8 +91,8 @@ public class MySQLReservaDAO implements ReservaDAO{
 
             stat.setTime(1, timeInicio);
             stat.setTime(2, timeFin);
-            stat.setDate(3, new Date(reserva.getFecha().getTime()));
-            stat.setLong(4, reserva.getIdPista());
+            stat.setDate(3, Date.valueOf(reserva.getFecha()));
+            stat.setLong(4, reserva.getPista());
             stat.setLong(5, reserva.getIdReserva());
            
             if(stat.executeUpdate() == 0){
@@ -141,11 +143,12 @@ public class MySQLReservaDAO implements ReservaDAO{
     private Reserva convertir(ResultSet rs) throws SQLException{
         
         Long idPistas = rs.getLong("idPistas");
-        Time horaInicio = rs.getTime("horaInicio");
-        Time horaFinal = rs.getTime("horaFinal");
-        Date fecha = rs.getDate("fecha");
+        LocalTime horaInicio = rs.getTime("horaInicio").toLocalTime();
+        LocalTime horaFinal = rs.getTime("horaFinal").toLocalTime();
+        LocalDate fecha = rs.getDate("fecha").toLocalDate();
+        Long pista = rs.getLong("idPistas");
         
-        Reserva reserva = new Reserva(idPistas, horaInicio, horaFin, fecha);
+        Reserva reserva = new Reserva( horaInicio,  horaFinal,  fecha,  pista);
         reserva.setIdReserva(rs.getLong("idReservas"));
         
         return reserva;
@@ -192,7 +195,7 @@ public class MySQLReservaDAO implements ReservaDAO{
            }
        }
        
-        return reserva;
+        return reservas;
     }
 
     @Override

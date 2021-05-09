@@ -9,8 +9,10 @@ import com.mycompany.iw.Partido;
 import com.mycompany.iw.Pista;
 import com.mycompany.iw.daos.DAOException;
 import com.mycompany.iw.daos.PistaDao;
+import java.sql.Connection;
 import java.util.List;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 
@@ -31,7 +33,7 @@ public class MySQLPistaDAO implements PistaDao{
     
     private Connection conn;
     
-    public MySQLJugadorDAO(Connection conn) {
+    public MySQLPistaDAO(Connection conn) {
         
         this.conn = conn;
         
@@ -53,7 +55,7 @@ public class MySQLPistaDAO implements PistaDao{
             stat.setTime(4, timeFin);
             stat.setFloat(5, pista.getPrecioHora());
             stat.setFloat(6, pista.getPuntuacionMedia());
-            stat.setLong(7, pista.getIdDeporte());
+            stat.setLong(7, pista.getDeporte());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
@@ -89,7 +91,7 @@ public class MySQLPistaDAO implements PistaDao{
             stat.setTime(3, timeFin);
             stat.setFloat(4, pista.getPrecioHora());
             stat.setFloat(5, pista.getPuntuacionMedia());
-            stat.setLong(6, pista.getIdDeporte());
+            stat.setLong(6, pista.getDeporte());
             stat.setLong(7, pista.getId());
             
             if(stat.executeUpdate() == 0){
@@ -140,8 +142,8 @@ public class MySQLPistaDAO implements PistaDao{
     private Pista convertir(ResultSet rs) throws SQLException, DAOException{
         
         Long idClub = rs.getLong("idClub");
-        Time horarioInicio = rs.getTime("horarioInicio");
-        Time horarioFin = rs.getTime("horarioFin");
+        LocalTime horarioInicio = rs.getTime("horarioInicio").toLocalTime();
+        LocalTime horarioFin = rs.getTime("horarioFin").toLocalTime();
         float precioHora = rs.getFloat("precioHora");
         float puntuacionMedia = rs.getFloat("puntuacionMedia");
         Long idDeporte = rs.getLong("idDeporte");

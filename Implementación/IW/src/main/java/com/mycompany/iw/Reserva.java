@@ -16,14 +16,14 @@ import java.time.*;
     //Constructor simple
     public class Reserva {
  
-    private Long idReserva;
+    private Long idReserva = null;
     private LocalTime horaInicio;
     private LocalTime horaFin;
     private LocalDate fecha;
     private Long pista;
 
-    public Reserva(Long idReserva, LocalTime horaInicio, LocalTime horaFin, LocalDate fecha, Long pista) {
-        this.idReserva = idReserva;
+    public Reserva( LocalTime horaInicio, LocalTime horaFin, LocalDate fecha, Long pista) {
+        
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.fecha = fecha;

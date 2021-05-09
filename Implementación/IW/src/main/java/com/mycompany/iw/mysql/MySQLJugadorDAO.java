@@ -24,8 +24,10 @@ public class MySQLJugadorDAO implements JugadorDao{
     final String INSERT = "INSERT INTO jugadores(idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono, valoracionMedia) VALUES (?,?,?,?,?,?,?,?,?)"; 
     final String UPDATE = "UPDATE jugadores usuario = ? , nombre = ?, email = ?, apellidos = ?, fechaNacimiento = ?, contraseña = ?,telefono = ? WHERE idJugador = ?";
     final String DELETE = "DELETE FROM jugadores WHERE idJugador = ?";
-    final String GETALL = "SELECT idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono FROM jugadores";
+    final String GETALL = "SELECT idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono, valoracionMedia FROM jugadores";
     final String GETONE = "SELECT * FROM jugadores WHERE idJugador = ?";
+    final String GETREQUEST = "SELECT idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono FROM jugadores, amigos "
+            + "WHERE idJugador = idAmigo2 and idAmigo1 = ?";
     
     
     
@@ -252,6 +254,54 @@ public class MySQLJugadorDAO implements JugadorDao{
     }
     
     
+    
+    
+    
+    /* Funcion basica para obtener una lista con tus solicitudes*/
+    public List<Jugador> obtenerSolicitudesAmistad(Long idJugador) throws DAOException{
+
+       PreparedStatement stat = null;
+       ResultSet rs = null;
+       List<Jugador> jugadores = new ArrayList<>();
+       
+       try{
+           
+           stat = conn.prepareStatement(GETREQUEST);
+           stat.setLong(1, idJugador);
+           rs = stat.executeQuery();
+           while(rs.next()){
+               
+               jugadores.add(convertir(rs));
+               
+           }
+           
+       }catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+       }finally{
+           
+           if(rs != null){
+               
+               try{
+                   rs.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+           if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+       }
+       
+        return jugadores;
+    }
+    
     public static void main(String[] args) throws SQLException, DAOException, ClassNotFoundException{
         
         Connection conn = null;
@@ -260,7 +310,7 @@ public class MySQLJugadorDAO implements JugadorDao{
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://ggather.zapto.org:3306/ggather", "root", "1234");
             JugadorDao jugadordao = new MySQLJugadorDAO(conn);
-            Jugador j = new Jugador( "luisaneri",  "luis",  "aneri",  "luisaneri@uco.es", 601160060, "holaputa",  new Date(2000,9,13));
+            Jugador j = new Jugador( "luisaneri",  "luis",  "aneri",  "luisaneri@uco.es", 601160060, "holaputa",  new Date(2000,9,13), 3);
             j.setId((long) 59);
             jugadordao.insertar(j);
             List<Jugador> jugadores = jugadordao.obtenerTodos();

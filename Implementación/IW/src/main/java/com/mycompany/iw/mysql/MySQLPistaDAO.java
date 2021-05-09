@@ -44,12 +44,21 @@ public class MySQLPistaDAO implements PistaDao{
     @Override
     public void insertar(Pista pista) throws DAOException   {
         PreparedStatement stat = null;
+        ResultSet rs;
         
         try{
             stat = conn.prepareStatement(INSERT);
             
             Time timeInicio = Time.valueOf(pista.getHorarioInicio());
             Time timeFin = Time.valueOf(pista.getHorarioFin());
+            
+            rs = stat.getGeneratedKeys();
+            if(rs.next()){
+                pista.setId(rs.getLong(1) + 1);
+            }else{
+                throw new DAOException("No se pudo asignar una ID a este alumno");  
+            }
+            
             
             stat.setLong(1, pista.getId());
             stat.setLong(2, pista.getClub());

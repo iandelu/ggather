@@ -21,7 +21,7 @@ import java.util.List;
 
 public class MySQLJugadorDAO implements JugadorDao{
     
-    final String INSERT = "INSERT INTO jugadores(idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono, valoracionMedia) VALUES (?,?,?,?,?,?,?,?,?)"; 
+    final String INSERT = "INSERT INTO jugadores( usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono, valoracionMedia) VALUES (?,?,?,?,?,?,?,?)"; 
     final String UPDATE = "UPDATE jugadores usuario = ? , nombre = ?, email = ?, apellidos = ?, fechaNacimiento = ?, contraseña = ?,telefono = ? WHERE idJugador = ?";
     final String DELETE = "DELETE FROM jugadores WHERE idJugador = ?";
     final String GETALL = "SELECT idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono, valoracionMedia FROM jugadores";
@@ -50,23 +50,24 @@ public class MySQLJugadorDAO implements JugadorDao{
             
             stat = conn.prepareStatement(INSERT);
             
-            rs = stat.getGeneratedKeys();
+            /*rs = stat.getGeneratedKeys();
             if(rs.next()){
                 j.setId(rs.getLong(1) + 1);
             }else{
                 throw new DAOException("No se pudo asignar una ID a este alumno");  
             }
             
+            
            
-            stat.setLong(1, j.getId());
-            stat.setString(2, j.getUsuario());
-            stat.setString(3, j.getNombre());
-            stat.setString(4, j.getEmail());
-            stat.setString(5, j.getApellidos());
-            stat.setDate(6, new Date(j.getFechaNacimiento().getTime()));
-            stat.setString(7, j.getContraseña());
-            stat.setFloat(8, j.getValoracionMedia());
-            stat.setLong(9, j.getTelefono());
+            stat.setLong(1, j.getId());*/
+            stat.setString(1, j.getUsuario());
+            stat.setString(2, j.getNombre());
+            stat.setString(3, j.getEmail());
+            stat.setString(4, j.getApellidos());
+            stat.setDate(5, new Date(j.getFechaNacimiento().getTime()));
+            stat.setString(6, j.getContraseña());
+            stat.setFloat(7, j.getValoracionMedia());
+            stat.setLong(8, j.getTelefono());
             
             
             if(stat.executeUpdate() == 0){

@@ -57,7 +57,7 @@ public class MySQLClubDAO implements ClubDAO{
             stat.setString(4, c.getEmail());
             stat.setLong(5, c.getTelefono());
             stat.setString(6, c.getNombrePropietario());
-            stat.setBool(7, c.getAlta());
+            stat.setBoolean(7, c.getAlta());
             stat.setString(8, c.getContraseña());
             
             if(stat.executeUpdate() == 0){
@@ -87,14 +87,14 @@ public class MySQLClubDAO implements ClubDAO{
         try{
             
             stat = conn.prepareStatement(UPDATE);
-            stat.setLong(1, c.getNombreClub());
+            stat.setString(1, c.getNombreClub());
             stat.setString(2, c.getLocalizacion());
             stat.setString(3, c.getEmail());
             stat.setDouble(4, c.getTelefono());
-            stat.setLong(5, c.getNombrePropietario());
-            stat.setBool(6,c.getAlta());
+            stat.setString(5, c.getNombrePropietario());
+            stat.setBoolean(6,c.getAlta());
             stat.setString(7, c.getContraseña());
-            stat.setLong(8, c.getIDd());
+            stat.setLong(8, c.getId());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
@@ -152,9 +152,9 @@ public class MySQLClubDAO implements ClubDAO{
         String localizacion = rs.getString("localizacion");
         String email = rs.getString("email");
         String contraseña = rs.getString("contraseña");
-        double telefono = rs.getDouble("telefono");
+        Long telefono = rs.getLong("telefono");
         String nombrePropietario = rs.getString("nombrePropietario");
-        Boolean alta = rs.getBool("alta");
+        Boolean alta = rs.getBoolean("alta");
         
         Club c = new Club(nombreClub, localizacion, email, contraseña, telefono, nombrePropietario, alta);
         c.setId(rs.getLong("idClub"));
@@ -213,7 +213,7 @@ public class MySQLClubDAO implements ClubDAO{
         
        PreparedStatement stat = null;
        ResultSet rs = null;
-       Clubes c;
+       Club c;
        
        try{
            

@@ -42,7 +42,7 @@ public class MySQLDaoManager  {
         
     }    
  
-    /*
+    
     public MySQLClubDAO getClubDAO(){
         
         if(clubs == null){
@@ -50,7 +50,7 @@ public class MySQLDaoManager  {
         }
         return clubs;
     }
-    */
+    
     public MySQLJugadorDAO getJugadorDAO(){
         
         if(jugadores == null){
@@ -59,7 +59,7 @@ public class MySQLDaoManager  {
         return jugadores;
     }
     
-    /*
+    
     public MySQLPartidoDAO getPartidoDAO(){
         
         if(partidos == null){
@@ -67,7 +67,7 @@ public class MySQLDaoManager  {
         }
         return partidos;
     }
-    */
+    
     
     public MySQLPistaDAO getPistaDAO(){
         

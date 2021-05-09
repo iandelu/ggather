@@ -171,7 +171,7 @@ public class MySQLValoracionDAO implements ValoracionDAO {
             }
 
         }catch(SQLException ex){
-             throw new DAOException("Error en SQL, ex");
+             throw new DAOException("Error en SQL", ex);
         }finally{
 
             if(rs != null){

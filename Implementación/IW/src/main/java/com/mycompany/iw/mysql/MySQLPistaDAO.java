@@ -11,6 +11,7 @@ import com.mycompany.iw.daos.DAOException;
 import com.mycompany.iw.daos.PistaDao;
 import java.util.List;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Time;
 
 
@@ -133,7 +134,7 @@ public class MySQLPistaDAO implements PistaDao{
         }
     }
     
-    private Pista convertir(ResultSet rs) throws SQLException{
+    private Pista convertir(ResultSet rs) throws SQLException, DAOException{
         
         Long idClub = rs.getLong("idClub");
         Time horarioInicio = rs.getTime("horarioInicio");

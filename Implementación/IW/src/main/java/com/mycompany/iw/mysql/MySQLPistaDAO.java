@@ -259,6 +259,7 @@ public class MySQLPistaDAO implements PistaDao{
     
     final String GETNOMBRECLUB = "SELECT c.nombreClub FROM club c, pistas p WHERE p.idClub = c.idClub AND p.idClub = ?";
     final String GETNOMBREDEPORTE = "SELECT d.nombreDeporte FROM deportes d, pistas p WHERE p.idDeporte = d.idDeporte AND p.idDeporte = ?";
+    final String SEARCH = "SELECT p.idPista FROM pistas p, club c, deportes d WHERE c.localizacion = ? AND d.nombreDeporte = ?";
     
     public String getNombreClub(Pista pista) throws DAOException {
         PreparedStatement stat = null;
@@ -351,5 +352,50 @@ public class MySQLPistaDAO implements PistaDao{
        
         return nombreDeporte;
     }
+    
+    public List<Pista> buscarPista(String localizacion, String deporte) throws DAOException  {
+       PreparedStatement stat = null;
+       ResultSet rs = null;
+       List<Pista> pistas = new ArrayList<>();
+       
+       try{
+           
+           stat = conn.prepareStatement(SEARCH);
+           stat.setString(1, localizacion);
+           stat.setString(2, deporte);
+           rs = stat.executeQuery();
+           while(rs.next()){
+               
+               pistas.add(convertir(rs));
+               
+           }
+           
+       }catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+       }finally{
+           
+           if(rs != null){
+               
+               try{
+                   rs.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+           if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+       }
+       
+        return pistas;
+       
+    } 
     
 }

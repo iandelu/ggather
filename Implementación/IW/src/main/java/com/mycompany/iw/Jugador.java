@@ -34,6 +34,7 @@ public class Jugador {
     private String email;
     private long telefono;
     private String contraseña;
+    private float valoracionMedia;
 
     private Date fechaNacimiento;
     private long edad;
@@ -54,7 +55,7 @@ public class Jugador {
     */
     
     //Constructor para el login de la clase Jugador
-    public Jugador(String usuario, String nombre, String apellidos, String email, long telefono, String contraseña, Date fechaNacimiento) {
+    public Jugador(String usuario, String nombre, String apellidos, String email, long telefono, String contraseña, Date fechaNacimiento, float valoracionMedia) {
         this.usuario = usuario;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -62,6 +63,7 @@ public class Jugador {
         this.telefono = telefono;
         this.contraseña = contraseña;
         this.fechaNacimiento = fechaNacimiento;
+        this.valoracionMedia = valoracionMedia;
         //this.edad = calcularEdad();
     }
     
@@ -121,6 +123,11 @@ public class Jugador {
     public long getEdad() {
         return edad;
     }
+
+    public float getValoracionMedia(){
+        return valoracionMedia;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -148,6 +155,11 @@ public class Jugador {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
+
+    public void setValoracionMedia(float valoracionMedia){
+        this.valoracionMedia = valoracionMedia;
+    }
+    
 
 //setters de la clase Jugador
     public void setFechaNacimiento(Date fechaNacimiento) {

@@ -21,7 +21,7 @@ import java.util.List;
 
 public class MySQLJugadorDAO implements JugadorDao{
     
-    final String INSERT = "INSERT INTO jugadores(idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono) VALUES (?,?,?,?,?,?,?,?)"; 
+    final String INSERT = "INSERT INTO jugadores(idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono, valoracionMedia) VALUES (?,?,?,?,?,?,?,?,?)"; 
     final String UPDATE = "UPDATE jugadores usuario = ? , nombre = ?, email = ?, apellidos = ?, fechaNacimiento = ?, contraseña = ?,telefono = ? WHERE idJugador = ?";
     final String DELETE = "DELETE FROM jugadores WHERE idJugador = ?";
     final String GETALL = "SELECT idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono FROM jugadores";
@@ -52,7 +52,8 @@ public class MySQLJugadorDAO implements JugadorDao{
             stat.setString(5, j.getApellidos());
             stat.setDate(6, new Date(j.getFechaNacimiento().getTime()));
             stat.setString(7, j.getContraseña());
-            stat.setLong(8, j.getTelefono());
+            stat.setFloat(8, j.getValoracionMedia());
+            stat.setLong(9, j.getTelefono());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
@@ -148,9 +149,10 @@ public class MySQLJugadorDAO implements JugadorDao{
         String contraseña = rs.getString("contraseña");
         String email = rs.getString("email");
         Date fechaNacimiento = rs.getDate("fechaNacimiento");
+        float valoracionMedia = rs.getFloat("valoracionMedia");
         int telefono = rs.getInt("telefono");
         
-        Jugador j = new Jugador(usuario, nombre, apellidos, email, telefono, contraseña, fechaNacimiento);
+        Jugador j = new Jugador(usuario, nombre, apellidos, email, telefono, contraseña, fechaNacimiento, valoracionMedia);
         j.setId(rs.getLong("idJugador"));
         
         return j;
@@ -183,7 +185,7 @@ public class MySQLJugadorDAO implements JugadorDao{
                try{
                    rs.close();
                }catch(SQLException ex){
-                   new DAOException("Error en SQL, ex");
+                   new DAOException("Error en SQL", ex);
                }
                
            }
@@ -192,7 +194,7 @@ public class MySQLJugadorDAO implements JugadorDao{
                try{
                    stat.close();
                }catch(SQLException ex){
-                   new DAOException("Error en SQL, ex");
+                   new DAOException("Error en SQL", ex);
                }
                
            }
@@ -223,7 +225,7 @@ public class MySQLJugadorDAO implements JugadorDao{
            }
            
        }catch(SQLException ex){
-            throw new DAOException("Error en SQL, ex");
+            throw new DAOException("Error en SQL", ex);
        }finally{
            
            if(rs != null){
@@ -231,7 +233,7 @@ public class MySQLJugadorDAO implements JugadorDao{
                try{
                    rs.close();
                }catch(SQLException ex){
-                   new DAOException("Error en SQL, ex");
+                   new DAOException("Error en SQL", ex);
                }
                
            }
@@ -240,7 +242,7 @@ public class MySQLJugadorDAO implements JugadorDao{
                try{
                    stat.close();
                }catch(SQLException ex){
-                   new DAOException("Error en SQL, ex");
+                   new DAOException("Error en SQL", ex);
                }
                
            }

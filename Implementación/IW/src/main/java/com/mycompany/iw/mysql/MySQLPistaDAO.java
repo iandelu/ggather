@@ -23,9 +23,6 @@ import java.sql.Time;
 
 public class MySQLPistaDAO implements PistaDao{
     
-    private Time timeInicio = Time.valueOf(pista.getHorarioInicio());
-    private Time timeFin = Time.valueOf(pista.getHorarioFin());
-    
     final String INSERT = "INSERT INTO pistas(idPista, idClub, horarioInicio, horarioFin, precioHora, puntuacionMedia, idDeporte) VALUES (?,?,?,?,?,?,?)"; 
     final String UPDATE = "UPDATE pistas idClub = ?, horarioInicio = ?, horarioFin = ?, precioHora = ?, puntuacionMedia = ?, idDeporte = ? WHERE idPista = ?";
     final String DELETE = "DELETE FROM pistas WHERE idPista = ?";
@@ -47,12 +44,15 @@ public class MySQLPistaDAO implements PistaDao{
         try{
             stat = conn.prepareStatement(INSERT);
             
+            Time timeInicio = Time.valueOf(pista.getHorarioInicio());
+            Time timeFin = Time.valueOf(pista.getHorarioFin());
+            
             stat.setLong(1, pista.getId());
             stat.setLong(2, pista.getClub());
             stat.setTime(3, timeInicio);
             stat.setTime(4, timeFin);
             stat.setFloat(5, pista.getPrecioHora());
-            stat.setString(6, pista.getPuntuacionMedia());
+            stat.setFloat(6, pista.getPuntuacionMedia());
             stat.setLong(7, pista.getIdDeporte());
             
             if(stat.executeUpdate() == 0){
@@ -79,13 +79,16 @@ public class MySQLPistaDAO implements PistaDao{
         PreparedStatement stat = null;
         
         try{
-            stat = conn.prepareStatement(UPDATE);            
+            stat = conn.prepareStatement(UPDATE);   
+            
+            Time timeInicio = Time.valueOf(pista.getHorarioInicio());
+            Time timeFin = Time.valueOf(pista.getHorarioFin());
             
             stat.setLong(1, pista.getClub());
             stat.setTime(2, timeInicio);
             stat.setTime(3, timeFin);
             stat.setFloat(4, pista.getPrecioHora());
-            stat.setString(5, pista.getPuntuacionMedia());
+            stat.setFloat(5, pista.getPuntuacionMedia());
             stat.setLong(6, pista.getIdDeporte());
             stat.setLong(7, pista.getId());
             
@@ -139,14 +142,15 @@ public class MySQLPistaDAO implements PistaDao{
         Long idClub = rs.getLong("idClub");
         Time horarioInicio = rs.getTime("horarioInicio");
         Time horarioFin = rs.getTime("horarioFin");
-        Float puntuacionMedia = rs.getFloat("puntuacionMedia");
+        float precioHora = rs.getFloat("precioHora");
+        float puntuacionMedia = rs.getFloat("puntuacionMedia");
         Long idDeporte = rs.getLong("idDeporte");
         
-        Pista pista = new Pista(horarioInicio, horarioFin, puntuacionMedia, idDeporte);
+        Pista pista = new Pista(horarioInicio, horarioFin,precioHora, puntuacionMedia, idDeporte);
         pista.setId(rs.getLong("idPista"));
         
         return pista;
-    
+    }
 
     @Override
     public List<Pista> obtenerTodos() throws DAOException  {

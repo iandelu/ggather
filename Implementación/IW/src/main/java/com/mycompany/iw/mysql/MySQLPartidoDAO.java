@@ -277,7 +277,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
        try{
            
            stat = conn.prepareStatement(GETHISTORY);
-           stat.setLong(1, j.getId());
+           stat.setLong(1, j);
            rs = stat.executeQuery();
            while(rs.next()){
                
@@ -321,7 +321,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
        try{
            
            stat = conn.prepareStatement(GETPARTIDOS);
-           stat.setLong(1, j.getId());
+           stat.setLong(1, j);
            rs = stat.executeQuery();
            while(rs.next()){
                

@@ -24,8 +24,8 @@ public class MySQLJugadorDAO implements JugadorDao{
     final String INSERT = "INSERT INTO jugadores(idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono) VALUES (?,?,?,?,?,?,?,?)"; 
     final String UPDATE = "UPDATE jugadores usuario = ? , nombre = ?, email = ?, apellidos = ?, fechaNacimiento = ?, contraseña = ?,telefono = ? WHERE idJugador = ?";
     final String DELETE = "DELETE FROM jugadores WHERE idJugador = ?";
-    final String GETALL = "SELECT idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña, telefono FROM jugadores";
-    final String GETONE = "SELECT idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña, telefono FROM jugadores WHERE idJugaodr = ?";
+    final String GETALL = "SELECT idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono FROM jugadores";
+    final String GETONE = "SELECT * FROM jugadores WHERE idJugador = ?";
     
     
     
@@ -44,7 +44,6 @@ public class MySQLJugadorDAO implements JugadorDao{
         PreparedStatement stat = null;
         
         try{
-            
             stat = conn.prepareStatement(INSERT);
             stat.setLong(1, j.getId());
             stat.setString(2, j.getUsuario());
@@ -152,7 +151,7 @@ public class MySQLJugadorDAO implements JugadorDao{
         int telefono = rs.getInt("telefono");
         
         Jugador j = new Jugador(usuario, nombre, apellidos, email, telefono, contraseña, fechaNacimiento);
-        j.setId(rs.getLong("idJujador"));
+        j.setId(rs.getLong("idJugador"));
         
         return j;
         
@@ -176,7 +175,7 @@ public class MySQLJugadorDAO implements JugadorDao{
            }
            
        }catch(SQLException ex){
-            throw new DAOException("Error en SQL, ex");
+            throw new DAOException("Error en SQL", ex);
        }finally{
            
            if(rs != null){
@@ -251,15 +250,16 @@ public class MySQLJugadorDAO implements JugadorDao{
     }
     
     
-    public static void main(String[] args) throws SQLException, DAOException{
+    public static void main(String[] args) throws SQLException, DAOException, ClassNotFoundException{
         
         Connection conn = null;
         try{
             //
-            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ggather", "root", "");
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://ggather.zapto.org:3306/ggather", "root", "1234");
             JugadorDao jugadordao = new MySQLJugadorDAO(conn);
             Jugador j = new Jugador( "luisaneri",  "luis",  "aneri",  "luisaneri@uco.es", 601160060, "holaputa",  new Date(2000,9,13));
-            
+            j.setId((long) 59);
             jugadordao.insertar(j);
             List<Jugador> jugadores = jugadordao.obtenerTodos();
             for(Jugador a: jugadores){

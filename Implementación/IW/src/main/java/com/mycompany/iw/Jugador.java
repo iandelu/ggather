@@ -62,7 +62,7 @@ public class Jugador {
         this.telefono = telefono;
         this.contraseña = contraseña;
         this.fechaNacimiento = fechaNacimiento;
-        this.edad = calcularEdad();
+        //this.edad = calcularEdad();
     }
     
     

@@ -861,6 +861,27 @@ nav {
   visibility: visible;
   }
 
+.b-busqueda{
+  width: 1px;
+  height: 0px;
+  background: rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  overflow: hidden;
+  align-items:center;
+  margin: 0px 0px 170px 0px;
+ 
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 80px 130px 70px 95px;
+}
+
+
 
 #barra-busqueda{
   position: absolute;

@@ -1358,5 +1358,15 @@ nav {
   }
 }
 
+/*//////////////////////////////////////////////////////////////////
+[ menuPerfil ]*/
 
+.foto-perfil{
+  width: 10px;
+  height: 10px;
+ 
+  max-width: 50px;
+  min-width: 50px;
+  
+}
 

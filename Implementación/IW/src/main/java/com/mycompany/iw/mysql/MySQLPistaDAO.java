@@ -32,7 +32,6 @@ public class MySQLPistaDAO implements PistaDao{
     final String DELETE = "DELETE FROM pistas WHERE idPista = ?";
     final String GETALL = "SELECT * FROM pistas";
     final String GETONE = "SELECT * FROM pistas WHERE idPista = ?";
-    final String GETNOMBRECLUB = "SELECT c.nombreClub FROM club c, pistas p WHERE p.idClub = c.idClub AND p.idClub = ?";
     
     
     private Connection conn;
@@ -258,6 +257,9 @@ public class MySQLPistaDAO implements PistaDao{
         return pista;
     }
     
+    final String GETNOMBRECLUB = "SELECT c.nombreClub FROM club c, pistas p WHERE p.idClub = c.idClub AND p.idClub = ?";
+    final String GETNOMBREDEPORTE = "SELECT d.nombreDeporte FROM deportes d, pistas p WHERE p.idDeporte = d.idDeporte AND p.idDeporte = ?";
+    
     public String getNombreClub(Pista pista) throws DAOException {
         PreparedStatement stat = null;
         ResultSet rs = null;
@@ -302,6 +304,52 @@ public class MySQLPistaDAO implements PistaDao{
        }
        
         return nombreClub;
+    }
+    
+    public String getNombreDeporte(Pista pista) throws DAOException {
+        PreparedStatement stat = null;
+        ResultSet rs = null;
+        String nombreDeporte;
+       
+        try{
+           
+            stat = conn.prepareStatement(GETNOMBREDEPORTE);
+            stat.setLong(1, pista.getId());
+            
+            rs = stat.executeQuery();
+           if(rs.next()){
+               
+               nombreDeporte = rs.getString("nombreDeporte");
+               
+           }else{
+               throw new DAOException("No se ha encontrado ese registro.");
+           }
+           
+        }catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+        }finally{
+           
+            if(rs != null){
+               
+               try{
+                   rs.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+            }
+           if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+       }
+       
+        return nombreDeporte;
     }
     
 }

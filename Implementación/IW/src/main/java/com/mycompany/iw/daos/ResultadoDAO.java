@@ -5,7 +5,7 @@
  */
 package com.mycompany.iw.daos;
 
-import com.mycompany.iw.Reserva;
+import com.mycompany.iw.Resultado;
 
 
 
@@ -13,7 +13,7 @@ import com.mycompany.iw.Reserva;
  *
  * @author LuisAneri
  */
-public interface ResultadoDAO extends DAO<Reserva, Long>{
+public interface ResultadoDAO extends DAO<Resultado, Long>{
     
    
 }

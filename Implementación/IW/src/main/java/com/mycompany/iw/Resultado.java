@@ -18,11 +18,13 @@ public class Resultado {
     private Long jugadorPoniente;
     private Long partido;
     private String resultado;
+    private Long mvp;
 
-    public Resultado(Long jugadorPoniente, Long partido, String resultado) {
+    public Resultado(Long jugadorPoniente, Long partido, String resultado, Long mvp) {
         this.jugadorPoniente = jugadorPoniente;
         this.partido = partido;
         this.resultado = resultado;
+        this.mvp = mvp;
     }
 
     
@@ -41,6 +43,10 @@ public class Resultado {
 
     public String getResultado() {
         return resultado;
+    }
+    
+    public Long getMVP() {
+        return mvp;
     }
 
     
@@ -62,6 +68,9 @@ public class Resultado {
         this.resultado = resultado;
     }
     
+    public void setMVP(Long mvp) {
+        this.mvp = mvp;
+    }
     
     
     

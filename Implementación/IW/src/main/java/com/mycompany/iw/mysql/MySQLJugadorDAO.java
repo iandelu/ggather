@@ -289,7 +289,7 @@ public class MySQLJugadorDAO implements JugadorDao{
     final String GETRPENDIENTES = "SELECT j.idJugador, j.usuario, j.nombre, j.email, j.apellidos, j.fechaNacimiento, j.contraseña, j.telefono FROM jugadores j, amigos a"
                                + "WHERE j.idJugador = a.idAmigo1 and a.idAmigo2 = ?";
     final String GETUPLAAMIGO = "SELECT j.idJugador, j.usuario, j.nombre, j.email, j.apellidos, j.fechaNacimiento, j.contraseña, j.telefono FROM jugaodres j, amigos a "
-                               + "WHERE j.idJugador and = a.idAmigo2 a.idAmigo1 = ? and a.idAmigo2 = ?";
+                               + "WHERE j.idJugador = a.idAmigo2 and a.idAmigo1 = ? and a.idAmigo2 = ?";
     final String INSERTAMIGO = "INSERT INTO amigos(idAmigo1, idAmigo2) VALUES(?,?)";
     final String DELETEAMIGO = "DELETE FROM amigos WHERE idAmigo1 = ? and idAmigo2 = ?";
     
@@ -445,7 +445,7 @@ public class MySQLJugadorDAO implements JugadorDao{
     }
     
     /* Funcion basica para insertar una relacion*/
-    public void insertarAmigo(Jugador j, Long id) throws DAOException {
+    public void insertarAmigo(Long idJugador, Long id) throws DAOException {
         
         PreparedStatement stat = null;
         
@@ -454,7 +454,7 @@ public class MySQLJugadorDAO implements JugadorDao{
             
             stat = conn.prepareStatement(INSERTAMIGO);
 
-            stat.setLong(1, j.getId());
+            stat.setLong(1, idJugador);
             stat.setLong(2, id);
             
             
@@ -485,7 +485,7 @@ public class MySQLJugadorDAO implements JugadorDao{
     }
     
     /* Funcion basica para borrar una relacion*/
-    public void eliminarAmigo(Jugador j, Long id) throws DAOException{
+    public void eliminarAmigo(Long idJugador, Long id) throws DAOException{
         
         
         PreparedStatement stat = null;
@@ -493,7 +493,7 @@ public class MySQLJugadorDAO implements JugadorDao{
         try{
             
             stat = conn.prepareStatement(DELETEAMIGO);
-            stat.setLong(1, j.getId());
+            stat.setLong(1,idJugador);
             stat.setLong(2, id);
 
             if(stat.executeUpdate() == 0){
@@ -514,6 +514,60 @@ public class MySQLJugadorDAO implements JugadorDao{
         }
     }
     
+    
+    
+    
+    
+    final String GETJUGADORESP = "SELECT j.idJugador, j.usuario, j.nombre, j.email, j.apellidos, j.fechaNacimiento, j.contraseña, j.telefono FROM jugaodres j, partido_jugador pj "
+                               + "WHERE pj.idJugador = p.idJugador and pj.idPartido = ?";
+    
+    
+    //get jugadores asociados partido (yunes)
+    public List<Jugador> obtenerJugadorePartido(Long idPartido) throws DAOException{
+
+       PreparedStatement stat = null, stat2 = null;
+       ResultSet rs = null, rs2 = null;
+       List<Jugador> jugadores = new ArrayList<>();
+       
+       try{
+           
+            stat = conn.prepareStatement(GETJUGADORESP);
+            
+            stat.setLong(1, idPartido);
+            rs = stat.executeQuery();
+            while(rs.next()){
+                
+                jugadores.add(convertir(rs));
+               
+            }
+            
+            
+       }catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+       }finally{
+           
+           if(rs != null){
+               
+               try{
+                   rs.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+           if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+       }
+       
+        return jugadores;
+    }
     
     
     

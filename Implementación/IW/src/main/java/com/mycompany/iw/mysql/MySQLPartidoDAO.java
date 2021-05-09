@@ -244,12 +244,15 @@ public class MySQLPartidoDAO implements PartidoDAO{
     
     /*
     *   ------------------------------------
-    *   SENTENCIAS PARA LAS TABLAS DE AMIGOS
+    *   SENTENCIAS PARA LAS TABLAS DE PARTIDOS_JUGADOR
     *   ------------------------------------
     */
     
-    final String GETHISTORY = "SELECT p.idPartido, p.idCreador, p.idPista, p.idReserva, p.estado, p.nivelPartido FROM partidos p, partidos_jugador pj"
-                               + "WHERE  ";
+    final String GETHISTORY = "SELECT p.idPartido, p.idCreador, p.idPista, p.idReserva, p.estado, p.nivelPartido FROM partidos p, partido_jugador pj"
+                               + "WHERE  pj.idPartido = p.idPartido and pj.idJugador = ? and p.estado like 'COMPLETADO'";
+    final String GETPARTIDOS = "SELECT p.idPartido, p.idCreador, p.idPista, p.idReserva, p.estado, p.nivelPartido FROM partidos p, partido_jugador pj"
+                               + "WHERE  pj.idPartido = p.idPartido and pj.idJugador = ? and p.estado like 'COMPLETADO'";
+    
     
     /*
     *   ----------------------------------------------------------
@@ -257,7 +260,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
     *   ----------------------------------------------------------
     */
     
-    public List<Partido> historialJugador() throws DAOException{
+    public List<Partido> historialJugador(Long j) throws DAOException{
 
        PreparedStatement stat = null;
        ResultSet rs = null;
@@ -266,6 +269,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
        try{
            
            stat = conn.prepareStatement(GETHISTORY);
+           stat.setLong(1, j);
            rs = stat.executeQuery();
            while(rs.next()){
                
@@ -300,6 +304,49 @@ public class MySQLPartidoDAO implements PartidoDAO{
         return partidos;
     }
     
+    public List<Partido> partidosJugador(Long j) throws DAOException{
+
+       PreparedStatement stat = null;
+       ResultSet rs = null;
+       List<Partido> partidos = new ArrayList<>();
+       
+       try{
+           
+           stat = conn.prepareStatement(GETPARTIDOS);
+           stat.setLong(1, j);
+           rs = stat.executeQuery();
+           while(rs.next()){
+               
+               partidos.add(convertir(rs));
+               
+           }
+           
+       }catch(SQLException ex){
+            throw new DAOException("Error en SQL, ex");
+       }finally{
+           
+           if(rs != null){
+               
+               try{
+                   rs.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL, ex");
+               }
+               
+           }
+           if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL, ex");
+               }
+               
+           }
+       }
+        
+        return partidos;
+    }
     
     
     

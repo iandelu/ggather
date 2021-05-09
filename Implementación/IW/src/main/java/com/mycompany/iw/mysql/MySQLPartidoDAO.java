@@ -38,6 +38,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
     public void insertar(Partido p) throws DAOException {
         
         PreparedStatement stat = null;
+        ResultSet rs;
         
         try{
             
@@ -45,7 +46,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
             
             rs = stat.getGeneratedKeys();
             if(rs.next()){
-                j.setIdTarjeta(rs.getLong(1) + 1);
+                p.setId(rs.getLong(1) + 1);
             }else{
                 throw new DAOException("No se pudo asignar una ID a este alumno");  
             }
@@ -84,9 +85,9 @@ public class MySQLPartidoDAO implements PartidoDAO{
         try{
             
             stat = conn.prepareStatement(UPDATE);
-            stat.setLong(1, p.getIdCreador());
+            stat.setLong(1, p.getCreador());
             stat.setLong(2, p.getPistaPartido());
-            stat.setLong(3, p.getReserva);
+            stat.setLong(3, p.getReserva());
             stat.setString(4, p.getEstado());
             stat.setInt(5, p.getNivelPartido());
             stat.setFloat(7, p.getId());
@@ -143,13 +144,13 @@ public class MySQLPartidoDAO implements PartidoDAO{
     
     private Partido convertir(ResultSet rs) throws SQLException{
         
-        Long creador = rs.getString("idCreador");
-        Long pista = rs.getString("idPista");
-        Long reserva = rs.getString("idReserva");
+        Long creador = rs.getLong("idCreador");
+        Long pista = rs.getLong("idPista");
+        Long reserva = rs.getLong("idReserva");
         String estado = rs.getString("estado");
         int nivelPartido = rs.getInt("nivelPartido");
 
-        Partido p = new Partido(reserva, creador, pistaPartido, estado, nivelPartido);
+        Partido p = new Partido(reserva, creador, pista, estado, nivelPartido);
         p.setId(rs.getLong("idPartido"));
         
         return p;

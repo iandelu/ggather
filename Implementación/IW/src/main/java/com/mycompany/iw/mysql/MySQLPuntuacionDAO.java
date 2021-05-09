@@ -7,11 +7,14 @@ package com.mycompany.iw.mysql;
         
 
 import com.mycompany.iw.Puntuacion;
+import com.mycompany.iw.Valoracion;
 import com.mycompany.iw.daos.DAOException;
 import com.mycompany.iw.daos.PuntuacionDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,7 +23,7 @@ import java.util.List;
  * @author LuisAneri
  */
 
-/*
+
 public class MySQLPuntuacionDAO implements PuntuacionDAO{
 
     
@@ -40,7 +43,7 @@ public class MySQLPuntuacionDAO implements PuntuacionDAO{
     }
     
     @Override
-    public void insertar(Puntuacion j) {
+    public void insertar(Puntuacion j) throws DAOException{
 
         PreparedStatement stat = null;
         
@@ -48,10 +51,10 @@ public class MySQLPuntuacionDAO implements PuntuacionDAO{
             
             stat = conn.prepareStatement(INSERT);
             stat.setLong(1, j.getId());
-            stat.setLong(2, j.getJugadorValorador());
-            stat.setInt(3, j.getValoracion());
-            stat.setLong(4, j.getJugadorValorado());
-            stat.setString(5, j.getComentario());
+            stat.setLong(2, j.getPuntuacion());
+            stat.setString(3, j.getComentario());
+            stat.setLong(4, j.getPista());
+            stat.setLong(5, j.getIdJugador());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
@@ -73,25 +76,177 @@ public class MySQLPuntuacionDAO implements PuntuacionDAO{
     }
 
     @Override
-    public void modificar(Puntuacion j) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void modificar(Puntuacion j) throws DAOException{
+
+        PreparedStatement stat = null;
+        
+        try{
+            
+            stat = conn.prepareStatement(UPDATE);
+            
+            stat.setLong(5, j.getId());
+            stat.setLong(1, j.getPuntuacion());
+            stat.setString(2, j.getComentario());
+            stat.setLong(3, j.getPista());
+            stat.setLong(4, j.getIdJugador());
+            
+            if(stat.executeUpdate() == 0){
+                throw new DAOException("Puede que no se haya guardado.");
+            }
+            
+        } catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+        } finally{
+            if (stat !=  null){
+                
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    throw new DAOException("Error en SQL", ex);
+                }
+            }
+        }
+
     }
 
     @Override
-    public void eliminar(Puntuacion j) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void eliminar(Puntuacion j) throws DAOException{
+
+        PreparedStatement stat = null;
+        try{
+            
+            stat = conn.prepareStatement(DELETE);
+            stat.setLong(1, j.getId());
+
+            if(stat.executeUpdate() == 0){
+                throw new DAOException("Puede que no se haya guardado.");
+            }
+            
+        } catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+        } finally{
+            if (stat !=  null){
+                
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    throw new DAOException("Error en SQL", ex);
+                }
+            }
+        }
+
+    }
+
+    private Puntuacion convertir(ResultSet rs) throws SQLException{
+        
+        
+        Long idJugador = rs.getLong("idJugador");
+        Long pista = rs.getLong("idPista");
+        int puntuacion = rs.getInt("puntuacion");
+        String comentario = rs.getString("comentario");
+        
+        Puntuacion j = new Puntuacion( puntuacion,  comentario,  pista,  idJugador);
+        j.setId(rs.getLong("idPuntuacion"));
+        
+        return j;
+        
+    }
+    
+    
+    @Override
+    public List<Puntuacion> obtenerTodos() throws DAOException{
+
+        PreparedStatement stat = null;
+        ResultSet rs = null;
+        List<Puntuacion> puntuaciones = new ArrayList<>();
+
+        try{
+
+            stat = conn.prepareStatement(GETALL);
+            rs = stat.executeQuery();
+            while(rs.next()){
+
+                puntuaciones.add(convertir(rs));
+
+            }
+
+        }catch(SQLException ex){
+             throw new DAOException("Error en SQL", ex);
+        }finally{
+
+            if(rs != null){
+
+                try{
+                    rs.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL, ex");
+                }
+
+            }
+            if(stat != null){
+
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL, ex");
+                }
+
+            }
+        }
+
+         return puntuaciones;
+    
+
     }
 
     @Override
-    public List<Puntuacion> obtenerTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public Puntuacion obtener(Long id) throws DAOException{
 
-    @Override
-    public Puntuacion obtener(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement stat = null;
+        ResultSet rs = null;
+        Puntuacion j;
+
+        try{
+
+            stat = conn.prepareStatement(GETONE);
+            stat.setLong(1, id);
+            rs = stat.executeQuery();
+            if(rs.next()){
+
+                j = convertir(rs);
+
+            }else{
+                throw new DAOException("No se ha encontrado ese registro.");
+            }
+
+        }catch(SQLException ex){
+             throw new DAOException("Error en SQL", ex);
+        }finally{
+
+            if(rs != null){
+
+                try{
+                    rs.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL, ex");
+                }
+
+            }
+            if(stat != null){
+
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL, ex");
+                }
+
+            }
+        }
+
+         return j;
+
+
     }
     
     
 }
-*/

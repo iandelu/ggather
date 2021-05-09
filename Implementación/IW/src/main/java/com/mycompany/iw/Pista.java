@@ -89,6 +89,11 @@ public class Pista {
         this.Club = propietario;
     }
 
+    @Override
+    public String toString() {
+        return "Pista{" + "id=" + id + ", deporte=" + deporte + ", horarioInicio=" + horarioInicio + ", horarioFin=" + horarioFin + ", precioHora=" + precioHora + ", puntuacionMedia=" + puntuacionMedia + ", Club=" + Club + '}';
+    }
+
     
     
     

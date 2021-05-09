@@ -15,6 +15,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.time.LocalTime;
+import java.util.ArrayList;
 
 
 
@@ -147,8 +149,9 @@ public class MySQLPistaDAO implements PistaDao{
         float precioHora = rs.getFloat("precioHora");
         float puntuacionMedia = rs.getFloat("puntuacionMedia");
         Long idDeporte = rs.getLong("idDeporte");
+        Long propietario = rs.getLong("idDeporte");
         
-        Pista pista = new Pista(horarioInicio, horarioFin,precioHora, puntuacionMedia, idDeporte);
+        Pista pista = new Pista(  idDeporte,  horarioInicio,  horarioFin,  precioHora,  puntuacionMedia,  propietario);
         pista.setId(rs.getLong("idPista"));
         
         return pista;

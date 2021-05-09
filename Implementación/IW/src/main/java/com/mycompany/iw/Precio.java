@@ -15,6 +15,7 @@ public class Precio {
     private Long idClub;
     private Long idDeporte;
     private String mañanaTarde;
+    private Float precioHora;
     
     public Precio(){
         

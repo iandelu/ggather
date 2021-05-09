@@ -1,5 +1,7 @@
+package com.mycompany.iw.mysql;
+
+
 import com.mycompany.iw.Precio;
-import com.mycompany.iw.daos.PrecioDAO;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.Date;

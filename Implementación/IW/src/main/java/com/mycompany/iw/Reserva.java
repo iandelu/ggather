@@ -20,12 +20,14 @@ import java.time.*;
     private LocalTime horaInicio;
     private LocalTime horaFin;
     private LocalDate fecha;
+    private Long pista;
 
-    public Reserva(Long idReserva, LocalTime horaInicio, LocalTime horaFin, LocalDate fecha) {
+    public Reserva(Long idReserva, LocalTime horaInicio, LocalTime horaFin, LocalDate fecha, Long pista) {
         this.idReserva = idReserva;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.fecha = fecha;
+        this.pista = pista;
     }
 
     //Constructor vacio
@@ -48,6 +50,9 @@ import java.time.*;
         return fecha;
     }
 
+    public Long getPista() {
+        return pista;
+    }
     
     public void setIdReserva(Long idReserva) {
         this.idReserva = idReserva;
@@ -63,6 +68,10 @@ import java.time.*;
 
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
+    }
+    
+    public void setPista(Long pista) {
+        this.pista = pista;
     }
     
     //Horas Restantes

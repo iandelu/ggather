@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author youne
  */
-public interface PrecioDao extends DAO<Precio, Long>{
+public interface PrecioDAO extends DAO<Precio, Long>{
     
    
 }

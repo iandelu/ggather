@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.mycompany.iw.daos.DAOException;
+import com.mycompany.iw.daos.PrecioDAO;
 import java.sql.*;
 
 
@@ -33,7 +34,7 @@ public class MySQLPrecioDAO implements PrecioDAO{
     
     private Connection conn;
     
-    public MySQLJugadorDAO(Connection conn) {
+    public MySQLPrecioDAO(Connection conn) {
         
         this.conn = conn;
         
@@ -50,7 +51,7 @@ public class MySQLPrecioDAO implements PrecioDAO{
             
             rs = stat.getGeneratedKeys();
             if(rs.next()){
-                j.setId(rs.getLong(1) + 1);
+                p.setId(rs.getLong(1) + 1);
             }else{
                 throw new DAOException("No se pudo asignar una ID a este alumno");  
             }
@@ -152,9 +153,9 @@ public class MySQLPrecioDAO implements PrecioDAO{
         Long club = rs.getLong("idClub");
         Long deporte = rs.getLong("idDeporte");
         String mañanaTarde = rs.getString("mañanaTarde");
-        float precioHora = rs.getString("precioHora");
+        float precioHora = rs.getFloat("precioHora");
         
-        Precio p = new Precio( idClub, idDeporte, mañanaTarde, precioHora);
+        Precio p = new Precio( club, deporte, mañanaTarde, precioHora);
         p.setId(rs.getLong("idPrecio"));
         
         return p;

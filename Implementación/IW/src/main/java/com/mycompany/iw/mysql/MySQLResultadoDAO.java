@@ -145,7 +145,7 @@ public class MySQLResultadoDAO implements ResultadoDAO{
         
         Long jugadorPoniente = rs.getLong("idJugadorPoniente");
         Long partido = rs.getLong("idPartido");
-        String resultados = rs.getString("resultados");
+        String resultado = rs.getString("resultados");
         Long mvp = rs.getLong("mvp");
         
         Resultado r = new Resultado(jugadorPoniente, partido, resultado, mvp);

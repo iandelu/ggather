@@ -21,23 +21,18 @@ import java.util.List;
 
 public class MySQLJugadorDAO implements JugadorDao{
     
+    
+    /*
+    *   ------------------------------------
+    *   SENTENCIAS PARA LAS TABLAS DE JUGADOR
+    *   ------------------------------------_
+    */
+    
     final String INSERT = "INSERT INTO jugadores( usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono, valoracionMedia) VALUES (?,?,?,?,?,?,?,?)"; 
     final String UPDATE = "UPDATE jugadores usuario = ? , nombre = ?, email = ?, apellidos = ?, fechaNacimiento = ?, contraseña = ?,telefono = ? WHERE idJugador = ?";
     final String DELETE = "DELETE FROM jugadores WHERE idJugador = ?";
     final String GETALL = "SELECT idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono, valoracionMedia FROM jugadores";
     final String GETONE = "SELECT * FROM jugadores WHERE idJugador = ?";
-    
-    
-    
-    final String GETREQUEST = "SELECT j.idJugador, j.usuario, j.nombre, j.email, j.apellidos, j.fechaNacimiento, j.contraseña, j.telefono FROM  jugadores j, amigos a "
-            + "WHERE j.idJugador = a.idAmigo2 and a.idAmigo1 = ?";
-    final String GETRPENDIENTES = "SELECT j.idJugador, j.usuario, j.nombre, j.email, j.apellidos, j.fechaNacimiento, j.contraseña, j.telefono FROM jugadores j, amigos a"
-            + "WHERE j.idJugador = a.idAmigo1 and a.idAmigo2 = ?";
-    final String GETUPLAAMIGO = "SELECT j.idJugador, j.usuario, j.nombre, j.email, j.apellidos, j.fechaNacimiento, j.contraseña, j.telefono FROM jugaodres j, amigos a "
-             + "WHERE j.idJugador and = a.idAmigo2 a.idAmigo1 = ? and a.idAmigo2 = ?";
-    final String INSERTAMIGO = "INSERT INTO amigos(idAmigo1, idAmigo2) VALUES(?,?)";
-    final String DELETEAMIGO = "DELETE FROM amigos WHERE idAmigo1 = ? and idAmigo2 = ?";
-    
     
     
     private Connection conn;
@@ -49,26 +44,22 @@ public class MySQLJugadorDAO implements JugadorDao{
     }
     
 
+    /*
+    *   ----------------------------------------------------------------
+    *   FUNCIONES BASICAS DE DAO JUGADOR INSERTAR, BORRAR, OBTENER, ETC
+    *   ----------------------------------------------------------------
+    */
+    
+    
     @Override
     public void insertar(Jugador j) throws DAOException {
         
         PreparedStatement stat = null;
-        ResultSet rs;
+        
         
         try{
             
-            stat = conn.prepareStatement(INSERT);
-            
-            /*rs = stat.getGeneratedKeys();
-            if(rs.next()){
-                j.setId(rs.getLong(1) + 1);
-            }else{
-                throw new DAOException("No se pudo asignar una ID a este alumno");  
-            }
-            
-            
-           
-            stat.setLong(1, j.getId());*/
+            stat = conn.prepareStatement(INSERT);   
             
             stat.setString(1, j.getUsuario());
             stat.setString(2, j.getNombre());
@@ -286,14 +277,28 @@ public class MySQLJugadorDAO implements JugadorDao{
     
     
     
+    /*
+    *   ------------------------------------
+    *   SENTENCIAS PARA LAS TABLAS DE AMIGOS
+    *   ------------------------------------
+    */
+
+    
+    final String GETREQUEST = "SELECT j.idJugador, j.usuario, j.nombre, j.email, j.apellidos, j.fechaNacimiento, j.contraseña, j.telefono FROM  jugadores j, amigos a "
+                               + "WHERE j.idJugador = a.idAmigo2 and a.idAmigo1 = ?";
+    final String GETRPENDIENTES = "SELECT j.idJugador, j.usuario, j.nombre, j.email, j.apellidos, j.fechaNacimiento, j.contraseña, j.telefono FROM jugadores j, amigos a"
+                               + "WHERE j.idJugador = a.idAmigo1 and a.idAmigo2 = ?";
+    final String GETUPLAAMIGO = "SELECT j.idJugador, j.usuario, j.nombre, j.email, j.apellidos, j.fechaNacimiento, j.contraseña, j.telefono FROM jugaodres j, amigos a "
+                               + "WHERE j.idJugador and = a.idAmigo2 a.idAmigo1 = ? and a.idAmigo2 = ?";
+    final String INSERTAMIGO = "INSERT INTO amigos(idAmigo1, idAmigo2) VALUES(?,?)";
+    final String DELETEAMIGO = "DELETE FROM amigos WHERE idAmigo1 = ? and idAmigo2 = ?";
+    
     
     /*
-    *
+    *   ----------------------------------------------------------
     *   Funciones que se encargan de las relaciones entre jugadores
-    *
+    *   ----------------------------------------------------------
     */
-    
-    
     
     /* Funcion basica para obtener una lista con tus solicitudes*/
     public List<Jugador> obtenerSolicitudesAmistad(Long idJugador) throws DAOException{
@@ -401,7 +406,7 @@ public class MySQLJugadorDAO implements JugadorDao{
             while(rs.next()){
 
                 stat2 = conn.prepareStatement(GETUPLAAMIGO);
-                stat2.setLong(1, idJugador);
+                stat2.setLong(2, idJugador);
                 stat2.setLong(1, convertir(rs).getId());
                 rs2 = stat.executeQuery();
                 
@@ -439,25 +444,18 @@ public class MySQLJugadorDAO implements JugadorDao{
         return jugadores;
     }
     
+    /* Funcion basica para insertar una relacion*/
     public void insertarAmigo(Jugador j, Long id) throws DAOException {
         
         PreparedStatement stat = null;
-        ResultSet rs;
+        
         
         try{
             
-            stat = conn.prepareStatement(INSERT);
-            
+            stat = conn.prepareStatement(INSERTAMIGO);
 
-            
-            stat.setString(1, j.getUsuario());
-            stat.setString(2, j.getNombre());
-            stat.setString(3, j.getEmail());
-            stat.setString(4, j.getApellidos());
-            stat.setDate(5, new Date(j.getFechaNacimiento().getTime()));
-            stat.setString(6, j.getContraseña());
-            stat.setFloat(7, j.getValoracionMedia());
-            stat.setLong(8, j.getTelefono());
+            stat.setLong(1, j.getId());
+            stat.setLong(2, id);
             
             
             if(stat.executeUpdate() == 0){
@@ -483,6 +481,36 @@ public class MySQLJugadorDAO implements JugadorDao{
                }
                
            }
+        }
+    }
+    
+    /* Funcion basica para borrar una relacion*/
+    public void eliminarAmigo(Jugador j, Long id) throws DAOException{
+        
+        
+        PreparedStatement stat = null;
+        
+        try{
+            
+            stat = conn.prepareStatement(DELETEAMIGO);
+            stat.setLong(1, j.getId());
+            stat.setLong(2, id);
+
+            if(stat.executeUpdate() == 0){
+                throw new DAOException("Puede que no se haya guardado.");
+            }
+            
+        } catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+        } finally{
+            if (stat !=  null){
+                
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    throw new DAOException("Error en SQL", ex);
+                }
+            }
         }
     }
     

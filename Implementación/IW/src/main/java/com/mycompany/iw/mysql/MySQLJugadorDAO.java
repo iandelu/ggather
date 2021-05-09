@@ -44,8 +44,17 @@ public class MySQLJugadorDAO implements JugadorDao{
     public void insertar(Jugador j) throws DAOException {
         
         PreparedStatement stat = null;
+        ResultSet rs;
         
         try{
+             
+            rs = stat.getGeneratedKeys();
+            if(rs.next()){
+                j.setId(rs.getLong(1) + 1);
+            }else{
+                throw new DAOException("No se pudo asignar una ID a este alumno");  
+            }
+            
             stat = conn.prepareStatement(INSERT);
             stat.setLong(1, j.getId());
             stat.setString(2, j.getUsuario());
@@ -57,6 +66,9 @@ public class MySQLJugadorDAO implements JugadorDao{
             stat.setFloat(8, j.getValoracionMedia());
             stat.setLong(9, j.getTelefono());
             
+            
+            
+            stat.setLong(1, j.getId());
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
             }
@@ -71,7 +83,15 @@ public class MySQLJugadorDAO implements JugadorDao{
                 }catch(SQLException ex){
                     throw new DAOException("Error en SQL", ex);
                 }
-            }
+            }if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
         }
     }
 
@@ -311,7 +331,6 @@ public class MySQLJugadorDAO implements JugadorDao{
             conn = DriverManager.getConnection("jdbc:mysql://ggather.zapto.org:3306/ggather", "root", "1234");
             JugadorDao jugadordao = new MySQLJugadorDAO(conn);
             Jugador j = new Jugador( "luisaneri",  "luis",  "aneri",  "luisaneri@uco.es", 601160060, "holaputa",  new Date(2000,9,13), 3);
-            j.setId((long) 59);
             jugadordao.insertar(j);
             List<Jugador> jugadores = jugadordao.obtenerTodos();
             for(Jugador a: jugadores){

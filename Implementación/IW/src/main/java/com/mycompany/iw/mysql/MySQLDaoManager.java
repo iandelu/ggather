@@ -14,46 +14,106 @@ import java.sql.DriverManager;
  *
  * @author LuisAneri
  */
-public class MySQLDaoManager throws {
+public class MySQLDaoManager  {
     
     private Connection conn;
     
-    private MySQLClubDAO ;
-    private MySQLJugadorDAO ;
-    private MySQLPartidoDAO ;
-    private MySQLPistaDAO ;
-    private MySQLPrecioDAO ;
-    private MySQLPuntuacionDAO ;
-    private MySQLReservaDAO ;
-    private MySQLResultadoDAO ;
-    private MySQLTarjetaDAO;
-    private MySQLValoracionDAO;
+    private MySQLClubDAO clubs =  null;
+    private MySQLJugadorDAO jugadores =  null;
+    private MySQLPartidoDAO partidos=  null;
+    private MySQLPistaDAO pistas =  null;
+    private MySQLPrecioDAO precios =  null;
+    private MySQLPuntuacionDAO puntuaciones =  null;
+    private MySQLReservaDAO reservas =  null;
+    private MySQLResultadoDAO resultados =  null;
+    private MySQLTarjetaDAO tarjetas =  null;
+    private MySQLValoracionDAO valoraciones =  null;
     
-    public MySQLDaoManager(String host, String username, String password , String database){
+    public MySQLDaoManager(String host, String username, String password , String database) throws SQLException{
         
         String url = "jdbc:mysql://" + host + "/" + database;
         conn = DriverManager.getConnection(url , username, password);
         
     }    
  
-    public MySQLClubDAO getClubDAO();
+    public MySQLClubDAO getClubDAO(){
+        
+        if(clubs == null){
+            clubs = new MySQLClubDAO(conn);
+        }
+        return clubs;
+    }
     
-    public MySQLJugadorDAO getJugadorDAO();
+    public MySQLJugadorDAO getJugadorDAO(){
+        
+        if(jugadores == null){
+            jugadores = new MySQLJugadorDAO(conn);
+        }
+        return jugadores;
+    }
     
-    public MySQLPartidoDAO getPartidoDAO();
+    public MySQLPartidoDAO getPartidoDAO(){
+        
+        if(partidos == null){
+            partidos = new MySQLPartidoDAO(conn);
+        }
+        return partidos;
+    }
     
-    public MySQLPistaDAO getPistaDAO();
+    public MySQLPistaDAO getPistaDAO(){
+        
+        if(pistas == null){
+            pistas = new MySQLPistaDAO(conn);
+        }
+        return pistas;
+    }
     
-    public MySQLPrecioDAO getPrecioDAO();
+    public MySQLPrecioDAO getPrecioDAO(){
+        
+        if(precios == null){
+            precios = new MySQLPrecioDAO(conn);
+        }
+        return precios;
+    }
     
-    public MySQLPuntucionDAO getPuntuacionDAO();
+    public MySQLPuntuacionDAO getPuntuacionDAO(){
+        
+        if(puntuaciones == null){
+            puntuaciones = new MySQLPuntuacionDAO(conn);
+        }
+        return puntuaciones;
+    }
     
-    public MySQLReservaDAO getReservaDAO();
+    public MySQLReservaDAO getReservaDAO(){
+        
+        if(reservas == null){
+            reservas = new MySQLReservaDAO(conn);
+        }
+        return reservas;
+    }
     
-    public MySQLResultadoDAO getResultadoDAO();
+    public MySQLResultadoDAO getResultadoDAO(){
+        
+        if(resultados == null){
+            resultados = new MySQLResultadoDAO(conn);
+        }
+        return resultados;
+    }
     
-    public MySQLTarjetaDAO getTarjetaDAO();
+    public MySQLTarjetaDAO getTarjetaDAO(){
+        
+        if(tarjetas == null){
+            tarjetas = new MySQLTarjetaDAO(conn);
+        }
+        return tarjetas;
+    }
     
-    public MySQLValoracionDAO getValoracionDAO();
+    public MySQLValoracionDAO getValoracionDAO(){
+        
+        if(valoraciones == null){
+            valoraciones = new MySQLValoracionDAO(conn);
+        }
+        return valoraciones;
+    }
     
 }

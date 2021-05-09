@@ -89,7 +89,8 @@ public class MySQLPartidoDAO implements PartidoDAO{
             stat.setLong(3, p.getReserva);
             stat.setString(4, p.getEstado());
             stat.setInt(5, p.getNivelPartido());
-            
+            stat.setFloat(7, p.getId());
+
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
             }

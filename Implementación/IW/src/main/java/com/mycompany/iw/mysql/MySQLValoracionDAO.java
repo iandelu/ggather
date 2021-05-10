@@ -248,7 +248,6 @@ public class MySQLValoracionDAO implements ValoracionDAO {
     }
     
     String GETVALORACIONES = "SELECT idValoracionesJugadores, usuarioValorador, puntuacion, idJugadorValorado, comentario FROM valoraciones_jugadores WHERE idJugadorValorado = ?";
-    String UPDATEPUNTUACION = "UPDATE jugadores set valoracionMedia = ? WHERE idJugador = ?";
     
     public List<Valoracion> getValoracionesJugador(Long id) throws DAOException{
 
@@ -294,7 +293,11 @@ public class MySQLValoracionDAO implements ValoracionDAO {
          return valoraciones;
     
     }
-    
+    /**
+     * calcular la nueva valoracion media para su posterior UPDATE
+     * @param v
+     * @return valoracio media
+     */
     public float calcularValoracion(List<Valoracion> v){
         
         float valoracionMedia = 0;

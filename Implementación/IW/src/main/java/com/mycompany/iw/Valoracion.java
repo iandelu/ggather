@@ -67,6 +67,11 @@ public class Valoracion {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
+
+    @Override
+    public String toString() {
+        return "Valoracion{" + "id=" + id + ", jugadorValorado=" + jugadorValorado + ", jugadorValorador=" + jugadorValorador + ", valoracion=" + valoracion + ", comentario=" + comentario + '}';
+    }
     
     
 }

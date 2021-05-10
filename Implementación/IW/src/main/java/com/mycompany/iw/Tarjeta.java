@@ -83,6 +83,11 @@ public class Tarjeta {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
+
+    @Override
+    public String toString() {
+        return "Tarjeta{" + "idTarjeta=" + idTarjeta + ", jugadorSancionado=" + jugadorSancionado + ", jugadorAmonestador=" + jugadorAmonestador + ", tipoTarjeta=" + tipoTarjeta + ", motivo=" + motivo + ", comentario=" + comentario + '}';
+    }
     
     
     

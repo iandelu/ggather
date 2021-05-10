@@ -27,7 +27,7 @@ public class MySQLValoracionDAO implements ValoracionDAO {
 
     
     final String INSERT = "INSERT INTO valoraciones_jugadores(usuarioValorador, puntuacion, idJugadorValorado, comentario) VALUES (?,?,?,?)"; 
-    final String UPDATE = "UPDATE valoraciones_jugadores usuarioValorador = ?, puntuacion = ?, idJugadorValorado = ?, comentario = ? WHERE idValoracionesJugadores = ?";
+    final String UPDATE = "UPDATE valoraciones_jugadores SET usuarioValorador = ?, puntuacion = ?, idJugadorValorado = ?, comentario = ? WHERE idValoracionesJugadores = ?";
     final String DELETE = "DELETE FROM valoraciones_jugadores WHERE idValoracionesJugadores = ?";
     final String GETALL = "SELECT idValoracionesJugadores, usuarioValorador, puntuacion, idJugadorValorado, comentario FROM valoraciones_jugadores";
     final String GETONE = "SELECT idValoracionesJugadores, usuarioValorador, puntuacion, idJugadorValorado, comentario FROM valoraciones_jugadores WHERE idValoracionesJugadores = ?";
@@ -46,10 +46,11 @@ public class MySQLValoracionDAO implements ValoracionDAO {
     public void insertar(Valoracion j) throws DAOException {
 
         PreparedStatement stat = null;
-        ResultSet rs;
         try{
             
-            stat = conn.prepareStatement(INSERT);    
+            stat = conn.prepareStatement(INSERT);
+            
+            
             
             stat.setLong(1, j.getJugadorValorador());
             stat.setInt(2, j.getValoracion());
@@ -245,71 +246,6 @@ public class MySQLValoracionDAO implements ValoracionDAO {
 
          return j;
 
-    }
-    
-    String GETVALORACIONES = "SELECT idValoracionesJugadores, usuarioValorador, puntuacion, idJugadorValorado, comentario FROM valoraciones_jugadores WHERE idJugadorValorado = ?";
-    
-    public List<Valoracion> getValoracionesJugador(Long id) throws DAOException{
+     }
 
-        PreparedStatement stat = null;
-        ResultSet rs = null;
-        List<Valoracion> valoraciones = new ArrayList<>();
-
-        try{
-
-            stat = conn.prepareStatement(GETVALORACIONES);
-            stat.setLong(1, id);
-            rs = stat.executeQuery();
-            while(rs.next()){
-
-                valoraciones.add(convertir(rs));
-
-            }
-
-        }catch(SQLException ex){
-             throw new DAOException("Error en SQL", ex);
-        }finally{
-
-            if(rs != null){
-
-                try{
-                    rs.close();
-                }catch(SQLException ex){
-                    new DAOException("Error en SQL, ex");
-                }
-
-            }
-            if(stat != null){
-
-                try{
-                    stat.close();
-                }catch(SQLException ex){
-                    new DAOException("Error en SQL, ex");
-                }
-
-            }
-        }
-
-         return valoraciones;
-    
-    }
-    /**
-     * calcular la nueva valoracion media para su posterior UPDATE
-     * @param v
-     * @return valoracio media
-     */
-    public float calcularValoracion(List<Valoracion> v){
-        
-        float valoracionMedia = 0;
-        
-        for (Valoracion valoracion : v)
-        {
-            valoracionMedia = valoracionMedia + valoracion.getValoracion();
-        }
-        
-        valoracionMedia = valoracionMedia /v.size();
-        
-        return valoracionMedia;
-    }
-    
 }

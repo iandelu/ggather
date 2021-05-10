@@ -68,11 +68,6 @@ public class Partido {
         return nivelPartido;
     }
 
-    @Override
-    public String toString() {
-        return "Partido{" + "id=" + id + ", reserva=" + reserva + ", creador=" + creador + ", pistaPartido=" + pistaPartido + ", estado=" + estado + ", nivelPartido=" + nivelPartido + '}';
-    }
-
   
     
     

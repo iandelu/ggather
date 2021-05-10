@@ -27,8 +27,8 @@ import java.util.List;
 
 public class MySQLTarjetaDAO implements TarjetaDAO{
 
-    final String INSERT = "INSERT INTO tarjetas(idTarjeta, tipoTarjeta, idJugador, idJugadorAmonestador, motivo, comentario) VALUES (?,?,?,?,?,?)"; 
-    final String UPDATE = "UPDATE tarjetas tipoTarjeta = ?, idJugador = ?, idJugadorAmonestador = ?, motivo = ?, comentario = ? WHERE idTarjeta = ?";
+    final String INSERT = "INSERT INTO tarjetas(tipoTarjeta, idJugador, idJugadorAmonestador, motivo, comentario) VALUES (?,?,?,?,?)"; 
+    final String UPDATE = "UPDATE tarjetas SET tipoTarjeta = ?, idJugador = ?, idJugadorAmonestador = ?, motivo = ?, comentario = ? WHERE idTarjeta = ?";
     final String DELETE = "DELETE FROM tarjetas WHERE idTarjeta = ?";
     final String GETALL = "SELECT idTarjeta, tipoTarjeta, idJugador, idJugadorAmonestador, motivo, comentario FROM tarjetas";
     final String GETONE = "SELECT idTarjeta, tipoTarjeta, idJugador, idJugadorAmonestador, motivo, comentario FROM tarjetas WHERE idTarjeta = ?";
@@ -49,24 +49,17 @@ public class MySQLTarjetaDAO implements TarjetaDAO{
     public void insertar(Tarjeta j) throws DAOException {
 
         PreparedStatement stat = null;
-        ResultSet rs;
         
         try{
             
             stat = conn.prepareStatement(INSERT);
             
-            rs = stat.getGeneratedKeys();
-            if(rs.next()){
-                j.setIdTarjeta(rs.getLong(1) + 1);
-            }else{
-                throw new DAOException("No se pudo asignar una ID a este alumno");  
-            }
             
             
-            stat.setLong(1, j.getIdTarjeta());
-            stat.setString(2, j.getTipoTarjeta());
-            stat.setLong(3, j.getJugadorSancionado());
-            stat.setLong(4, j.getJugadorAmonestador());
+            stat.setString(1, j.getTipoTarjeta());
+            stat.setLong(2, j.getJugadorSancionado());
+            stat.setLong(3, j.getJugadorAmonestador());
+            stat.setString(4, j.getMotivo());
             stat.setString(5, j.getComentario());
             
             if(stat.executeUpdate() == 0){
@@ -100,8 +93,9 @@ public class MySQLTarjetaDAO implements TarjetaDAO{
             stat.setString(1, j.getTipoTarjeta());
             stat.setLong(2, j.getJugadorSancionado());
             stat.setLong(3, j.getJugadorAmonestador());
-            stat.setString(4, j.getComentario());
-            stat.setLong(5, j.getIdTarjeta());
+            stat.setString(4, j.getMotivo());
+            stat.setString(5, j.getComentario());
+            stat.setLong(6, j.getIdTarjeta());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");

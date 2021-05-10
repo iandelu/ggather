@@ -861,27 +861,6 @@ nav {
   visibility: visible;
   }
 
-.b-busqueda{
-  width: 1px;
-  height: 0px;
-  background: rgba(255, 255, 255, 0);
-  border-radius: 10px;
-  overflow: hidden;
-  align-items:center;
-  margin: 0px 0px 170px 0px;
- 
-
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 80px 130px 70px 95px;
-}
-
-
 
 #barra-busqueda{
   position: absolute;
@@ -1307,19 +1286,3 @@ nav {
     padding: 100px 15px 33px 15px;
   }
 }
-<<<<<<< HEAD
-=======
-
-/*//////////////////////////////////////////////////////////////////
-[ menuPerfil ]*/
-
-.foto-perfil{
-  width: 10px;
-  height: 10px;
- 
-  max-width: 50px;
-  min-width: 50px;
-  
-}
-
->>>>>>> 635c1e55247eae7bb86fdfdfc5430744f4c1b867

@@ -71,6 +71,11 @@ public class Resultado {
     public void setMVP(Long mvp) {
         this.mvp = mvp;
     }
+
+    @Override
+    public String toString() {
+        return "Resultado{" + "idResultado=" + idResultado + ", jugadorPoniente=" + jugadorPoniente + ", partido=" + partido + ", resultado=" + resultado + ", mvp=" + mvp + '}';
+    }
     
     
     

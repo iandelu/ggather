@@ -74,6 +74,11 @@ public class Puntuacion {
     public void setIdJugador(Long idJugador) {
         this.idJugador = idJugador;
     }
+
+    @Override
+    public String toString() {
+        return "Puntuacion{" + "id=" + id + ", puntuacion=" + puntuacion + ", comentario=" + comentario + ", pista=" + pista + ", idJugador=" + idJugador + '}';
+    }
     
     
     

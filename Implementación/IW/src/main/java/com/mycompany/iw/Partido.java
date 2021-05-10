@@ -182,4 +182,9 @@ public class Partido {
         return resultadoPrimero;
     }
     */
+
+    @Override
+    public String toString() {
+        return "Partido{" + "id=" + id + ", reserva=" + reserva + ", creador=" + creador + ", pistaPartido=" + pistaPartido + ", estado=" + estado + ", nivelPartido=" + nivelPartido + '}';
+    }
 }

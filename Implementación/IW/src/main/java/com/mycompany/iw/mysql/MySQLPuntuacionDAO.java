@@ -27,8 +27,8 @@ import java.util.List;
 public class MySQLPuntuacionDAO implements PuntuacionDAO{
 
     
-    final String INSERT = "INSERT INTO puntuaciones(idPuntuacion, puntuacion, comentario, idPista, idJugador) VALUES (?,?,?,?,?)"; 
-    final String UPDATE = "UPDATE puntuaciones puntuacion = ?, comentario = ?, idPista = ?, idJugador = ? WHERE idPuntuacion = ?";
+    final String INSERT = "INSERT INTO puntuaciones(puntuacion, comentario, idPista, idJugador) VALUES (?,?,?,?)"; 
+    final String UPDATE = "UPDATE puntuaciones SET puntuacion = ?, comentario = ?, idPista = ?, idJugador = ? WHERE idPuntuacion = ?";
     final String DELETE = "DELETE FROM puntuaciones WHERE idPuntuacion = ?";
     final String GETALL = "SELECT idPuntuacion, puntuacion, comentario, idPista, idJugador FROM puntuaciones";
     final String GETONE = "SELECT idPuntuacion, puntuacion, comentario, idPista, idJugador FROM puntuaciones WHERE idPuntuacion = ?";
@@ -46,24 +46,16 @@ public class MySQLPuntuacionDAO implements PuntuacionDAO{
     public void insertar(Puntuacion j) throws DAOException{
 
         PreparedStatement stat = null;
-        ResultSet rs;
         try{
             
             stat = conn.prepareStatement(INSERT);
-            
-            rs = stat.getGeneratedKeys();
-            if(rs.next()){
-                j.setId(rs.getLong(1) + 1);
-            }else{
-                throw new DAOException("No se pudo asignar una ID a este alumno");  
-            }
+           
             
             stat = conn.prepareStatement(INSERT);
-            stat.setLong(1, j.getId());
-            stat.setLong(2, j.getPuntuacion());
-            stat.setString(3, j.getComentario());
-            stat.setLong(4, j.getPista());
-            stat.setLong(5, j.getIdJugador());
+            stat.setLong(1, j.getPuntuacion());
+            stat.setString(2, j.getComentario());
+            stat.setLong(3, j.getPista());
+            stat.setLong(4, j.getIdJugador());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
@@ -93,11 +85,12 @@ public class MySQLPuntuacionDAO implements PuntuacionDAO{
             
             stat = conn.prepareStatement(UPDATE);
             
-            stat.setLong(5, j.getId());
+           
             stat.setLong(1, j.getPuntuacion());
             stat.setString(2, j.getComentario());
             stat.setLong(3, j.getPista());
             stat.setLong(4, j.getIdJugador());
+            stat.setLong(5, j.getId());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");

@@ -20,7 +20,7 @@ import java.util.List;
 public class MySQLClubDAO implements ClubDAO{
     
     final String INSERT = "INSERT INTO club(alta, contraseña, email, localizacion, nombreClub, nombrePropietario, telefono) VALUES (?,?,?,?,?,?,?)"; 
-    final String UPDATE = "UPDATE club alta = ? , contraseña = ?, email = ?, localizacion = ?, nombreClub = ?, nombrePropietario = ?,telefono = ? WHERE idClub = ?";
+    final String UPDATE = "UPDATE club SET alta = ? , contraseña = ?, email = ?, localizacion = ?, nombreClub = ?, nombrePropietario = ?,telefono = ? WHERE idClub = ?";
     final String DELETE = "DELETE FROM club WHERE idClub = ?";
     final String GETALL = "SELECT * FROM club";
     final String GETONE = "SELECT * FROM club WHERE idClub = ?";

@@ -1186,53 +1186,22 @@ nav {
   background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
   background: linear-gradient(-135deg, #c850c0, #4158d0); */
 }
-/*
+
 .wrap-crearPartido {
-  width: 450px;
- 
-  border-radius: 10px;
-  overflow: hidden;
-  
-
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  opacity: 1;
-  justify-content: space-between;
-  padding: 30px 80px 30px 80px;
-}
-
-.wrap-crearPartido::before {
-  
-  content: "";
-  width: 400px;
-  height: 450px;
+  width: 960px;
   background: rgb(255, 255, 255);
-  opacity: 0.8;
   border-radius: 10px;
   overflow: hidden;
-  position: absolute;
-  margin: 120px 0px 30px 420px;
-  
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
-  
   justify-content: space-between;
-  padding: 30px 80px 30px 80px;
-
-}*/
+  padding: 30px 130px 30px 30px;
+}
 
 
 .container-crearPartido-form-btn {
@@ -1277,24 +1246,7 @@ nav {
   background: #333333;
 }
 
-.crearPartido-form-title {
-  font-family: Poppins-Bold;
-  font-size: 24px;
-  color: #ffffff;
-  line-height: 1.2;
-  text-align: center;
 
-  width: 100%;
-  display: block;
-  padding-bottom: 54px;
-}
-
-.volver {
-  font-family: Poppins-Regular;
-  font-size: 13px;
-  line-height: 1.5;
-  color: #ffffff;
-}
 
 /*------------------------------------------------------------------
 [ Responsive ]*/
@@ -1302,40 +1254,35 @@ nav {
 
 
 @media (max-width: 992px) {
-  .wrap-crearPartido {
+  .wrap-login100 {
     padding: 177px 90px 33px 85px;
   }
 
-  .wrap-crearPartido::before {
-    padding: 177px 90px 33px 85px;
+  .login100-pic {
+    width: 35%;
   }
-  
-  .crearPartido-form {
+
+  .login100-form {
     width: 50%;
   }
 }
 
 @media (max-width: 768px) {
-  .wrap-crearPartido {
+  .wrap-login100 {
     padding: 100px 80px 33px 80px;
   }
 
-  .wrap-crearPartido::before{
-    padding: 177px 90px 33px 85px;
+  .login100-pic {
+    display: none;
   }
 
-  
-
-  .crearPartido-form {
+  .login100-form {
     width: 100%;
   }
 }
 
 @media (max-width: 576px) {
-  .wrap-crearPartido:before {
+  .wrap-login100 {
     padding: 100px 15px 33px 15px;
   }
 }
-
-
-

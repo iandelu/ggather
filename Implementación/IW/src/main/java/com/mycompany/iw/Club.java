@@ -96,5 +96,10 @@ public class Club {
     public void setNombrePropietario(String nombrePropietario) {
         this.nombrePropietario = nombrePropietario;
     }
+
+    @Override
+    public String toString() {
+        return "Club{" + "idClub=" + idClub + ", nombreClub=" + nombreClub + ", localizacion=" + localizacion + ", email=" + email + ", contrase\u00f1a=" + contraseña + ", telefono=" + telefono + ", nombrePropietario=" + nombrePropietario + ", alta=" + alta + '}';
+    }
     
 }

@@ -30,11 +30,11 @@ import java.sql.*;
 
 public class MySQLResultadoDAO implements ResultadoDAO{
 
-    final String INSERT = "INSERT INTO resultados(idResultados, idJugadorPoniente, idPartido, resultados, mvp) VALUES (?,?,?,?,?)"; 
-    final String UPDATE = "UPDATE resultados idJugadorPoniente = ?, idPartido = ?, resultados = ?, mvp = ? WHERE idResultados = ?";
+    final String INSERT = "INSERT INTO resultados(idJugadorPoniente, idPartido, resultados, mvp) VALUES (?,?,?,?)"; 
+    final String UPDATE = "UPDATE resultados SET idJugadorPoniente = ?, idPartido = ?, resultados = ?, mvp = ? WHERE idResultados = ?";
     final String DELETE = "DELETE FROM resultados WHERE idResultados = ?";
     final String GETALL = "SELECT * FROM resultados";
-    final String GETONE = "SELECT * WHERE idResultados = ?";
+    final String GETONE = "SELECT * FROM resultados WHERE idResultados = ?";
     
     
     private Connection conn;
@@ -48,23 +48,15 @@ public class MySQLResultadoDAO implements ResultadoDAO{
     @Override
     public void insertar(Resultado r) throws DAOException{
         PreparedStatement stat = null;
-        ResultSet rs;
         try{
             
             stat = conn.prepareStatement(INSERT);
             
-            rs = stat.getGeneratedKeys();
-            if(rs.next()){
-                r.setIdResultado(rs.getLong(1) + 1);
-            }else{
-                throw new DAOException("No se pudo asignar una ID a este alumno");  
-            }
             
-            stat.setLong(1, r.getIdResultado());
-            stat.setLong(2, r.getJugadorPoniente());
-            stat.setLong(3, r.getPartido());
-            stat.setString(4, r.getResultado());
-            stat.setLong(5, r.getMVP());
+            stat.setLong(1, r.getJugadorPoniente());
+            stat.setLong(2, r.getPartido());
+            stat.setString(3, r.getResultado());
+            stat.setLong(4, r.getMVP());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
@@ -95,6 +87,7 @@ public class MySQLResultadoDAO implements ResultadoDAO{
             stat.setLong(2, r.getPartido());
             stat.setString(3, r.getResultado());
             stat.setLong(4, r.getMVP());
+            stat.setLong(5, r.getIdResultado());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");

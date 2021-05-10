@@ -29,10 +29,10 @@ public class MySQLReservaDAO implements ReservaDAO{
     
    
 
-    final String INSERT = "INSERT INTO reservas(idReservas, horaInicio, horaFin, fecha, idPistas) VALUES (?,?,?,?,?)"; 
-    final String UPDATE = "UPDATE reservas horaInicio = ? , horaFin = ?, fecha = ?, idPistas = ? WHERE idReserva = ?";
+    final String INSERT = "INSERT INTO reservas(horaInicio, horarioFin, fecha, idPistas) VALUES (?,?,?,?)"; 
+    final String UPDATE = "UPDATE reservas SET horaInicio = ? , horarioFin = ?, fecha = ?, idPistas = ? WHERE idReservas = ?";
     final String DELETE = "DELETE FROM reservas WHERE idReservas = ?";
-    final String GETALL = "SELECT idReservas, horaInicio, horaFin, fecha, idPistas FROM reservas";
+    final String GETALL = "SELECT idReservas, horaInicio, horarioFin, fecha, idPistas FROM reservas";
     final String GETONE = "SELECT * FROM reservas WHERE idReservas = ?";
         
     private Connection conn;
@@ -46,26 +46,18 @@ public class MySQLReservaDAO implements ReservaDAO{
     @Override
     public void insertar(Reserva reserva) throws DAOException {
        PreparedStatement stat = null;
-       ResultSet rs;
         
         try{
             stat = conn.prepareStatement(INSERT);
             
-            rs = stat.getGeneratedKeys();
-            if(rs.next()){
-                reserva.setIdReserva(rs.getLong(1) + 1);
-            }else{
-                throw new DAOException("No se pudo asignar una ID a este alumno");  
-            }
             
             Time timeInicio = Time.valueOf(reserva.getHoraInicio());
             Time timeFin = Time.valueOf(reserva.getHoraFin());
    
-            stat.setLong(1, reserva.getIdReserva());
-            stat.setTime(2, timeInicio);
-            stat.setTime(3, timeFin);
-            stat.setDate(4, Date.valueOf(reserva.getFecha()));
-            stat.setLong(5, reserva.getPista());
+            stat.setTime(1, timeInicio);
+            stat.setTime(2, timeFin);
+            stat.setDate(3, Date.valueOf(reserva.getFecha()));
+            stat.setLong(4, reserva.getPista());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");
@@ -151,7 +143,7 @@ public class MySQLReservaDAO implements ReservaDAO{
         
         Long idPistas = rs.getLong("idPistas");
         LocalTime horaInicio = rs.getTime("horaInicio").toLocalTime();
-        LocalTime horaFinal = rs.getTime("horaFinal").toLocalTime();
+        LocalTime horaFinal = rs.getTime("horarioFin").toLocalTime();
         LocalDate fecha = rs.getDate("fecha").toLocalDate();
         Long pista = rs.getLong("idPistas");
         

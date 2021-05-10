@@ -24,11 +24,11 @@ public class Pista {
     public Pista() {
     }
 
-    public Pista( Long deporte, LocalTime horarioInicio, LocalTime horarioFin, float precioHora, float puntuacionMedia, Long propietario) {
+    public Pista( Long deporte, LocalTime horarioInicio, LocalTime horarioFin, float puntuacionMedia, Long propietario) {
         this.deporte = deporte;
         this.horarioInicio = horarioInicio;
         this.horarioFin = horarioFin;
-        this.precioHora = precioHora;
+        //this.precioHora = precioHora;
         this.puntuacionMedia = puntuacionMedia;
         this.Club = propietario;
     }
@@ -87,6 +87,11 @@ public class Pista {
 
     public void setClub(Long propietario) {
         this.Club = propietario;
+    }
+
+    @Override
+    public String toString() {
+        return "Pista{" + "id=" + id + ", deporte=" + deporte + ", horarioInicio=" + horarioInicio + ", horarioFin=" + horarioFin + ", precioHora=" + precioHora + ", puntuacionMedia=" + puntuacionMedia + ", Club=" + Club + '}';
     }
 
     

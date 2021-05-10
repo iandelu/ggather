@@ -24,8 +24,8 @@ import java.sql.*;
 
 public class MySQLPrecioDAO implements PrecioDAO{
     
-    final String INSERT = "INSERT INTO precios(idPrecio, idClub, idDeporte, mañanaTarde, precioHora) VALUES (?,?,?,?,?)"; 
-    final String UPDATE = "UPDATE precios idClub = ? , idDeporte = ?, mañanaTarde = ?, precioHora = ?";
+    final String INSERT = "INSERT INTO precios(idClub, idDeporte, mañanaTarde, precioHora) VALUES (?,?,?,?)"; 
+    final String UPDATE = "UPDATE precios SET idClub = ? , idDeporte = ?, mañanaTarde = ?, precioHora = ? WHERE idPrecio = ?";
     final String DELETE = "DELETE FROM precios WHERE idPrecio = ?";
     final String GETALL = "SELECT * FROM precios";
     final String GETONE = "SELECT * FROM precios WHERE idPrecio = ?";
@@ -43,25 +43,16 @@ public class MySQLPrecioDAO implements PrecioDAO{
     @Override
     public void insertar(Precio p) throws DAOException{
         PreparedStatement stat = null;
-        ResultSet rs;
         
         try{
             
             stat = conn.prepareStatement(INSERT);
             
-            rs = stat.getGeneratedKeys();
-            if(rs.next()){
-                p.setId(rs.getLong(1) + 1);
-            }else{
-                throw new DAOException("No se pudo asignar una ID a este alumno");  
-            }
-            
-           
-            stat.setLong(1, p.getId());
-            stat.setLong(2, p.getIdClub());
-            stat.setLong(3, p.getIdDeporte());
-            stat.setString(4, p.getMañanaTarde());
-            stat.setFloat(5, p.getPrecioHora());
+         
+            stat.setLong(1, p.getIdClub());
+            stat.setLong(2, p.getIdDeporte());
+            stat.setString(3, p.getMañanaTarde());
+            stat.setFloat(4, p.getPrecioHora());
 
                     
             
@@ -102,6 +93,7 @@ public class MySQLPrecioDAO implements PrecioDAO{
             stat.setLong(2, p.getIdDeporte());
             stat.setString(3, p.getMañanaTarde());
             stat.setFloat(4, p.getPrecioHora());
+            stat.setLong(5, p.getId());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");

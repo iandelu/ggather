@@ -63,6 +63,11 @@ public class Precio {
     public void setPrecioHora(Float precioHora) {
         this.precioHora = precioHora;
     }
+
+    @Override
+    public String toString() {
+        return "Precio{" + "id=" + id + ", idClub=" + idClub + ", idDeporte=" + idDeporte + ", ma\u00f1anaTarde=" + mañanaTarde + ", precioHora=" + precioHora + '}';
+    }
     
     
     

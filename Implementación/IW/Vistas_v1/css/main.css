@@ -851,6 +851,40 @@ nav {
 /*//////////////////////////////////////////////////////////////////
 [ MainMenu ]*/
 
+.container-menu {
+  width: 100%;  
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  position: absolute;
+
+  /*background: #9053c7;
+  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: linear-gradient(-135deg, #c850c0, #4158d0); */
+}
+
+.limiter-menu {
+  width: 100%;
+  margin: 0 auto;
+ margin-top: 140px;
+ margin-left: 80px;
+ 
+  
+ 
+  
+  
+}
+
+
 .video {
   position: absolute;
   left: 0;
@@ -860,6 +894,36 @@ nav {
   z-index: -10;
   visibility: visible;
   }
+
+.texto-menu{
+
+  position: relative;
+  text-align:center;
+  margin-left: 500px;
+  margin-top: -130px;
+}
+.b-busqueda{
+
+
+ 
+  
+  align-items:center;
+  margin-right: 1300px;
+  margin-bottom: 1000px;
+
+
+ 
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:left;
+  padding: 80px 100px 70px 95px;
+}
+
 
 
 #barra-busqueda{
@@ -879,7 +943,7 @@ nav {
   color: #666666;
 
   display:inline-block;
-  position: relative;
+ 
   width: 10%;
   
   margin: 150px 210px ;
@@ -1046,7 +1110,7 @@ nav {
   font-size: 45px;
   color: #ffffff;
   line-height: 1.2;
-  text-align: right;
+  
   
 
   width: 100%;
@@ -1186,12 +1250,13 @@ nav {
   background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
   background: linear-gradient(-135deg, #c850c0, #4158d0); */
 }
-
+/*
 .wrap-crearPartido {
-  width: 960px;
-  background: rgb(255, 255, 255);
+  width: 450px;
+ 
   border-radius: 10px;
   overflow: hidden;
+  
 
   display: -webkit-box;
   display: -webkit-flex;
@@ -1199,9 +1264,39 @@ nav {
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
+  opacity: 1;
   justify-content: space-between;
-  padding: 30px 130px 30px 30px;
+  padding: 30px 80px 30px 80px;
 }
+
+.wrap-crearPartido::before {
+  
+  content: "";
+  width: 400px;
+  height: 450px;
+  background: rgb(255, 255, 255);
+  opacity: 0.8;
+  border-radius: 10px;
+  overflow: hidden;
+  position: absolute;
+  margin: 120px 0px 30px 420px;
+  
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  
+  justify-content: space-between;
+  padding: 30px 80px 30px 80px;
+
+}*/
 
 
 .container-crearPartido-form-btn {
@@ -1246,7 +1341,24 @@ nav {
   background: #333333;
 }
 
+.crearPartido-form-title {
+  font-family: Poppins-Bold;
+  font-size: 24px;
+  color: #ffffff;
+  line-height: 1.2;
+  text-align: center;
 
+  width: 100%;
+  display: block;
+  padding-bottom: 54px;
+}
+
+.volver {
+  font-family: Poppins-Regular;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #ffffff;
+}
 
 /*------------------------------------------------------------------
 [ Responsive ]*/
@@ -1254,35 +1366,152 @@ nav {
 
 
 @media (max-width: 992px) {
-  .wrap-login100 {
+  .wrap-crearPartido {
     padding: 177px 90px 33px 85px;
   }
 
-  .login100-pic {
-    width: 35%;
+  .wrap-crearPartido::before {
+    padding: 177px 90px 33px 85px;
   }
-
-  .login100-form {
+  
+  .crearPartido-form {
     width: 50%;
   }
 }
 
 @media (max-width: 768px) {
-  .wrap-login100 {
+  .wrap-crearPartido {
     padding: 100px 80px 33px 80px;
   }
 
-  .login100-pic {
-    display: none;
+  .wrap-crearPartido::before{
+    padding: 177px 90px 33px 85px;
   }
 
-  .login100-form {
+  
+
+  .crearPartido-form {
     width: 100%;
   }
 }
 
 @media (max-width: 576px) {
-  .wrap-login100 {
+  .wrap-crearPartido:before {
     padding: 100px 15px 33px 15px;
   }
 }
+
+/*//////////////////////////////////////////////////////////////////
+[ menuPerfil ]*/
+
+.container-menuPerfil-form-btn {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  align-items:initial;
+  padding-top: 20px;
+}
+
+.Datos-User{
+  color: #023801;
+  font-weight: bolder;
+  font-size: large;
+  
+}
+
+.nivel{
+  color: #023801;
+  font-weight:600;
+}
+
+.container-menuPerfil {
+  width: 100%;  
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-image: url("../images/backgrounds/loginBack.jpg");
+  background-size: cover;
+  /*background: #9053c7;
+  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: linear-gradient(-135deg, #c850c0, #4158d0); */
+}
+
+.wrap-menuPerfil {
+  width: 960px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  overflow: hidden;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 80px 130px 70px 95px;
+}
+
+/*------------------------------------------------------------------
+[  ]*/
+.menuPerfil-pic {
+  width: 300px;
+  margin: auto;
+  border-radius:50%;
+}
+
+.menuPerfil-pic img {
+  max-width: 100%;
+  border-radius:50%;
+}
+
+/*------------------------------------------------------------------
+[  EDITAR PERFIL ]*/
+
+.editarPerfil-pic {
+  width: 200px;
+  margin: auto;
+  border-radius:50%;
+}
+
+.editarPerfil-pic img {
+  max-width: 100%;
+  border-radius:50%;
+}
+
+.fotoP{
+  font-size: small;
+  color: #02380100;
+  border-radius: 50%;
+  margin-left: 30px;
+}
+
+/*------------------------------------------------------------------
+[ DashBoard ]*/
+
+#dashboard-header {
+	background: rgb(26, 99, 168);
+	color: white;
+	height: 80px;
+}	
+	#dashboard-header a {
+		color: white;
+	}
+
+  #logo-header .dashboard-pic {
+    width: 100px; ;
+    display:block;
+  }

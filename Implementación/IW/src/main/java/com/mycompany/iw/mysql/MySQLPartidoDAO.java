@@ -300,7 +300,53 @@ public class MySQLPartidoDAO implements PartidoDAO{
         return partidos;
     }
     
-    
+    public void inscribirColega(String nombre, String apellidos, int nivel) throws DAOException {
+        
+        Jugador colega = new Jugador( "COLEGA", nombre,  apellidos, "COLEGA@COLEGA.ES", long telefono, int nivel, String deporte);
+        
+                 PreparedStatement stat = null;
+        
+        
+        try{
+            
+            stat = conn.prepareStatement(INSERT);   
+            
+            stat.setString(1, colega.getUsuario());
+            stat.setString(2, colega.getNombre());
+            stat.setString(3, colega.getEmail());
+            stat.setString(4, colega.getApellidos());
+            stat.setDate(5, new Date(colega.getFechaNacimiento().getTime()));
+            stat.setString(6, colega.getContraseña());
+            stat.setFloat(7, colega.getValoracionMedia()); //Esto abria que modificarlopor que al crear un usuario no posee valoracion
+            stat.setLong(8, colega.getTelefono());
+            
+            
+            if(stat.executeUpdate() == 0){
+                throw new DAOException("Puede que no se haya guardado.");
+            }
+            
+        } catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+        } finally{
+            if (stat !=  null){
+                
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    throw new DAOException("Error en SQL", ex);
+                }
+            }if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+        }
+        
+    }
     
     
 }

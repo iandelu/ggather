@@ -248,7 +248,7 @@ public class MySQLPrecioDAO implements PrecioDAO{
     
     final String GETCLUBPRICES = "SELECT * FROM precios WHERE IDclub = ?";
     
-    public List<Precio> obtenerTodos(Long id) throws DAOException{
+    public List<Precio> obtenerTodosClub(Long id) throws DAOException{
        PreparedStatement stat = null;
        ResultSet rs = null;
        List<Precio> precios = new ArrayList<>();

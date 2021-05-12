@@ -297,9 +297,6 @@ public class MySQLPistaDAO implements PistaDao{
        
     }
     
-    
-
-    
     /*
      * Devuelve una lista de pistas con todas las pistas del club con la id que se le pasa
      * @param id

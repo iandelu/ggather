@@ -32,7 +32,7 @@ public class MySQLPuntuacionDAO implements PuntuacionDAO{
     final String DELETE = "DELETE FROM puntuaciones WHERE idPuntuacion = ?";
     final String GETALL = "SELECT idPuntuacion, puntuacion, comentario, idPista, idJugador FROM puntuaciones";
     final String GETONE = "SELECT idPuntuacion, puntuacion, comentario, idPista, idJugador FROM puntuaciones WHERE idPuntuacion = ?";
-    
+    final String GETALLPISTA = "SELECT idPuntuacion, puntuacion, comentario, idPista, idJugador FROM puntuaciones WHERE idPista = ? ";
     
     private Connection conn;
     
@@ -250,5 +250,50 @@ public class MySQLPuntuacionDAO implements PuntuacionDAO{
 
     }
     
+    public List<Puntuacion> obtenerPuntaucionesPista(Long id) throws DAOException{
+
+        PreparedStatement stat = null;
+        ResultSet rs = null;
+        List<Puntuacion> puntuaciones = new ArrayList<>();
+
+        try{
+
+            stat = conn.prepareStatement(GETALLPISTA);
+            stat.setLong(1, id);
+            rs = stat.executeQuery();
+            while(rs.next()){
+
+                puntuaciones.add(convertir(rs));
+
+            }
+
+        }catch(SQLException ex){
+             throw new DAOException("Error en SQL", ex);
+        }finally{
+
+            if(rs != null){
+
+                try{
+                    rs.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL, ex");
+                }
+
+            }
+            if(stat != null){
+
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL, ex");
+                }
+
+            }
+        }
+
+         return puntuaciones;
+    
+
+    }
     
 }

@@ -245,4 +245,51 @@ public class MySQLPrecioDAO implements PrecioDAO{
 
     
     
+    
+    final String GETCLUBPRICES = "SELECT * FROM precios WHERE IDclub = ?";
+    
+    public List<Precio> obtenerTodos(Long id) throws DAOException{
+       PreparedStatement stat = null;
+       ResultSet rs = null;
+       List<Precio> precios = new ArrayList<>();
+       
+       try{
+           
+           stat = conn.prepareStatement(GETCLUBPRICES);
+           stat.setLong(1, id);
+           rs = stat.executeQuery();
+           while(rs.next()){
+               
+               precios.add(convertir(rs));
+               
+           }
+           
+       }catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+       }finally{
+           
+           if(rs != null){
+               
+               try{
+                   rs.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+           if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+       }
+       
+        return precios;
+    }
+    
+    
 }

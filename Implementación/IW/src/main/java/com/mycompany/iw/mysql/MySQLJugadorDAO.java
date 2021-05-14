@@ -567,5 +567,6 @@ public class MySQLJugadorDAO implements JugadorDao{
        }
        
         return jugadores;
+    }
     
 }

@@ -69,7 +69,7 @@ public class Jugador {
     
     
 
-    public Jugador(String usuario, String nombre, String apellidos, String email, long telefono, int nivel, String deporte) {
+    public Jugador(String usuario, String nombre, String apellidos, String email, long telefono) {
         this.usuario = usuario;
         this.nombre = nombre;
         this.apellidos = apellidos;

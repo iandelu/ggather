@@ -300,9 +300,9 @@ public class MySQLPartidoDAO implements PartidoDAO{
         return partidos;
     }
     
-    public void inscribirColega(String nombre, String apellidos, int nivel) throws DAOException {
+    public void inscribirColega(String nombre, String apellidos) throws DAOException {
         
-        Jugador colega = new Jugador( "COLEGA", nombre,  apellidos, "COLEGA@COLEGA.ES", long telefono, int nivel, String deporte);
+        Jugador colega = new Jugador( "COLEGA", nombre,  apellidos, "COLEGA@COLEGA.ES",  999999999);
         
                  PreparedStatement stat = null;
         

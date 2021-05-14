@@ -516,5 +516,56 @@ public class MySQLJugadorDAO implements JugadorDao{
     
     
     
+    /*
+    *   ----------------------------------------------------------
+    *   Funciones que se encargan de las relaciones entre jugadores
+    *   ----------------------------------------------------------
+    */
+    
+    final String GETONEBYUSER = "SELECT * FROM jugadores WHERE usuario like '%?%'";
+    
+    public List<Jugador> obtenerUsuario(String usuario) throws DAOException{
+        
+       
+       PreparedStatement stat = null;
+       ResultSet rs = null;
+       List<Jugador> jugadores = new ArrayList<>();
+       
+       try{
+           
+           stat = conn.prepareStatement(GETONEBYUSER);
+           stat.setString(1, usuario);
+           rs = stat.executeQuery();
+           while(rs.next()){
+               
+               jugadores.add(convertir(rs));
+               
+           }
+           
+       }catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+       }finally{
+           
+           if(rs != null){
+               
+               try{
+                   rs.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+           if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+       }
+       
+        return jugadores;
     
 }

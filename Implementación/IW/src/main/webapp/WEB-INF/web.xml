@@ -26,6 +26,6 @@
         <param-value>root</param-value>        
     </context-param>
      <welcome-file-list>
-        <welcome-file>Vistas_v1/mainMenu.html</welcome-file>
+        <welcome-file>mainMenu.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

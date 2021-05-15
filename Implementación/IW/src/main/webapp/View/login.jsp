@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<title>Login</title>
 	<meta charset="UTF-8">
@@ -36,7 +36,7 @@
 						Login
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Debes introducir un email vÃ¡lido: ejemplo@gmail.com">
+					<div class="wrap-input100 validate-input" data-validate = "Debes introducir un email válido: ejemplo@gmail.com">
 						<input class="input100" type="text" name="email" placeholder="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -44,8 +44,8 @@
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Es necesario una contraseÃ±a valida">
-						<input class="input100" type="password" name="pass" placeholder="ContraseÃ±a">
+					<div class="wrap-input100 validate-input" data-validate = "Es necesario una contraseña válida">
+						<input class="input100" type="password" name="pass" placeholder="Contraseña">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -59,8 +59,8 @@
 					</div>
 
 					<div class="text-center p-t-30">
-						<a class="txt2" onclick="location.href='register.html'">
-							Â¡Registrate!
+						<a class="txt2" onclick="location.href='register.jsp'">
+							¡Regístrate!
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>

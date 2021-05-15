@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<title>Home</title>
 	<meta charset="UTF-8">
@@ -37,26 +37,26 @@
 			    	</div>
 	
 					<div class="container-home-form-btn">
-						<button class="home-form-btn" onclick="location.href='login.html'">
-							Inicia SesiÃ³n
+						<button class="home-form-btn" onclick="location.href='login.jsp'">
+							Inicia Sesión
 						</button>
 					</div>
 
                     <div class="container-home-form-btn">
-						<button class="home-form-btn" onclick="location.href='register.html'">
-							Registrate
+						<button class="home-form-btn" onclick="location.href='register.jsp'">
+							Regístrate
 						</button>
 					</div>
 
                     <div class="container-home-form-btn">
-						<button class="home-form-btn-invitado" onclick="location.href='Dashboard/pages/dashboard.html'">
+						<button class="home-form-btn-invitado" onclick="location.href='Dashboard/pages/dashboard.jsp'">
 							Soy propietario
 						</button>
 					</div>
 
 					<div class="text-center p-t-30">
-                        <a onclick="location.href='mainMenu.html'">
-                            Volver al menÃº principal
+                        <a onclick="location.href='../../mainMenu.jsp'">
+                            Volver al menú principal
                             <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
                         </a>
 					</div>

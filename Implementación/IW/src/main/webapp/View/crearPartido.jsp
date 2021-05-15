@@ -81,8 +81,8 @@
 						</div>
 
 						<div class="text-center p-t-30">
-							<a style="color:#ffffff" class="volver" onclick="location.href='mainMenu.html'">
-								Volver al menú
+							<a style="color:#ffffff" class="volver" onclick="location.href='../../mainMenu.jsp'">
+								Volver al menu
 								<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 							</a>
 						</div>

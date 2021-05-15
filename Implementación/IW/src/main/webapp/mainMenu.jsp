@@ -34,8 +34,8 @@
     <nav>
         <ul>
             <li><a href="mainMenu.jsp">Inicio</a></li>
-            <li><a href="home.jsp">Crear Partido</a></li>
-            <li><a href="home.jsp"  >Acceder</a></li>
+            <li><a href="View/home.jsp">Crear Partido</a></li>
+            <li><a href="View/home.jsp"  >Acceder</a></li>
         </ul>
     </nav>
 

@@ -5,6 +5,8 @@
  */
 package com.mycompany.iw;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.util.LinkedList;
@@ -211,5 +213,21 @@ public class Jugador {
     }
     */
     
+    public static Date setFechaString(String fecha){
+
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+        Date fechaDate = null;
+
+        try{
+
+            fechaDate = (Date) formato.parse(fecha);
+ 
+        }catch(ParseException ex){
+
+            System.out.println(ex);
+        }
+
+        return fechaDate;
+    }
     
 }

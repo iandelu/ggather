@@ -25,16 +25,16 @@
 
 <header id="main-header">
             
-    <a id="logo-header" href="mainMenu.html">
+    <a id="logo-header" href="../mainMenu.jsp">
     <span class="header-pic"><img src="images/icons/logo3.png"></span>
         <span class="site-name">GGather</span>
     </a> 
 
     <nav>
         <ul>
-            <li><a href="mainMenu.html">Inicio</a></li>
-            <li><a href="home.html">Crear Partido</a></li>
-            <li><a href="home.html"  >Acceder</a></li>
+            <li><a href="mainMenu.jsp">Inicio</a></li>
+            <li><a href="home.jsp">Crear Partido</a></li>
+            <li><a href="home.jsp"  >Acceder</a></li>
         </ul>
     </nav>
 

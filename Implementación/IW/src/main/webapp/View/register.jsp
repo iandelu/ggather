@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:useBean id = "Jugador" scope = "session" class = "com.mycompany.iw.Jugador"></jsp:useBean>
 <head>
@@ -27,7 +27,7 @@
 </head>
 <body>
 
-<%
+<%/*
     boolean logeado = Jugador != null && !Jugador.getEmail().equals("");
     String nextPage = "";
     String mensajeNextPage = "";
@@ -36,20 +36,20 @@
         
         nextPage = "mainMenuLogged.jsp";
     
-    } else { %>
+    } else {*/ %>
     
     
 	<div class="limiter">
 		<div class="container-registro">
 			<div class="wrap-registro">
 
-				<form class="registro-form validate-form" method="post" action="RegistrarController">
+				<form class="registro-form validate-form" method="post" action="../RegistrarController">
 					<span class="login100-form-title">
 						Registro
 					</span>
 
 
-                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un nombre de usuario vÃ¡lido">
+                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un nombre de usuario válido">
 						<input class="input100" type="text" name="usuario" placeholder="Nombre de Usuario">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -57,7 +57,7 @@
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Debes introducir un nombre vÃ¡lido">
+					<div class="wrap-input100 validate-input" data-validate = "Debes introducir un nombre válido">
 						<input class="input100" type="text" name="nombre" placeholder="Nombre">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -65,7 +65,7 @@
 						</span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir unos apellidos vÃ¡lidos">
+                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir unos apellidos válidos">
 						<input class="input100" type="text" name="apellidos" placeholder="Apellidos">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -73,7 +73,7 @@
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Debes introducir una fecha vÃ¡lida">
+					<div class="wrap-input100 validate-input" data-validate = "Debes introducir una fecha válida">
 						<input class="input100" type="date" name="fechanacimiento" placeholder="Fecha de Nacimiento">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -81,15 +81,15 @@
 						</span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un nÃºmero vÃ¡lido">
-						<input class="input100" type="tel" name="telefono" placeholder="NÃºmero de Telefono">
+                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un nÃÂºmero válido">
+						<input class="input100" type="tel" name="telefono" placeholder="Número de Teléfono">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-phone" aria-hidden="true"></i>
 						</span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un email vÃ¡lido: ejemplo@gmail.com">
+                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un email válido: ejemplo@gmail.com">
 						<input class="input100" type="email" name="email" placeholder="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -97,8 +97,8 @@
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Es necesario una contraseÃ±a valida">
-						<input class="input100" type="password" name="pass" placeholder="ContraseÃ±a">
+					<div class="wrap-input100 validate-input" data-validate = "Es necesario una contraseña valida">
+						<input class="input100" type="password" name="pass" placeholder="Contraseña">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -112,7 +112,7 @@
 					</div>
                     
                     <div class="text-center p-t-30">
-                        <a onclick="location.href='home.html'">
+                        <a onclick="location.href='home.jsp'">
                             Volver al inicio
                             <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
                         </a>
@@ -142,7 +142,7 @@
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
 
-<%}
+<%//}
 
 %>
 </body>

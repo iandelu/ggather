@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-	<title>Menú Principal</title>
+	<title>Men� Principal</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
    
@@ -62,7 +62,7 @@
                                                 <select class="busqueda-menu2">
                                                     <option selected value="0"> Deporte </option>
                                                     <optgroup label="Deportes"> 
-                                                            option value="1">Pádel</option> 
+                                                            option value="1">Padel</option> 
                                                             <option value="2">Futbol 11</option> 
                                                             <option value="3">Futbol 7</option> 
                                                     </optgroup>

@@ -103,7 +103,7 @@
 					</div>
                     
                     <div class="text-center p-t-30 ">
-                        <a onclick="location.href='mainMenu.html'">
+                        <a onclick="location.href='../mainMenu.jsp'">
                             Volver al inicio
                             <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
                         </a>

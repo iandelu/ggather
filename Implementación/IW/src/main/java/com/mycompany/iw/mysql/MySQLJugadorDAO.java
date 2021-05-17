@@ -569,4 +569,54 @@ public class MySQLJugadorDAO implements JugadorDao{
         return jugadores;
     }
     
+     
+    final String GETJUGADORESP = "SELECT j.idJugador, j.usuario, j.nombre, j.email, j.apellidos, j.fechaNacimiento, j.contraseña, j.telefono FROM jugaodres j, partido_jugador pj "
+                               + "WHERE pj.idJugador = p.idJugador and pj.idPartido = ?";
+    
+    
+    public List<Jugador> obtenerJugadoresPartido(Long idPartido) throws DAOException{
+
+       PreparedStatement stat = null;
+       List<Jugador> jugadores = new ArrayList<>();
+       ResultSet rs = null;
+       
+       try{
+           
+            stat = conn.prepareStatement(GETJUGADORESP);
+            stat.setLong(1, idPartido);
+            rs = stat.executeQuery();
+            while(rs.next()){
+                
+                jugadores.add(convertir(rs));
+               
+            }
+            
+            
+       }catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+       }finally{
+           
+           if(rs != null){
+               
+               try{
+                   rs.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+           if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+       }
+       
+        return jugadores;
+    }
+    
 }

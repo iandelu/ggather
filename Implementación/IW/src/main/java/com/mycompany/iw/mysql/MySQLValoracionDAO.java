@@ -248,4 +248,71 @@ public class MySQLValoracionDAO implements ValoracionDAO {
 
      }
 
+    
+    String GETVALORACIONES = "SELECT idValoracionesJugadores, usuarioValorador, puntuacion, idJugadorValorado, comentario FROM valoraciones_jugadores WHERE idJugadorValorado = ?";
+    
+    public List<Valoracion> getValoracionesJugador(Long id) throws DAOException{
+
+        PreparedStatement stat = null;
+        ResultSet rs = null;
+        List<Valoracion> valoraciones = new ArrayList<>();
+
+        try{
+     
+
+            stat = conn.prepareStatement(GETVALORACIONES);
+            stat.setLong(1, id);
+            rs = stat.executeQuery();
+            while(rs.next()){
+
+                valoraciones.add(convertir(rs));
+
+            }
+
+        }catch(SQLException ex){
+             throw new DAOException("Error en SQL", ex);
+        }finally{
+
+            if(rs != null){
+
+                try{
+                    rs.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL, ex");
+                }
+
+            }
+            if(stat != null){
+
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL, ex");
+                }
+
+            }
+        }
+
+         return valoraciones;
+    
+    }
+    /**
+     * calcular la nueva valoracion media para su posterior UPDATE
+     * @param v
+     * @return valoracio media
+     */
+    public float calcularValoracion(List<Valoracion> v){
+        
+        float valoracionMedia = 0;
+        
+        for (Valoracion valoracion : v)
+        {
+            valoracionMedia = valoracionMedia + valoracion.getValoracion();
+        }
+        
+        valoracionMedia = valoracionMedia /v.size();
+        
+        return valoracionMedia;
+    }
+    
 }

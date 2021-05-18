@@ -1,11 +1,11 @@
 package com.mycompany.servlets;
 
 import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.mycompany.iw.Jugador;
 import com.mycompany.iw.mysql.MySQLDaoManager;
@@ -13,7 +13,7 @@ import com.mycompany.iw.mysql.MySQLDaoManager;
 /**
  * Servlet implementation class busquedaPartidosController
  */
-@WebServlet("/busquedaPartidosController")
+
 public class busquedaPartidosController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -46,7 +46,7 @@ public class busquedaPartidosController extends HttpServlet {
             if(jugadorAux != null && jugadorAux.getContraseña().equals(password)) {
             	
             	//jugador valido
-            	session.setAttribute("jugador", jugadorAux);
+            	//session.setAttribute("jugador", jugadorAux);
             	response.sendRedirect("/IW_/View/mainMenuLogged.jsp");
             }
             else if(jugadorAux == null || !jugadorAux.getContraseña().equals(password)){

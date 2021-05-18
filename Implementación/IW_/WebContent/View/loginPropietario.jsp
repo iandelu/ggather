@@ -25,7 +25,7 @@
 <body>
 
 	<div class="limiter">
-		<div class="container-login100">
+		<div class="container-login100-propietario">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
 					<img  src="images/icons/Logo.PNG" alt="IMG">

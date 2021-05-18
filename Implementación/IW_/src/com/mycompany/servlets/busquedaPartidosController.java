@@ -45,18 +45,6 @@ public class busquedaPartidosController extends HttpServlet {
             List<Partido> = new ArrayList<Partido>(daoManager.getPartidoDAO().buscarPartidos(deporte, localidad, fecha);
             
             
-            if(jugadorAux != null && jugadorAux.getContraseña().equals(password)) {
-            	
-            	//jugador valido
-            	//session.setAttribute("jugador", jugadorAux);
-            	response.sendRedirect("/IW_/View/mainMenuLogged.jsp");
-            }
-            else if(jugadorAux == null || !jugadorAux.getContraseña().equals(password)){
-            	
-            	response.sendRedirect("/IW_/View/login.jsp");
-            }
-            
-            
             
     	}catch(Exception e) {
     		

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.RequestDispatcher;
-//import javax.servlet.ServletContext;
+import javax.servlet.ServletContext;
 
 import com.mycompany.iw.Jugador;
 import com.mycompany.iw.mysql.MySQLDaoManager;
@@ -26,6 +26,15 @@ import javax.servlet.http.HttpSession;
  */
 public class RegistrarController extends HttpServlet {
 
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public RegistrarController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.

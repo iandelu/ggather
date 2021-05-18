@@ -28,7 +28,7 @@ public class MySQLJugadorDAO implements JugadorDao{
     *   ------------------------------------_
     */
     
-    final String INSERT = "INSERT INTO jugadores( usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono, valoracionMedia) VALUES (?,?,?,?,?,?,?,?)"; 
+    final String INSERT = "INSERT INTO jugadores( usuario, nombre, email, apellidos, fechaNacimiento, contraseña, valoracionMedia, telefono) VALUES (?,?,?,?,?,?,?,?)"; 
     final String UPDATE = "UPDATE jugadores SET usuario = ? , nombre = ?, email = ?, apellidos = ?, fechaNacimiento = ?, contraseña = ?,telefono = ? WHERE idJugador = ?";
     final String DELETE = "DELETE FROM jugadores WHERE idJugador = ?";
     final String GETALL = "SELECT idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono, valoracionMedia FROM jugadores";
@@ -587,7 +587,8 @@ public class MySQLJugadorDAO implements JugadorDao{
                 j = convertir(rs);
                 
             }else{
-                throw new DAOException("No se ha encontrado ese registro.");
+            	
+                j = null;
             }
             
         }catch(SQLException ex){

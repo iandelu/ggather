@@ -1,11 +1,21 @@
 package com.mycompany.servlets;
 
 import java.io.IOException;
+import java.util.List;
+
+import com.mycompany.iw.Club;
+import com.mycompany.iw.Jugador;
+import com.mycompany.iw.Partido;
+import com.mycompany.iw.Pista;
+import com.mycompany.iw.mysql.MySQLDaoManager;
+
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class CrearPartido
@@ -51,7 +61,7 @@ public class CrearPartido extends HttpServlet {
                 String localidad = request.getParameter("localidad");
                 String deporte = request.getParameter("deporte");
                 
-                Long dep;
+                Long dep = null;
                 if(deporte == "1") dep =(long) 1;
                 if(deporte == "2") dep = (long)2;
                 if(deporte == "3") dep = (long)3;
@@ -78,10 +88,10 @@ public class CrearPartido extends HttpServlet {
                     }
                 }*/
                 
-                List<Pista> pistas = man.getPistaDAO().buscarPista(localizacion, dep);
+                List<Pista> pistas = man.getPistaDAO().buscarPista(localidad, dep);
                 
                 //Crea un objeto de una lista con todos los partidos para que el jsp pueda recogerlo
-                objsesion.setAttribute("partidos", auxpartidos);
+                objsesion.setAttribute("pistas", pistas);
                 
                  }catch(Exception e){
             

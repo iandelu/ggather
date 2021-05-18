@@ -33,6 +33,7 @@ public class MySQLJugadorDAO implements JugadorDao{
     final String DELETE = "DELETE FROM jugadores WHERE idJugador = ?";
     final String GETALL = "SELECT idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono, valoracionMedia FROM jugadores";
     final String GETONE = "SELECT * FROM jugadores WHERE idJugador = ?";
+    final String BUSCARPOREMAIL = "SELECT * FROM jugadores WHERE email = ?";
     
     
     private Connection conn;
@@ -568,5 +569,52 @@ public class MySQLJugadorDAO implements JugadorDao{
        
         return jugadores;
     }
+    
+    
+    public Jugador buscarJugadorPorEmail(String email) throws DAOException{
+        
+        PreparedStatement stat = null;
+        ResultSet rs = null;
+        Jugador j;
+        
+        try{
+            
+            stat = conn.prepareStatement(BUSCARPOREMAIL);
+            stat.setString(1, email);
+            rs = stat.executeQuery();
+            if(rs.next()){
+                
+                j = convertir(rs);
+                
+            }else{
+                throw new DAOException("No se ha encontrado ese registro.");
+            }
+            
+        }catch(SQLException ex){
+             throw new DAOException("Error en SQL", ex);
+        }finally{
+            
+            if(rs != null){
+                
+                try{
+                    rs.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL", ex);
+                }
+                
+            }
+            if(stat != null){
+                
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL", ex);
+                }
+                
+            }
+        }
+        
+         return j;
+     }
     
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:useBean id = "Jugador" scope = "session" class = "com.mycompany.iw.Jugador"></jsp:useBean>
+<jsp:useBean id = "JugadorBean" scope = "session" class = "com.mycompany.iw.javabean.JugadorBean"></jsp:useBean>
 <head>
 	<title>Registro</title>
 	<meta charset="UTF-8">

@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import com.mycompany.iw.Jugador;
+import com.mycompany.iw.javabean.JugadorBean;
 import com.mycompany.iw.mysql.MySQLDaoManager;
 
 import jakarta.servlet.RequestDispatcher;
@@ -35,11 +36,12 @@ public class RegistrarController extends HttpServlet {
 		
 		//RequestDispatcher disparador = null;
         HttpSession session = request.getSession();
-        Jugador jugador = (Jugador) session.getAttribute("Jugador");
-        try{
+        JugadorBean jugador = (JugadorBean) request.getSession().getAttribute("JugadorBean");
+        
+        	try{
              Class.forName("com.mysql.jdbc.Driver");
              MySQLDaoManager daoManager = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
-             boolean login = jugador != null && !jugador.getEmail().equals("");
+       
              String nextPage = "/View/register.jsp";
              String usuario = request.getParameter("usuario");
              String nombre = request.getParameter("nombre");
@@ -67,7 +69,8 @@ public class RegistrarController extends HttpServlet {
         response.sendRedirect("/IW_/View/mainMenuLogged.jsp");
 
              
-	}
+       
+}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

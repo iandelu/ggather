@@ -55,7 +55,7 @@
 					</div>
 
 					<div class="text-center p-t-30">
-                        <a onclick="location.href='../../mainMenu.jsp'">
+                        <a onclick="location.href='../../IW_/mainMenu.jsp'">
                             Volver al menú principal
                             <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
                         </a>

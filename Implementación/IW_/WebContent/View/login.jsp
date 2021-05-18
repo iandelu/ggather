@@ -31,7 +31,7 @@
 					<img  src="images/icons/Logo.PNG" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="post" action="/IW_/LoginController">
 					<span class="login100-form-title">
 						Login
 					</span>

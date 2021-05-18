@@ -252,7 +252,7 @@ public class MySQLPistaDAO implements PistaDao{
     final String GETMISPISTAS = "SELECT p.idPista FROM pistas p, club c WHERE p.idClub = ? AND p.idClub = c.idClub";
     
     
-    public List<Pista> buscarPista(String localizacion, String deporte) throws DAOException  {
+    public List<Pista> buscarPista(String localizacion, Long deporte) throws DAOException  {
        PreparedStatement stat = null;
        ResultSet rs = null;
        List<Pista> pistas = new ArrayList<>();
@@ -261,7 +261,7 @@ public class MySQLPistaDAO implements PistaDao{
            
            stat = conn.prepareStatement(SEARCH);
            stat.setString(1, localizacion);
-           stat.setString(2, deporte);
+           stat.setLong(2, deporte);
            rs = stat.executeQuery();
            while(rs.next()){
                

@@ -50,21 +50,22 @@
                         <div class="b-busqueda">
                             <form class="menu-form">
                                         <a id="barra-busqueda">
-                                            <select class="busqueda-menu">
+                                            <select name = "localidad" class="busqueda-menu">
                                                 <option selected value="0"> Localidad </option>
-                                                    <optgroup label="Localidades"> 
-                                                            <option value="1">Cordoba</option> 
-                                                            <option value="2">Malaga</option> 
+                                                     <option selected value="0"> Localidad </option>
+                                                    	<optgroup label="Localidades"> 
+                                                            <option value="1">Córdoba</option> 
+                                                            <option value="2">Málaga</option> 
                                                             <option value="3">Sevilla</option> 
-                                                    </optgroup>    
+                                                    	</optgroup>    
                                                 </select>
 
-                                                <select class="busqueda-menu2">
+                                                <select name = "deporte" class="busqueda-menu2">
                                                     <option selected value="0"> Deporte </option>
                                                     <optgroup label="Deportes"> 
-                                                            option value="1">Padel</option> 
-                                                            <option value="2">Futbol 11</option> 
-                                                            <option value="3">Futbol 7</option> 
+                                                            <option value="1">Pádel</option> 
+                                                            <option value="2">Fútbol 11</option> 
+                                                            <option value="3">Fútbol 7</option> 
                                                     </optgroup>
                                                 </select>
 

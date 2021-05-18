@@ -51,7 +51,7 @@
                         <div class="b-busqueda">
                             <form class="menu-form">
                                         <a id="barra-busqueda">
-                                            <select class="busqueda-menu">
+                                            <select name = "localidad" class="busqueda-menu">
                                                 <option selected value="0"> Localidad </option>
                                                     <optgroup label="Localidades"> 
                                                             <option value="1">Córdoba</option> 
@@ -60,7 +60,7 @@
                                                     </optgroup>    
                                                 </select>
 
-                                                <select class="busqueda-menu2">
+                                                <select name = "deporte" class="busqueda-menu2">
                                                     <option selected value="0"> Deporte </option>
                                                     <optgroup label="Deportes"> 
                                                             <option value="1">Pádel</option> 

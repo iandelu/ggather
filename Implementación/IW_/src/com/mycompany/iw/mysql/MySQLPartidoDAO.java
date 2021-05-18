@@ -254,7 +254,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
                                + "WHERE  pj.idPartido = p.idPartido and pj.idJugador = ? and p.estado like 'PENDIENTE'";
     
     final String BUSCARPARTIDOS = "SELECT p.idPartido, p.idCreador, p.idPista, p.idReserva, p.estado, p.nivelPartido FROM partidos p, pistas pi, club c, reservas r"
-            + "WHERE  r.idReserva = p.idReserva and p.idPista = pi.idPista and pi.idClub = c.idClub and c.localizacion LIKE '?' and pi.idDeporte = ? and ;
+            + "WHERE  r.idReserva = p.idReserva and p.idPista = pi.idPista and pi.idClub = c.idClub and c.localizacion LIKE '?' and pi.idDeporte = ? and r.fecha = ?";
     
     
     /*
@@ -263,7 +263,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
     *   ----------------------------------------------------------
     */
     
-    public List<Partido> historialJugador() throws DAOException{
+    public List<Partido> buscarPartidos(Long deporte, String localizacion,LocalDate fecha ) throws DAOException{
 
        PreparedStatement stat = null;
        ResultSet rs = null;
@@ -272,6 +272,10 @@ public class MySQLPartidoDAO implements PartidoDAO{
        try{
            
            stat = conn.prepareStatement(GETHISTORY);
+           stat.setString(1, localizacion);
+           stat.setLong(2, deporte);
+           stat.setDate(3, fecha);
+
            rs = stat.executeQuery();
            while(rs.next()){
                

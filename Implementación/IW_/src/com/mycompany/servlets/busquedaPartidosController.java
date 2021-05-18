@@ -33,14 +33,16 @@ public class busquedaPartidosController extends HttpServlet {
 		
 		
 		try{
+			
             Class.forName("com.mysql.jdbc.Driver");
             MySQLDaoManager daoManager = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
             
             String nextPage = "/View/login.jsp";
-            String email = request.getParameter("email");
-            String password = request.getParameter("pass");
+            String fecha = request.getParameter("fecha");
+            String localidad = request.getParameter("localidad");
+            Long deporte = Long.parseLong(request.getParameter("deporte");
            
-            Jugador jugadorAux = daoManager.getJugadorDAO().buscarJugadorPorEmail(email);
+            List<Partido> = new ArrayList<Partido>(daoManager.getPartidoDAO().buscarPartidos(deporte, localidad, fecha);
             
             
             if(jugadorAux != null && jugadorAux.getContraseña().equals(password)) {

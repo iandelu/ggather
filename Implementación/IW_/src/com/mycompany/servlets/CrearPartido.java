@@ -56,7 +56,7 @@ public class CrearPartido extends HttpServlet {
                 if(deporte == "2") dep = (long)2;
                 if(deporte == "3") dep = (long)3;
                 
-                List<Pista> pistas = man.getPistaDAO().obtenerTodos();
+               /* List<Pista> pistas = man.getPistaDAO().obtenerTodos();
                 List<Club> clubes = man.getClubDAO().obtenerTodos();
                 List<Partido> partidos = man.getPartidoDAO().obtenerTodos();
                 List<Pista> aux = new ArrayList<>();
@@ -76,7 +76,9 @@ public class CrearPartido extends HttpServlet {
                             auxpartidos.add(partidos.get(j));
                         }
                     }
-                }
+                }*/
+                
+                List<Pista> pistas = man.getPistaDAO().buscarPista(localizacion, dep);
                 
                 //Crea un objeto de una lista con todos los partidos para que el jsp pueda recogerlo
                 objsesion.setAttribute("partidos", auxpartidos);

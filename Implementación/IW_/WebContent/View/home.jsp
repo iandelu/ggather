@@ -38,13 +38,13 @@
 	
 					<div class="container-home-form-btn">
 						<button class="home-form-btn" onclick="location.href='login.jsp'">
-							Inicia Sesion
+							Inicia Sesión
 						</button>
 					</div>
 
                     <div class="container-home-form-btn">
 						<button class="home-form-btn" onclick="location.href='register.jsp'">
-							Registrate
+							Regístrate
 						</button>
 					</div>
 
@@ -56,7 +56,7 @@
 
 					<div class="text-center p-t-30">
                         <a onclick="location.href='../../IW_/mainMenu.jsp'">
-                            Volver al menu principal
+                            Volver al menú principal
                             <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
                         </a>
 					</div>

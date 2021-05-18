@@ -55,6 +55,7 @@ public class RegistrarController extends HttpServlet {
 
              
              daoManager.getJugadorDAO().insertar(jugadorAux);
+             session.setAttribute("jugador", jugadorAux);
              
              nextPage = "/View/mainMenuLogged.jsp";
              

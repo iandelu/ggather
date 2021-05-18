@@ -32,7 +32,7 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(true);
         JugadorBean jugadorBean = (JugadorBean) request.getSession().getAttribute("JugadorBean");
         
        // if(jugadorBean != null || jugadorBean.getEmail().equals("")) {
@@ -55,6 +55,7 @@ public class LoginController extends HttpServlet {
                 if(jugadorAux != null && jugadorAux.getContraseña().equals(password)) {
                 	
                 	//jugador valido
+                	session.setAttribute("jugador", jugadorAux);
                 	response.sendRedirect("/IW_/View/mainMenuLogged.jsp");
                 }
                 else if(jugadorAux == null || !jugadorAux.getContraseña().equals(password)){

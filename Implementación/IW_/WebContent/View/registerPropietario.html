@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:useBean id = "JugadorBean" scope = "session" class = "com.mycompany.iw.javabean.JugadorBean"></jsp:useBean>
 <head>
-	<title>Registro</title>
+	<title>Registro Propietario</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -26,31 +24,19 @@
 <!--===============================================================================================-->
 </head>
 <body>
-
-<%/*
-    boolean logeado = Jugador != null && !Jugador.getEmail().equals("");
-    String nextPage = "";
-    String mensajeNextPage = "";
-    
-    if(logeado){
-        
-        nextPage = "mainMenuLogged.jsp";
-    
-    } else {*/ %>
-    
     
 	<div class="limiter">
 		<div class="container-registro">
 			<div class="wrap-registro">
 
-				<form class="registro-form validate-form" method="post" action="/IW_/RegistrarController">
+				<form class="registro-form validate-form" method="post" action="/IW_/RegistrarPropietarioController">
 					<span class="login100-form-title">
 						Registro
 					</span>
 
 
-                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un nombre de usuario válido">
-						<input class="input100" type="text" name="usuario" placeholder="Nombre de Usuario">
+                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un nombre de club válido">
+						<input class="input100" type="text" name="nombreClub" placeholder="Nombre del club">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>
@@ -58,26 +44,10 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Debes introducir un nombre válido">
-						<input class="input100" type="text" name="nombre" placeholder="Nombre">
+						<input class="input100" type="text" name="nombrePropietario" placeholder="Nombre completo del propietario">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>
-						</span>
-					</div>
-
-                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir unos apellidos válidos">
-						<input class="input100" type="text" name="apellidos" placeholder="Apellidos">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-user" aria-hidden="true"></i>
-						</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Debes introducir una fecha válida">
-						<input class="input100" type="date" name="fechanacimiento" placeholder="Fecha de Nacimiento">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-calendar" aria-hidden="true"></i>
 						</span>
 					</div>
 
@@ -97,6 +67,14 @@
 						</span>
 					</div>
 
+                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir una localidad">
+						<input class="input100" type="text" name="localidad" placeholder="Localidad">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-globe" aria-hidden="true"></i>
+						</span>
+					</div>
+
 					<div class="wrap-input100 validate-input" data-validate = "Es necesario una contraseña valida">
 						<input class="input100" type="password" name="pass" placeholder="Contraseña">
 						<span class="focus-input100"></span>
@@ -106,7 +84,7 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn-propietario">
 							Aceptar
 						</button>
 					</div>
@@ -142,8 +120,5 @@
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
 
-<%//}
-
-%>
 </body>
 </html>

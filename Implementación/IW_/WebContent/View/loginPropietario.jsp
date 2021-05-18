@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Home</title>
+	<title>Login Propietario</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -25,44 +25,46 @@
 <body>
 
 	<div class="limiter">
-		<div class="container-home">
-			<div class="wrap-home">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img  src="images/icons/Logo.PNG" alt="IMG">
+				</div>
 
-                  <span class="home-form-title">
-                      Bienvenido a 
-                    </span>
+				<form class="login100-form validate-form" method="post" action="/IW_/LoginPropietarioController">
+					<span class="login100-form-title">
+						Login
+					</span>
 
-				    <div class="home-pic js-tilt" data-tilt>
-					    <img src="images/icons/Logo.PNG" alt="IMG">
-			    	</div>
-	
-					<div class="container-home-form-btn">
-						<button class="home-form-btn" onclick="location.href='login.jsp'">
-							Inicia Sesi�n
-						</button>
+					<div class="wrap-input100 validate-input" data-validate = "Debes introducir un email v�lido: ejemplo@gmail.com">
+						<input class="input100" type="text" name="email" placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
 					</div>
 
-                    <div class="container-home-form-btn">
-						<button class="home-form-btn" onclick="location.href='register.jsp'">
-							Reg�strate
-						</button>
+					<div class="wrap-input100 validate-input" data-validate = "Es necesario una contrase�a v�lida">
+						<input class="input100" type="password" name="pass" placeholder="Contrase�a">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
 					</div>
-
-                    <div class="container-home-form-btn">
-						<button class="home-form-btn-invitado" onclick="location.href='homePropietario.jsp'">
-							Soy propietario
+					
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn-propietario" onclick="location.href='Dashboard/pages/dashboard.jsp'">
+							Acceder
 						</button>
 					</div>
 
 					<div class="text-center p-t-30">
-                        <a onclick="location.href='../../IW_/mainMenu.jsp'">
-                            Volver al men� principal
-                            <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
-                        </a>
+						<a class="txt2" onclick="location.href='registerPropietario.jsp'">
+							�Reg�strate!
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
 					</div>
-
-				</div>
-				
+				</form>
 			</div>
 		</div>
 	</div>

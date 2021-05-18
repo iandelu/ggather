@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Home</title>
+	<title>Home Propietario</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -25,7 +25,7 @@
 <body>
 
 	<div class="limiter">
-		<div class="container-home">
+		<div class="container-home-propietario">
 			<div class="wrap-home">
 
                   <span class="home-form-title">
@@ -37,20 +37,14 @@
 			    	</div>
 	
 					<div class="container-home-form-btn">
-						<button class="home-form-btn" onclick="location.href='login.jsp'">
+						<button class="home-form-btn-propietario" onclick="location.href='loginPropietario.jsp'">
 							Inicia Sesi�n
 						</button>
 					</div>
 
                     <div class="container-home-form-btn">
-						<button class="home-form-btn" onclick="location.href='register.jsp'">
+						<button class="home-form-btn-propietario" onclick="location.href='registerPropietario.jsp'">
 							Reg�strate
-						</button>
-					</div>
-
-                    <div class="container-home-form-btn">
-						<button class="home-form-btn-invitado" onclick="location.href='homePropietario.jsp'">
-							Soy propietario
 						</button>
 					</div>
 

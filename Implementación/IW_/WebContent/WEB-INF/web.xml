@@ -26,5 +26,13 @@
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
     </servlet-mapping>
+   <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>com.mycompany.servlets.LogoutController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/LogoutController</url-pattern>
+    </servlet-mapping>
     
 </web-app>

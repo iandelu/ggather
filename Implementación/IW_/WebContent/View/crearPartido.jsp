@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<title>Login</title>
 	<meta charset="UTF-8">
@@ -39,7 +39,7 @@
 
 				<form class="login100-form validate-form">
 					<span class="crearPartido-form-title">
-						Â¡Crea un Partido!
+						¡Crea un Partido!
 					</span>
 
 
@@ -48,8 +48,8 @@
 								
                                  <option  disabled selected> Localidad </option>
                                       
-                                         <option value="1">Cordoba</option> 
-                                          <option value="2">Malaga</option> 
+                                         <option value="1">Córdoba</option> 
+                                          <option value="2">Málaga</option> 
                                          <option value="3">Sevilla</option>        
                             </select>
 							<span class="focus-input100"></span>
@@ -62,9 +62,9 @@
                                 <select class="input100">
                                  <option id=deporte selected value="0"> Deporte </option>
                                      
-                                        <option value="1">PÃ¡del</option> 
-                                        <option value="2">Futbol 11</option> 
-                                        <option value="3">Futbol 7</option> 
+                                        <option value="1">Pádel</option> 
+                                        <option value="2">Fútbol 11</option> 
+                                        <option value="3">Fútbol 7</option> 
                          
                                     
                                 </select>
@@ -81,7 +81,7 @@
 						</div>
 
 						<div class="text-center p-t-30">
-							<a style="color:#ffffff" class="volver" onclick="location.href='../../mainMenu.jsp'">
+							<a style="color:#ffffff" class="volver" onclick="location.href='mainMenuLogged.jsp'">
 								Volver al menu
 								<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 							</a>

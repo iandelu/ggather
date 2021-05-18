@@ -28,7 +28,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img  src="images/icons/Logo.PNG" alt="IMG">
+					<img  src="images/icons/Logo.PNG" alt="Logo GGather" onclick="location.href='../../IW_/mainMenu.jsp'">
 				</div>
 
 				<form class="login100-form validate-form" method="post" action="/IW_/LoginController">

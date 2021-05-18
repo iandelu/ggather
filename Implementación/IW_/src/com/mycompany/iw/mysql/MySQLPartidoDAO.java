@@ -253,6 +253,9 @@ public class MySQLPartidoDAO implements PartidoDAO{
     final String GETPARTIDOSPENDIENTES = "SELECT p.idPartido, p.idCreador, p.idPista, p.idReserva, p.estado, p.nivelPartido FROM partidos p, partido_jugador pj"
                                + "WHERE  pj.idPartido = p.idPartido and pj.idJugador = ? and p.estado like 'PENDIENTE'";
     
+    final String BUSCARPARTIDOS = "SELECT p.idPartido, p.idCreador, p.idPista, p.idReserva, p.estado, p.nivelPartido FROM partidos p, pistas pi, club c, reservas r"
+            + "WHERE  r.idReserva = p.idReserva and p.idPista = pi.idPista and pi.idClub = c.idClub and c.localizacion LIKE '?' and pi.idDeporte = ? and ;
+    
     
     /*
     *   ----------------------------------------------------------

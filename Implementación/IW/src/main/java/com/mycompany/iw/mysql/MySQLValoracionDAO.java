@@ -315,4 +315,50 @@ public class MySQLValoracionDAO implements ValoracionDAO {
         return valoracionMedia;
     }
     
+
+    public Jugador buscarJugadorPorEmail(String email) throws DAOException{
+        
+        PreparedStatement stat = null;
+        ResultSet rs = null;
+        Jugador j;
+        try{
+            
+            stat = conn.prepareStatement(BUSCARPOREMAIL);
+            stat.setString(1, email);
+            rs = stat.executeQuery();
+            if(rs.next()){
+                
+                j = convertir(rs);
+            }else{
+            	
+                j = null;
+            }
+        }catch(SQLException ex){
+             throw new DAOException("Error en SQL", ex);
+        }finally{
+            
+            if(rs != null){
+                
+                try{
+                    rs.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL", ex);
+                }
+                
+            }
+            if(stat != null){
+                
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL", ex);
+                }
+                
+            }
+        }
+        
+         return j;
+     }
+
 }
+

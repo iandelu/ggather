@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<title>Login</title>
 	<meta charset="UTF-8">
@@ -101,7 +101,7 @@
 						</div>
 						
 						<div>
-						<button class="login100-form-btn" onclick="location.href='editarPerfil.html'">						
+						<button class="login100-form-btn" onclick="location.href='editarPerfil.jsp'">						
 								Editar Perfil
 						</button>
 						
@@ -112,8 +112,8 @@
 					
 
 					<div class="text-center p-t-30">
-						<a class="txt2" onclick="location.href='mainMenu.html'">
-							Volver al menÃº principal
+						<a class="txt2" onclick="location.href='mainMenuLogged.jsp'">
+							Volver al menú principal
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>

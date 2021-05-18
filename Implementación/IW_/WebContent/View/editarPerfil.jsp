@@ -103,8 +103,8 @@
 					</div>
                     
                     <div class="text-center p-t-30 ">
-                        <a onclick="location.href='../mainMenu.jsp'">
-                            Volver al inicio
+                        <a onclick="location.href='menuPerfil.jsp'">
+                            Volver al perfil
                             <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
                         </a>
 					</div>	

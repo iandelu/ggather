@@ -248,8 +248,11 @@ public class MySQLPartidoDAO implements PartidoDAO{
     *   ------------------------------------
     */
     
-    final String GETHISTORY = "SELECT p.idPartido, p.idCreador, p.idPista, p.idReserva, p.estado, p.nivelPartido FROM partidos p, partidos_jugador pj"
-                               + "WHERE  ";
+    final String GETHISTORY = "SELECT p.idPartido, p.idCreador, p.idPista, p.idReserva, p.estado, p.nivelPartido FROM partidos p, partido_jugador pj"
+                               + "WHERE  pj.idPartido = p.idPartido and pj.idJugador = ? and p.estado like 'COMPLETADO'";
+    final String GETPARTIDOSPENDIENTES = "SELECT p.idPartido, p.idCreador, p.idPista, p.idReserva, p.estado, p.nivelPartido FROM partidos p, partido_jugador pj"
+                               + "WHERE  pj.idPartido = p.idPartido and pj.idJugador = ? and p.estado like 'PENDIENTE'";
+    
     
     /*
     *   ----------------------------------------------------------
@@ -348,5 +351,96 @@ public class MySQLPartidoDAO implements PartidoDAO{
         
     }
     
+    
+        //get jugadores asociados partido (yunes)
+    
+    
+     public List<Partido> historialJugador(Long j) throws DAOException{
+
+       PreparedStatement stat = null;
+       ResultSet rs = null;
+       List<Partido> partidos = new ArrayList<>();
+       
+       try{
+           
+           stat = conn.prepareStatement(GETHISTORY);
+           stat.setLong(1, j);
+           rs = stat.executeQuery();
+           while(rs.next()){
+               
+               partidos.add(convertir(rs));
+               
+           }
+           
+       }catch(SQLException ex){
+            throw new DAOException("Error en SQL, ex");
+       }finally{
+           
+           if(rs != null){
+               
+               try{
+                   rs.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL, ex");
+               }
+               
+           }
+           if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL, ex");
+               }
+               
+           }
+       }
+        
+        return partidos;
+    }
+     
+     public List<Partido> pendientesJugador(Long j) throws DAOException{
+
+       PreparedStatement stat = null;
+       ResultSet rs = null;
+       List<Partido> partidos = new ArrayList<>();
+       
+       try{
+           
+           stat = conn.prepareStatement(GETPARTIDOSPENDIENTES);
+           stat.setLong(1, j);
+           rs = stat.executeQuery();
+           while(rs.next()){
+               
+               partidos.add(convertir(rs));
+               
+           }
+           
+       }catch(SQLException ex){
+            throw new DAOException("Error en SQL, ex");
+       }finally{
+           
+           if(rs != null){
+               
+               try{
+                   rs.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL, ex");
+               }
+               
+           }
+           if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL, ex");
+               }
+               
+           }
+       }
+        
+        return partidos;
+    }
     
 }

@@ -26,7 +26,7 @@
 <body>
     
 	<div class="limiter">
-		<div class="container-registro">
+		<div class="container-registro-propietario">
 			<div class="wrap-registro">
 
 				<form class="registro-form validate-form" method="post" action="/IW_/RegistrarPropietarioController">

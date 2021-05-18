@@ -2,6 +2,9 @@ package com.mycompany.servlets;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -46,12 +49,13 @@ public class RegistrarController extends HttpServlet {
              String usuario = request.getParameter("usuario");
              String nombre = request.getParameter("nombre");
              String apellidos = request.getParameter("apellidos");
-            // Date fechaNacimiento = Jugador.setFechaString(request.getParameter("fechanacimiento"));
+             String fecha =  request.getParameter("fechanacimiento");
              int telefono = Integer.parseInt(request.getParameter("telefono"));
              String email = request.getParameter("email");
              String password = request.getParameter("pass");
+            
   
-             Jugador jugadorAux = new Jugador( usuario,  nombre,  apellidos,  email, telefono, password,  new Date(2000,9,13), 0);
+             Jugador jugadorAux = new Jugador( usuario,  nombre,  apellidos,  email, telefono, password,  Date.valueOf(fecha), 0);
 
              
              daoManager.getJugadorDAO().insertar(jugadorAux);

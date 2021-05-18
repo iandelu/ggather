@@ -1,6 +1,10 @@
 package com.mycompany.servlets;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,6 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import com.mycompany.iw.Jugador;
+import com.mycompany.iw.Partido;
 import com.mycompany.iw.mysql.MySQLDaoManager;
 
 /**
@@ -40,9 +45,13 @@ public class busquedaPartidosController extends HttpServlet {
             String nextPage = "/View/login.jsp";
             String fecha = request.getParameter("fecha");
             String localidad = request.getParameter("localidad");
-            Long deporte = Long.parseLong(request.getParameter("deporte");
+            Long deporte = Long.parseLong(request.getParameter("deporte"));
+            
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+            LocalDate localDate = LocalDate.parse(fecha, formatter);
            
-            List<Partido> = new ArrayList<Partido>(daoManager.getPartidoDAO().buscarPartidos(deporte, localidad, fecha);
+            List<Partido> partidos = daoManager.getPartidoDAO().buscarPartidos(deporte, localidad, localDate);
             
             
             

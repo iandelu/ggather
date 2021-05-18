@@ -7,6 +7,7 @@ import com.mycompany.iw.daos.PartidoDAO;
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -274,7 +275,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
            stat = conn.prepareStatement(GETHISTORY);
            stat.setString(1, localizacion);
            stat.setLong(2, deporte);
-           stat.setDate(3, fecha);
+           stat.setDate(3, Date.valueOf(fecha));
 
            rs = stat.executeQuery();
            while(rs.next()){

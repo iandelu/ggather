@@ -71,7 +71,8 @@
            <article class="card">
                <a class="card__header-link">
                </a>
-               <header class="card__header" style="background-image: url(&quot;https://openarena.es/wp-content/uploads/2019/05/open_arena_instalaciones16.jpg&quot;); margin-top: -5px; width: 101%; margin-left: -2px;">
+               	<% String foto = man.getClubDAO().obtenerFotoClub(man.getClubDAO().obtener(pistas.get(i).getClub()).getId());%>
+               <header class="card__header" style="background-image: url(&quot;<%out.println(foto); %>&quot;); margin-top: -5px; width: 101%; margin-left: -2px;">
                 <h1>Pista de <%=man.getPistaDAO().nombreDeporte(pistas.get(i).getDeporte()) %></h1>
                 <%
 

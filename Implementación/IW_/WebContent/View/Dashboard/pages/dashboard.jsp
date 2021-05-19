@@ -1,7 +1,10 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+<%@ page import = "com.mycompany.iw.Club" %>
+<%
+	Club club = (Club) session.getAttribute("club");
+%>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -141,7 +144,7 @@
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Ggather Propietario</a></li>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;"><%= club.getNombreClub() %></a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Estadisticas</li>
           </ol>
           <h6 class="font-weight-bolder mb-0">Estadisticas</h6>

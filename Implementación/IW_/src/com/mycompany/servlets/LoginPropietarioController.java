@@ -35,8 +35,8 @@ public class LoginPropietarioController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		HttpSession session = request.getSession(true);
-        PropietarioBean propietarioBean = (PropietarioBean) request.getSession().getAttribute("PropietarioBean");
+		HttpSession session = request.getSession(false);
+        //PropietarioBean propietarioBean = (PropietarioBean) request.getSession().getAttribute("PropietarioBean");
         
         	
         	try{

@@ -71,7 +71,7 @@ public class RegistrarController extends HttpServlet {
         }
         
         //disparador.forward(request, response);
-        response.sendRedirect("/IW_/View/mainMenuLogged.jsp");
+        response.sendRedirect("/IW_/View/home.jsp");
 
              
        

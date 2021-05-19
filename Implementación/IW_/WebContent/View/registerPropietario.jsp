@@ -35,7 +35,7 @@
 					</span>
 
 
-                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un nombre de club vÃ¡lido">
+                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un nombre de club válido">
 						<input class="input100" type="text" name="nombreClub" placeholder="Nombre del club">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -43,7 +43,7 @@
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Debes introducir un nombre vÃ¡lido">
+					<div class="wrap-input100 validate-input" data-validate = "Debes introducir un nombre válido">
 						<input class="input100" type="text" name="nombrePropietario" placeholder="Nombre completo del propietario">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -51,15 +51,15 @@
 						</span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un nÃƒÂƒÃ‚Âºmero vÃ¡lido">
-						<input class="input100" type="tel" name="telefono" placeholder="NÃºmero de TelÃ©fono">
+                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un número válido">
+						<input class="input100" type="tel" name="telefono" placeholder="Número de Teléfono">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-phone" aria-hidden="true"></i>
 						</span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un email vÃ¡lido: ejemplo@gmail.com">
+                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un email válido: ejemplo@gmail.com">
 						<input class="input100" type="email" name="email" placeholder="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -75,8 +75,8 @@
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Es necesario una contraseÃ±a valida">
-						<input class="input100" type="password" name="pass" placeholder="ContraseÃ±a">
+					<div class="wrap-input100 validate-input" data-validate = "Es necesario una contraseña válida">
+						<input class="input100" type="password" name="pass" placeholder="Contraseña">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>

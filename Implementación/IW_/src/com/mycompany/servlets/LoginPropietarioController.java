@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpSession;
 /**
  * Servlet implementation class LoginPropietarioController
  */
-@WebServlet("/LoginPropietarioController")
+
 public class LoginPropietarioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -49,12 +49,12 @@ public class LoginPropietarioController extends HttpServlet {
                
                 Club clubAux = daoManager.getClubDAO().buscarClubPorEmail(email);
                 
-                
+            
                 if(clubAux != null && clubAux.getContraseña().equals(password)) {
                 	
                 	//jugador valido
                 	session.setAttribute("club", clubAux);
-                	response.sendRedirect("/IW_/View/mainMenuLogged.jsp");
+                	response.sendRedirect("/IW_/View/Dashboard/pages/dashboard.jsp");
                 }
                 else if(clubAux == null || !clubAux.getContraseña().equals(password)){
                 	

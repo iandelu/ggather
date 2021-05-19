@@ -23,7 +23,7 @@ public class MySQLClubDAO implements ClubDAO{
     final String UPDATE = "UPDATE club SET alta = ? , contraseña = ?, email = ?, localizacion = ?, nombreClub = ?, nombrePropietario = ?,telefono = ? WHERE idClub = ?";
     final String DELETE = "DELETE FROM club WHERE idClub = ?";
     final String GETALL = "SELECT * FROM club";
-    final String GETONE = "SELECT * FROM club WHERE idClub = ?";
+    final String GETONE = "SELECT * FROM club WHERE email = ? and alta = 1";
     
     
     
@@ -247,6 +247,53 @@ public class MySQLClubDAO implements ClubDAO{
         return c;
     }
     
+    
+    public Club buscarClubPorEmail(String email) throws DAOException{
+        
+        PreparedStatement stat = null;
+        ResultSet rs = null;
+        Club c;
+        
+        try{
+            
+            stat = conn.prepareStatement(GETONE);
+            stat.setString(1, email);
+            rs = stat.executeQuery();
+            if(rs.next()){
+                
+                c = convertir(rs);
+                
+            }else{
+            	
+                c = null;
+            }
+            
+        }catch(SQLException ex){
+             throw new DAOException("Error en SQL, ex");
+        }finally{
+            
+            if(rs != null){
+                
+                try{
+                    rs.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL, ex");
+                }
+                
+            }
+            if(stat != null){
+                
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL, ex");
+                }
+                
+            }
+        }
+        
+         return c;
+     }
     
     
 }

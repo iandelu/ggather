@@ -45,7 +45,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Es necesario una contraseï¿½a vï¿½lida">
-						<input class="input100" type="password" name="pass" placeholder="Contraseï¿½a">
+						<input class="input100" type="password" name="pass" placeholder="Contraseña">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -60,7 +60,7 @@
 
 					<div class="text-center p-t-30">
 						<a class="txt2" onclick="location.href='registerPropietario.jsp'">
-							ï¿½Regï¿½strate!
+							¡Regístrate!
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>

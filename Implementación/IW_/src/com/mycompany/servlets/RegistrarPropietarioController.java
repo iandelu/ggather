@@ -45,16 +45,15 @@ public class RegistrarPropietarioController extends HttpServlet {
              String nextPage = "/View/register.jsp";
              String nombreClub = request.getParameter("nombreClub");
              String nombrePropietario = request.getParameter("nombrePropietario");
-             String localizacion = request.getParameter("localizacion");
+             String localizacion = request.getParameter("localidad");
             // Date fechaNacimiento = Jugador.setFechaString(request.getParameter("fechanacimiento"));
-             int telefono = Integer.parseInt(request.getParameter("telefono"));
+             long telefono = Integer.parseInt(request.getParameter("telefono"));
              String email = request.getParameter("email");
-             String password = request.getParameter("password");
-  
+             String password = request.getParameter("pass");
+             
              Club clubAux = new Club(nombreClub, localizacion, email, password, telefono, nombrePropietario, false);
              
              daoManager.getClubDAO().insertar(clubAux);
-             session.setAttribute("jugador", clubAux);
              
              nextPage = "/View/mainMenuLogged.jsp";
              
@@ -66,7 +65,7 @@ public class RegistrarPropietarioController extends HttpServlet {
         }
         
         //disparador.forward(request, response);
-        response.sendRedirect("/IW_/View//Dashboard/dashboard.jsp");
+        response.sendRedirect("/IW_/View/homePropietario.jsp");
 	}
 
 	/**

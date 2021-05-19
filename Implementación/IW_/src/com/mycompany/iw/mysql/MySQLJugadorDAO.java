@@ -712,4 +712,94 @@ public class MySQLJugadorDAO implements JugadorDao{
          return j;
      }
     
+    
+    final String UPDATEFOTO = "UPDATE jugadores SET fotoPerfil = ?  WHERE idJugador = ?";
+    final String GETFOTO = "SELECT fotoPerfil FROM jugadores WHERE idJugador = ?";
+    
+    
+    public void modificarFotoPerfil(String foto, Long idj) throws DAOException {
+        
+        PreparedStatement stat = null;
+        
+        
+        try{
+            
+            stat = conn.prepareStatement(UPDATEFOTO);   
+            
+            stat.setString(1, foto);
+            stat.setLong(2, idj);
+            
+            
+            if(stat.executeUpdate() == 0){
+                throw new DAOException("Puede que no se haya guardado.");
+            }
+            
+        } catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+        } finally{
+            if (stat !=  null){
+                
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    throw new DAOException("Error en SQL", ex);
+                }
+            }if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+        }
+    }
+   
+    public String obtenerFotoPerfil(Long idJ) throws DAOException {  
+        PreparedStatement stat = null;
+        ResultSet rs = null;
+        String j;
+        
+        try{
+            
+            stat = conn.prepareStatement(GETFOTO);
+            stat.setLong(1, idJ);
+            rs = stat.executeQuery();
+            if(rs.next()){
+                
+                j = rs.getString("fotoPerfil");
+                
+            }else{
+                throw new DAOException("No se ha encontrado ese registro.");
+            }
+            
+        }catch(SQLException ex){
+             throw new DAOException("Error en SQL", ex);
+        }finally{
+            
+            if(rs != null){
+                
+                try{
+                    rs.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL", ex);
+                }
+                
+            }
+            if(stat != null){
+                
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL", ex);
+                }
+                
+            }
+        }
+        
+         return j;
+    }
+    
+
 }

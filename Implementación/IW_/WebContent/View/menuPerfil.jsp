@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <%@ page import = "com.mycompany.iw.Jugador" %>
+<%@ page import = "com.mycompany.iw.mysql.MySQLDaoManager" %>
 <%
 	Jugador jugador = (Jugador) session.getAttribute("jugador");
+	Class.forName("com.mysql.jdbc.Driver");
+	MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
+	
 %>
 <head>
 	<title>Login</title>
@@ -35,10 +39,10 @@
 					<span class="login100-form-title">
 						Mi Perfil
 					</span>
-
+						<% String foto = man.getJugadorDAO().obtenerFotoPerfil(jugador.getId());%>
                     
                     <div class="menuPerfil-pic js-tilt" data-tilt>
-                        <img  src="images/icons/mankuco.PNG" alt="IMG">
+                        <img  src='<% out.println(foto);%>' alt="IMG">
                     </div>
 					
 					<div class="Datos">

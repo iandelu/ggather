@@ -353,6 +353,7 @@ public class MySQLPistaDAO implements PistaDao{
     
     
     final String GETDEPORTE = "SELECT nombreDeporte FROM deportes WHERE idDeporte = ?";
+    final String GETNUMJUG = "SELECT numeroJugadores FROM deportes WHERE idDeporte = ?";
     
     
     public String nombreDeporte(Long id) throws DAOException{
@@ -411,7 +412,7 @@ public class MySQLPistaDAO implements PistaDao{
         
         try{
             
-        	stat = conn.prepareStatement(GETDEPORTE);
+        	stat = conn.prepareStatement(GETNUMJUG);
             stat.setLong(1, id);
             rs = stat.executeQuery();
             if(rs.next()){

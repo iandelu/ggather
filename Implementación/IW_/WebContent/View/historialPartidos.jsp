@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<%@ page import = "com.mycompany.iw.Partido" %>
+<%@ page import = "com.mycompany.iw.Pista" %>
+<%@ page import = "com.mycompany.iw.Jugador" %>
+<%@ page import = "com.mycompany.iw.mysql.MySQLDaoManager" %>
+<%@ page import = "java.util.List" %>
+
 <head>
 	<title>Historial de partidos</title>
 	<meta charset="UTF-8">
@@ -22,6 +28,18 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 </head>
+
+<%
+   
+   
+	List<Partido> partidos = (List<Partido>) session.getAttribute("partidos");
+	Jugador usuario = (Jugador) session.getAttribute("Jugador");
+
+	Class.forName("com.mysql.jdbc.Driver");
+	MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
+
+	
+%> 
 <body>
 
 	<div class="limiter">
@@ -31,13 +49,17 @@
                     <img  src="images/icons/mankuco.PNG" alt="IMG">
                 </div>
 					<span class="login100-form-title">
-					<BR>	Historial de partidos de @MANKUCO
+					<BR>	Historial de partidos de @<%= usuario.getUsuario() %>
 					</span>
 
                     
 					
                     <div class="search2-page__cards">
+        				<%
         
+					        for(int i = 0; i < partidos.size(); i++){
+					
+					    %>
         
                         <div>
                             <article class="card">
@@ -45,17 +67,17 @@
                                  
                                 </a>
                                 <header class="card__header" style="background-image: url(&quot;https://openarena.es/wp-content/uploads/2019/05/open_arena_instalaciones16.jpg&quot;); margin-top: -5px; width: 101%; margin-left: -2px;">
-                                 <h1>Partido de @MANKUCO</h1>
-                                 <h2> PADEL </h2>
+                                 <h1>Partido de @<%= man.getJugadorDAO().obtener(partidos.get(i).getCreador()).getUsuario() %></h1>
+                    			 <h2><%= man.getPistaDAO().nombreDeporte(man.getPistaDAO().obtener(partidos.get(i).getPistaPartido()).getDeporte())%> </h2>
                                  </header>
                                 <div class="card_body">
                                     <div class="card_address">
                                         <div class="card_Adress_street">
                                          <span class="focus-input100"></span>
                                          <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            <span style="color: rgb(80, 75, 75); font-size: 14px; margin-left: 2px;"> 14/01/2021 </span>
+                                            <span style="color: rgb(80, 75, 75); font-size: 14px; margin-left: 2px;"> <%= man.getReservaDAO().obtener(partidos.get(i).getReserva()).getFecha() %> </span>
                                             <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                            <span style="color: rgb(80, 75, 75); font-size: 14px; margin-left: 2px;"> 17:00</span>
+                                            <span style="color: rgb(80, 75, 75); font-size: 14px; margin-left: 2px;"> <%= man.getReservaDAO().obtener(partidos.get(i).getReserva()).getHoraInicio() %></span>
                                              
                                         </div>
                                     </div>

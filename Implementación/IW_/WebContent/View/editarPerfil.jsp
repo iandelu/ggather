@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+<%@page import = "com.mycompany.iw.javabean.JugadorBean" %>
+<jsp:useBean id="jugadorBean" class = "com.mycompany.iw.javabean.JugadorBean" scope="session"/>
 <head>
 	<title>EditarPerfil</title>
 	<meta charset="UTF-8">
@@ -28,7 +30,7 @@
 		<div class="container-registro">
 			<div class="wrap-registro">
                
-				<form class="registro-form validate-form">
+				<form class="registro-form validate-form" method="post" action="/IW_/EditarPerfilController">
 					<span class="login100-form-title">
 						Editar Perfil
 					</span>

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
+<%@page import = "com.mycompany.iw.javabean.JugadorBean" %>
+<jsp:useBean id="jugadorBean" class = "com.mycompany.iw.javabean.JugadorBean" scope="session"/>
 <head>
 	<title>Menu Principal</title>
 	<meta charset="UTF-8">

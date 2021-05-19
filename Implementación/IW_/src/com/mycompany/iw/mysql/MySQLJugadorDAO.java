@@ -29,10 +29,11 @@ public class MySQLJugadorDAO implements JugadorDao{
     */
     
     final String INSERT = "INSERT INTO jugadores( usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono, valoracionMedia) VALUES (?,?,?,?,?,?,?,?)"; 
-    final String UPDATE = "UPDATE jugadores SET usuario = ? , nombre = ?, email = ?, apellidos = ?, fechaNacimiento = ?, contraseña = ?,telefono = ? WHERE idJugador = ?";
+    final String UPDATE = "UPDATE jugadores SET usuario = ? , nombre = ?, email = ?, apellidos = ?, fechaNacimiento = ?, contraseña = ?,telefono = ? WHERE email = ?";
     final String DELETE = "DELETE FROM jugadores WHERE idJugador = ?";
     final String GETALL = "SELECT idJugador, usuario, nombre, email, apellidos, fechaNacimiento, contraseña,telefono, valoracionMedia FROM jugadores";
     final String GETONE = "SELECT * FROM jugadores WHERE idJugador = ?";
+    final String BUSCARPOREMAIL = "SELECT * FROM jugadores WHERE email = ?";
     
     
     private Connection conn;
@@ -113,7 +114,7 @@ public class MySQLJugadorDAO implements JugadorDao{
             stat.setDate(5, new Date(j.getFechaNacimiento().getTime()));
             stat.setString(6, j.getContraseña());
             stat.setLong(7, j.getTelefono());
-            stat.setLong(8, j.getId());
+            stat.setString(8, j.getEmail());
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");

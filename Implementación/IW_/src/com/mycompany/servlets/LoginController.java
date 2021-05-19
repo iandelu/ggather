@@ -6,6 +6,7 @@ import com.mycompany.iw.Jugador;
 import com.mycompany.iw.javabean.JugadorBean;
 import com.mycompany.iw.mysql.MySQLDaoManager;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -32,8 +33,8 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(true);
-        JugadorBean jugadorBean = (JugadorBean) request.getSession().getAttribute("JugadorBean");
+		HttpSession session = request.getSession();
+        JugadorBean jugadorBean = (JugadorBean) session.getAttribute("jugadorBean");
         
        // if(jugadorBean != null || jugadorBean.getEmail().equals("")) {
         	
@@ -55,8 +56,19 @@ public class LoginController extends HttpServlet {
                 if(jugadorAux != null && jugadorAux.getContraseña().equals(password)) {
                 	
                 	//jugador valido
-                	session.setAttribute("jugador", jugadorAux);
+                	
+                	/*jugadorBean.setId(jugadorAux.getId());
+                	jugadorBean.setApellidos(jugadorAux.getApellidos());
+                	jugadorBean.setContraseña(jugadorAux.getContraseña());
+                	jugadorBean.setEmail(jugadorAux.getEmail());
+                	jugadorBean.setFechaNacimiento(jugadorAux.getFechaNacimiento());
+                	jugadorBean.setNombre(jugadorAux.getNombre());
+                	jugadorBean.setTelefono(jugadorAux.getTelefono());
+                	jugadorBean.setUsuario(jugadorAux.getUsuario());
+                	jugadorBean.setValoracionMedia(0);
+                	*/
                 	response.sendRedirect("/IW_/View/mainMenuLogged.jsp");
+                	
                 }
                 else if(jugadorAux == null || !jugadorAux.getContraseña().equals(password)){
                 	

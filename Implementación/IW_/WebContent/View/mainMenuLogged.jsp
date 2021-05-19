@@ -51,14 +51,14 @@
 <body>
     <div class="limiter-menu">
                         <div class="b-busqueda">
-                            <form class="menu-form">
+                            <form class="menu-form" action="/IW_/busquedaPartidosController" method = "post">
                                         <a id="barra-busqueda">
                                             <select name = "localidad" class="busqueda-menu">
                                                 <option selected value="0"> Localidad </option>
                                                     <optgroup label="Localidades"> 
-                                                            <option value="1">Córdoba</option> 
-                                                            <option value="2">Málaga</option> 
-                                                            <option value="3">Sevilla</option> 
+                                                            <option value="Cordoba">Córdoba</option> 
+                                                            <option value="Malaga">Málaga</option> 
+                                                            <option value="Sevilla">Sevilla</option> 
                                                     </optgroup>    
                                                 </select>
 

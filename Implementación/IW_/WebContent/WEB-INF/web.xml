@@ -54,4 +54,12 @@
         <servlet-name>LoginPropietarioController</servlet-name>
         <url-pattern>/LoginPropietarioController</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>busquedaPartidosController</servlet-name>
+        <servlet-class>com.mycompany.servlets.busquedaPartidosController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>busquedaPartidosController</servlet-name>
+        <url-pattern>/busquedaPartidosController</url-pattern>
+    </servlet-mapping>
 </web-app>

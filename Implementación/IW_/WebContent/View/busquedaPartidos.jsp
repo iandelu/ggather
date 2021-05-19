@@ -60,7 +60,7 @@
     <div class="search2-page__cards">
         <%
         
-        for(int i = 0; i < pistas.size(); i++){
+        for(int i = 0; i < partidos.size(); i++){
 
     	%>
     	   <div>

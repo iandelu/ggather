@@ -255,7 +255,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
                                + "WHERE  pj.idPartido = p.idPartido and pj.idJugador = ? and p.estado like 'PENDIENTE'";
     
     final String BUSCARPARTIDOS = "SELECT p.idPartido, p.idCreador, p.idPista, p.idReserva, p.estado, p.nivelPartido FROM partidos p, pistas pi, club c, reservas r"
-            + "WHERE  r.idReserva = p.idReserva and p.idPista = pi.idPista and pi.idClub = c.idClub and c.localizacion LIKE '?' and pi.idDeporte = ? and r.fecha = ?";
+            + " WHERE  r.idReservas = p.idReserva and p.idPista = pi.idPista and pi.idClub = c.idClub  and pi.idDeporte = ? and r.fecha = ? and c.localizacion like ?";
     
     
     /*
@@ -272,10 +272,10 @@ public class MySQLPartidoDAO implements PartidoDAO{
        
        try{
            
-           stat = conn.prepareStatement(GETHISTORY);
-           stat.setString(1, localizacion);
-           stat.setLong(2, deporte);
-           stat.setDate(3, Date.valueOf(fecha));
+           stat = conn.prepareStatement(BUSCARPARTIDOS);
+           stat.setString(3, localizacion);
+           stat.setLong(1, deporte);
+           stat.setDate(2, Date.valueOf(fecha));
 
            rs = stat.executeQuery();
            while(rs.next()){
@@ -285,7 +285,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
            }
            
        }catch(SQLException ex){
-            throw new DAOException("Error en SQL, ex");
+            throw new DAOException("Error en SQL", ex);
        }finally{
            
            if(rs != null){
@@ -293,7 +293,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
                try{
                    rs.close();
                }catch(SQLException ex){
-                   new DAOException("Error en SQL, ex");
+                   new DAOException("Error en SQL", ex);
                }
                
            }

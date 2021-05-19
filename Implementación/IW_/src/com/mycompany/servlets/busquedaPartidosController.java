@@ -54,8 +54,6 @@ public class busquedaPartidosController extends HttpServlet {
             
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate fechaLDate = LocalDate.parse(fecha, formatter);
-           
-            
               
 			List <Partido> partidos = man.getPartidoDAO().buscarPartidos(deporte,localidad,fechaLDate);
 			session.setAttribute("partidos", partidos);
@@ -67,6 +65,8 @@ public class busquedaPartidosController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		
+		response.sendRedirect("/IW_/View/busquedaPartidos.jsp");
 
         
 	}

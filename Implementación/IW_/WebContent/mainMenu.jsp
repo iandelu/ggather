@@ -48,7 +48,7 @@
 <body>
     <div class="limiter-menu">
                         <div class="b-busqueda">
-                            <form class="menu-form">
+                            <form class="menu-form" action="/IW_/busquedaPartidosController" method = "post">
                                         <a id="barra-busqueda">
                                             <select name = "localidad" class="busqueda-menu">
                                                 <option selected value="0"> Localidad </option>

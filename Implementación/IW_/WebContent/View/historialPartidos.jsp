@@ -34,12 +34,12 @@
 <%
    
    
-	List<Partido> partidos = (List<Partido>) session.getAttribute("partidos");
 	Jugador usuario = (Jugador) session.getAttribute("Jugador");
 
 	Class.forName("com.mysql.jdbc.Driver");
 	MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
-
+	List<Partido> partidos = man.getPartidoDAO().getHistorial(usuario.getId());
+	
 	
 %> 
 <body>

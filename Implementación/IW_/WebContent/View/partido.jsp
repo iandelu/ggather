@@ -81,9 +81,9 @@
                   		    </div>
 
                               <div>
-                                <span class=Datos-User>Fecha: <%=man.getReservaDAO().obtener(partidoActual.getReserva()).getFecha()%> <br></span>
+                                <span class=Datos-User>Fecha:  <br></span>
                               <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            <span style="color: rgb(80, 75, 75); font-size: 14px; margin-left: 2px;"> 14/01/2021 </span>
+                                            <span style="color: rgb(80, 75, 75); font-size: 14px; margin-left: 2px;"> <%=man.getReservaDAO().obtener(partidoActual.getReserva()).getFecha()%> </span>
                                         </div>
 
                               <div class= "wrap-input100" style="left: 400px; bottom:130px">

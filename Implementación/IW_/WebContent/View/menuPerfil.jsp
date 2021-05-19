@@ -79,6 +79,7 @@
 
 								<span class=Datos-User>Nivel </span>
 								<div>
+								
 									<span class="nivel"> <br> Padel: </span> 
 									Profesional
 									<br>

@@ -12,7 +12,9 @@ import java.sql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -801,5 +803,54 @@ public class MySQLJugadorDAO implements JugadorDao{
          return j;
     }
     
+    
+    final String GETNIVELES = "SELECT idDeporte, nivel FROM niveles WHERE idJugador = ?";
+    
+    public Map<Long, Long> getNiveles(Long idJ)throws DAOException{
+    	
+    	Map<Long, Long> myMap = new HashMap<Long, Long>();
+    	PreparedStatement stat = null;
+        ResultSet rs = null;
+        String j;
+        
+        try{
+            
+            stat = conn.prepareStatement(GETFOTO);
+            stat.setLong(1, idJ);
+            rs = stat.executeQuery();
+            while(rs.next()){
+                
+            	myMap.put(rs.getLong("idDeporte"), rs.getLong("nivel"));
+                
+            }
+            
+        }catch(SQLException ex){
+             throw new DAOException("Error en SQL", ex);
+        }finally{
+            
+            if(rs != null){
+                
+                try{
+                    rs.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL", ex);
+                }
+                
+            }
+            if(stat != null){
+                
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL", ex);
+                }
+                
+            }
+        }
+        
+         return myMap;
+    	
+    }
+
 
 }

@@ -33,6 +33,7 @@ public class busquedaPartidosController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
@@ -48,17 +49,23 @@ public class busquedaPartidosController extends HttpServlet {
             Long deporte = Long.parseLong(request.getParameter("deporte"));
             
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-            LocalDate localDate = LocalDate.parse(fecha, formatter);
+            LocalDate fechaLDate = LocalDate.parse(fecha, formatter);
            
             List<Partido> partidos = daoManager.getPartidoDAO().buscarPartidos(deporte, localidad, localDate);
             
-            
-            
-    	}catch(Exception e) {
-    		
-    	}
-    	
+              
+			List <Partido> partidos = man.getPartidoDAO().buscarPartidos(deporte,localidad,fechaLDate);
+			session.setAttribute("partidos", partidos);
+			
+			} catch (DAOException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+        
 	}
 
 	/**

@@ -23,6 +23,17 @@
 <!--===============================================================================================-->
 </head>
 
+
+<%
+   
+   
+	List<Partido> partidos = (List<Partido>) session.getAttribute("partidos");
+
+	Class.forName("com.mysql.jdbc.Driver");
+	MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
+
+	
+%> 
 <header id="main-header">
             
     <a id="logo-header" href="../mainMenu.jsp">
@@ -43,31 +54,38 @@
 <body>
 
     <div class="search2-page__cards">
-       <div>
-           <article class="card">
-               <a class="card__header-link" >
+        <%
+        
+        for(int i = 0; i < pistas.size(); i++){
+
+    	%>
+    	   <div>
+            <article class="card">
+                <a class="card__header-link" >
                 
                </a>
-               <header class="card__header" style="background-image: url(&quot;https://openarena.es/wp-content/uploads/2019/05/open_arena_instalaciones16.jpg&quot;);">
-                <h1>Partido de @MANKUCO</h1>
-                <h2> PADEL </h2>
+               <header class="card__header" style="background-image: url(&quot;https://openarena.es/wp-content/uploads/2019/05/open_arena_instalaciones16.jpg&quot;); margin-top: -5px; width: 101%; margin-left: -2px;">
+                <h1>Partido de <%=man.getJugadorDAO().obtener(partidos.get(i).getCreador()).getUsuario() %></h1>
+                    <h2><%man.getPistaDAO().obtener(partidos.get(i).getPistaPartido())%> </h2>
                 </header>
                <div class="card_body">
-                   <div class="card_address">
-                       <div class="card_Adress_street">
-                           
-                           <h10 style="color: rgb(80, 75, 75);">Calle la concha de tu hermana</h1>
+                    <div class="card_address">
+                        <div class="card_Adress_street">
                             
-                       </div>
-                   </div>
-                   <div class="slots">
-                    <a id="2021-05-15T17:00:00" role="button" class="button button--filled" tabindex="0">
-                        <div>19:00</div></a>
-
-                   </div>
-               </div>
+                            <h10 style="color: rgb(80, 75, 75);"><%man.getClubDAO().obtener(man.getPistaDAO().obtener(partidos.get(i).getPistaPartido()).getClub()).getLocalizacion()%></h1>
+                            
+                        </div>
+                    </div>
+                    <div class="slots">
+                     <a id="2021-05-15T17:00:00" role="button" class="button button--filled" tabindex="0">
+                         <div><%man.getReservaDAO().obtener(partidos.get(i).getReserva()).getHoraInicio()%></div></a>
+ 
+                    </div>
+                </div>
            </article>
-       </div> 
+           <%
+        }
+       %> 
     </div>
 
     

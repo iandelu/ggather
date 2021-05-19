@@ -48,7 +48,7 @@ public class CalcularHorasController extends HttpServlet {
 			Pista pistaActual = (Pista) session.getAttribute("pistaActual");
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-        	String date = request.getParameter("Hora Inicio");
+        	String date = request.getParameter("diaReserva");
 
         	LocalDate localDate = LocalDate.parse(date, formatter);
 			List<Reserva> reservas = man.getReservaDAO().obtenerReservasDia(localDate, pistaActual.getId());
@@ -65,7 +65,7 @@ public class CalcularHorasController extends HttpServlet {
 			
 			for(int i = horaInicio.getHour(); i< horaFin.getHour(); i++){
 				horasLibres.add(aux);
-				aux.of(aux.getHour() + 1, 00);
+				aux = LocalTime.of(aux.getHour()+1, 00);
 				
 			}
 			
@@ -85,7 +85,7 @@ public class CalcularHorasController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("/IW_/View/");
+		response.sendRedirect("/IW_/View/pista.jsp");
         
         
 	}

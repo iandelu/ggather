@@ -21,7 +21,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * Servlet implementation class EditarPerfilController
  */
-
+@WebServlet("/EditarPerfilController")
 public class EditarPerfilController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -54,11 +54,11 @@ public class EditarPerfilController extends HttpServlet {
             String email = request.getParameter("email");
             String password = request.getParameter("pass");
             
-            String emailActual = (String) session.getAttribute("email");
+            Jugador jugadorActual = (Jugador) session.getAttribute("jugador");
             
            
             Jugador jugadorAux = new Jugador( usuario,  nombre,  apellidos,  email, telefono, password,  Date.valueOf(fechaNacimiento), 0);
-
+            jugadorAux.setId(jugadorActual.getId());
 
             
             

@@ -37,20 +37,20 @@
 				
 				
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="/IW_/CrearPartido" method = "post">
 					<span class="crearPartido-form-title">
 						¡Crea un Partido!
 					</span>
 
 
                     <div class="wrap-input100" > 
-                             <select class="input100" >
+                             <select name = "localidad" class="input100" >
 								
                                  <option  disabled selected> Localidad </option>
                                       
-                                         <option value="1">Córdoba</option> 
-                                          <option value="2">Málaga</option> 
-                                         <option value="3">Sevilla</option>        
+                                         <option value="Cordoba">Córdoba</option> 
+                                          <option value="Malaga">Málaga</option> 
+                                         <option value="Sevilla">Sevilla</option>        
                             </select>
 							<span class="focus-input100"></span>
 							<span class="symbol-input100">
@@ -59,7 +59,7 @@
 				 
 
                     <div class="wrap-input100" >
-                                <select class="input100">
+                                <select name = "deporte" class="input100">
                                  <option id=deporte selected value="0"> Deporte </option>
                                      
                                         <option value="1">Pádel</option> 

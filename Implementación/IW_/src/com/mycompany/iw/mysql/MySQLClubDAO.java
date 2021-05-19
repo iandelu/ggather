@@ -24,6 +24,7 @@ public class MySQLClubDAO implements ClubDAO{
     final String DELETE = "DELETE FROM club WHERE idClub = ?";
     final String GETALL = "SELECT * FROM club";
     final String GETONE = "SELECT * FROM club WHERE email = ? and alta = 1";
+    final String GETONE2 = "SELECT * FROM club WHERE idClub = ?";
     
     
     
@@ -209,7 +210,7 @@ public class MySQLClubDAO implements ClubDAO{
        
        try{
            
-           stat = conn.prepareStatement(GETONE);
+           stat = conn.prepareStatement(GETONE2);
            stat.setLong(1, id);
            rs = stat.executeQuery();
            if(rs.next()){

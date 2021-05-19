@@ -140,13 +140,13 @@ public class MySQLPistaDAO implements PistaDao{
     
     private Pista convertir(ResultSet rs) throws SQLException, DAOException{
         
-        Long idClub = rs.getLong("idClub");
+        //Long idClub = rs.getLong("idClub");
         LocalTime horarioInicio = rs.getTime("horarioInicio").toLocalTime();
         LocalTime horarioFin = rs.getTime("horarioFin").toLocalTime();
         //float precioHora = rs.getFloat("precioHora");
         float puntuacionMedia = rs.getFloat("puntuacionMedia");
         Long idDeporte = rs.getLong("idDeporte");
-        Long propietario = rs.getLong("idDeporte");
+        Long propietario = rs.getLong("idClub");
         
         Pista pista = new Pista(  idDeporte,  horarioInicio,  horarioFin, puntuacionMedia,  propietario);
         pista.setId(rs.getLong("idPista"));
@@ -158,7 +158,7 @@ public class MySQLPistaDAO implements PistaDao{
     public List<Pista> obtenerTodos() throws DAOException  {
        PreparedStatement stat = null;
        ResultSet rs = null;
-       List<Pista> pistas = new ArrayList<>();
+       List<Pista> pistas = new ArrayList<Pista>();
        
        try{
            
@@ -248,26 +248,29 @@ public class MySQLPistaDAO implements PistaDao{
     
     
     
-    final String SEARCH = "SELECT p.idPista FROM pistas p, club c, deportes d WHERE c.localizacion = ? AND d.nombreDeporte = ?";
+    final String SEARCH = "SELECT p.idPista, p.idClub, p.idDeporte, p.horarioInicio, p.horarioFin, p.puntuacionMedia FROM pistas p, club c WHERE p.idClub = c.idClub and c.localizacion like ? AND p.idDeporte = ?";
     final String GETMISPISTAS = "SELECT p.idPista FROM pistas p, club c WHERE p.idClub = ? AND p.idClub = c.idClub";
     
     
     public List<Pista> buscarPista(String localizacion, Long deporte) throws DAOException  {
        PreparedStatement stat = null;
        ResultSet rs = null;
-       List<Pista> pistas = new ArrayList<>();
+       List<Pista> pistas = new ArrayList<Pista>();
        
        try{
            
            stat = conn.prepareStatement(SEARCH);
            stat.setString(1, localizacion);
-           stat.setLong(2, deporte);
+           stat.setLong(2,  1);
            rs = stat.executeQuery();
            while(rs.next()){
+        	   System.out.println("Se mete aqui");
                
                pistas.add(convertir(rs));
                
            }
+           
+           if(pistas.isEmpty()) System.out.println("Esta vacia");
            
        }catch(SQLException ex){
             throw new DAOException("Error en SQL", ex);

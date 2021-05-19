@@ -1,12 +1,15 @@
 package com.mycompany.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.mycompany.iw.Club;
 import com.mycompany.iw.Jugador;
 import com.mycompany.iw.Partido;
 import com.mycompany.iw.Pista;
+import com.mycompany.iw.daos.DAOException;
 import com.mycompany.iw.mysql.MySQLDaoManager;
 
 import jakarta.servlet.RequestDispatcher;
@@ -35,70 +38,8 @@ public class CrearPartido extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
-		String nextPage = "Vistas_v1/mainMenu.jsp";
-        Jugador jugador = (Jugador)request.getSession().getAttribute("Jugador");
-         RequestDispatcher disparador = null;
-         HttpSession objsesion = request.getSession();
-        //ServletContext application = getServletContext();
-        
-            
-            
-            try{
-                
-                //Connection conn = null;    
-                //Class.forName("com.mysql.jdbc.Driver");
-                MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
-                
-                
-                
-                Long creador = jugador.getId();
-                Club club = new Club();
-                Pista pista = new Pista();
-                Partido partido = new Partido();
-                
-                String localidad = request.getParameter("localidad");
-                String deporte = request.getParameter("deporte");
-                
-                Long dep = null;
-                if(deporte == "1") dep =(long) 1;
-                if(deporte == "2") dep = (long)2;
-                if(deporte == "3") dep = (long)3;
-                
-               /* List<Pista> pistas = man.getPistaDAO().obtenerTodos();
-                List<Club> clubes = man.getClubDAO().obtenerTodos();
-                List<Partido> partidos = man.getPartidoDAO().obtenerTodos();
-                List<Pista> aux = new ArrayList<>();
-                List<Partido> auxpartidos = new ArrayList<>();
-                
-                for(int i = 0; i < clubes.size(); i++){
-                    for(int j = 0; j < pistas.size(); j++){
-                        if(clubes.get(i).getId() == pistas.get(j).getClub() && clubes.get(i).getLocalizacion() == localidad && pistas.get(j).getDeporte() == dep){
-                            aux.add(pistas.get(j));
-                        }
-                    }
-                }
-                
-                for(int i = 0; i < aux.size(); i++){
-                    for(int j = 0; j < partidos.size(); j++){
-                        if(aux.get(i).getId() == partidos.get(j).getPistaPartido()){
-                            auxpartidos.add(partidos.get(j));
-                        }
-                    }
-                }*/
-                
-                List<Pista> pistas = man.getPistaDAO().buscarPista(localidad, dep);
-                
-                //Crea un objeto de una lista con todos los partidos para que el jsp pueda recogerlo
-                objsesion.setAttribute("pistas", pistas);
-                
-                 }catch(Exception e){
-            
-                     }
-        
-        disparador.forward(request, response);
-        response.sendRedirect("busquedaPartidos.jsp");
+         
 	}
 
 	/**
@@ -106,7 +47,58 @@ public class CrearPartido extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
+		
+		HttpSession session = request.getSession(false);
+        System.out.println("Hola");
+       
+
+               
+               //Connection conn = null;    
+               //Class.forName("com.mysql.jdbc.Driver");
+					try {
+						Class.forName("com.mysql.jdbc.Driver");
+		                MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
+
+               
+               
+					System.out.println("Hola");
+               //Long creador = jugador.getId();
+               Club club = new Club();
+               Pista pista = new Pista();
+               Partido partido = new Partido();
+               
+               String localidad = request.getParameter("localidad");
+               String deporte = request.getParameter("deporte");
+               
+               Long dep = null;
+               if(deporte == "1") dep =(long) 1;
+               if(deporte == "2") dep = (long)2;
+               if(deporte == "3") dep = (long)3;
+               
+               
+              
+               System.out.println("Hola");
+              
+					List <Pista> pistas = man.getPistaDAO().buscarPista(localidad, dep);
+					session.setAttribute("pistas", pistas);
+					
+					} catch (DAOException | SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+               
+               //Crea un objeto de una lista con todos los partidos para que el jsp pueda recogerlo
+               
+       
+       //disparador.forward(request, response);
+           
+           
+       response.sendRedirect("/IW_/View/mostrarPistas.jsp");
 	}
 
 }

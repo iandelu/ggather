@@ -104,11 +104,11 @@
                     <div class="container-menuPerfil-form-btn">
 						
 						<div>
-						<form class="historial-form validate-form" method="post" action="/IW_/verHistorialController">
-							<button class="login100-form-btn">
+						
+							<button class="login100-form-btn" onclick="location.href='historialPartidos.jsp' ">
 								Historial
 							</button>
-						</form>
+						
 						
 						</div>
 						

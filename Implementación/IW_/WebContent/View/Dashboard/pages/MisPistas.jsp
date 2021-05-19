@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8" />
@@ -25,16 +25,16 @@
 
 <header id="dashboard-header">
             
-  <a id="logo-header" href="mainMenu.html">
+  <a id="logo-header" href="../../../mainMenu.jsp">
   <span class="dashboard-pic"><img src="../assets/img/logos/logo3 (1).png"></span>
       <span class="site-name">GGather</span>
   </a> 
 
   <nav>
       <ul>
-          <li><a href="dashboard.html">Estadisticas</a></li>
-          <li><a href="../../crearPartido.html">Gestionar Pistas</a></li>
-          <li><a href="../../mainMenu.html"  >Volver a Ggather</a></li>
+          <li><a href="dashboard.jsp">Estadisticas</a></li>
+          <li><a href="MisPistas.jsp">Gestionar Pistas</a></li>
+          <li><a href="../../../mainMenu.jsp"  >Volver a Ggather</a></li>
       </ul>
   </nav>
 
@@ -72,7 +72,7 @@
 
 
         <li class="nav-item">
-          <a class="nav-link " href="../pages/dashboard.html">
+          <a class="nav-link " href="../pages/dashboard.jsp">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>shop </title>
@@ -93,7 +93,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link active " href="../pages/MisPistas.html">
+          <a class="nav-link active " href="../pages/MisPistas.jsp">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -114,7 +114,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link active " href="../pages/GestionarReservas.html">
+          <a class="nav-link active " href="../pages/GestionarReservas.jsp">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -160,8 +160,8 @@
                   </div>
                   <div class="slots">
                    <a>
-                       <div><button class="partido-btn" onclick="location.href='partido.html'">
-             AÃ±adir nueva pista
+                       <div><button class="partido-btn" onclick="location.href='partido.jsp'">
+             Añadir nueva pista
            </button>
 
                        </div>

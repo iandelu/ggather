@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<title>Historial</title>
 	<meta charset="UTF-8">
@@ -32,9 +32,9 @@
 
     <nav>
         <ul>
-            <li><a href="mainMenu.html">Inicio</a></li>
-            <li><a href="home.html">Crear Partido</a></li>
-            <li><a href="home.html"  >Acceder</a></li>
+            <li><a href="mainMenuLogged.jsp">Inicio</a></li>
+            <li><a href="crearPartido.jsp">Crear Partido</a></li>
+            <li><a href="home.jsp"  >Acceder</a></li>
         </ul>
     </nav>
 
@@ -44,7 +44,7 @@
 <body>
     
     <div class="limiter">
-		<div class="container-partido">
+		<div class="container-menuPerfil">
 			<div class="wrap-menuPerfil">
                     
                     <header class="card__header" style="background-image: url(&quot;https://openarena.es/wp-content/uploads/2019/05/open_arena_instalaciones16.jpg&quot;); margin-top: -5px; width: 101%; margin-left: -2px;">
@@ -70,25 +70,13 @@
                                  
                                 
                                 
-                                    <form class="clasificacion">
-                                      
+                                  <form class="clasificacion">
                                          
-                                          <input id="radio1" type="radio" name="estrellas" value="5"><!--
-                                          --><label for="radio1">★</label><!--
-                                          --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-                                          --><label for="radio2">★</label><!--
-                                          --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-                                          --><label for="radio3">★</label><!--
-                                          --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-                                          --><label for="radio4">★</label><!--
-                                          --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-                                          --><label for="radio5">★</label>
-                                             <label for="radio5">  </label>
-                                             <button type="submit" class="valoracion-btn">Enviar valoración</button>
-                                       
-
-                                      </form>
-
+                                          
+                                             <button type="submit" class="valoracion-btn">Enviar valoracion</button>
+                                          
+   
+                                         </form>
 
                                       <br><img  style="left:630px; top:20px;" src="images/icons/mankuco.PNG" alt="IMG"  class="fotoJugador"  aria-hidden="true" onclick="location.href='menuPerfil.html'"></i> 
                                       Eljulian  
@@ -102,18 +90,8 @@
                                        <form class="clasificacion">
                                          
                                             
-                                             <input id="radio1" type="radio" name="estrellas" value="5"><!--
-                                             --><label for="radio1">★</label><!--
-                                             --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-                                             --><label for="radio2">★</label><!--
-                                             --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-                                             --><label for="radio3">★</label><!--
-                                             --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-                                             --><label for="radio4">★</label><!--
-                                             --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-                                             --><label for="radio5">★</label>
-                                                <label for="radio5">  </label>
-                                                <button type="submit" class="valoracion-btn">Enviar valoración</button>
+                                          
+                                             <button type="submit" class="valoracion-btn">Enviar valoracion</button>
                                           
    
                                          </form>
@@ -128,24 +106,14 @@
                                   
                                  
                                  
-                                     <form class="clasificacion">
-                                       
+                                  <form class="clasificacion">
+                                         
+                                            
+                                         
+                                             <button type="submit" class="valoracion-btn">Enviar valoracion</button>
                                           
-                                           <input id="radio1" type="radio" name="estrellas" value="5"><!--
-                                           --><label for="radio1">★</label><!--
-                                           --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-                                           --><label for="radio2">★</label><!--
-                                           --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-                                           --><label for="radio3">★</label><!--
-                                           --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-                                           --><label for="radio4">★</label><!--
-                                           --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-                                           --><label for="radio5">★</label>
-                                              <label for="radio5">  </label>
-                                              <button type="submit" class="valoracion-btn">Enviar valoración</button>
-                                        
- 
-                                       </form>
+   
+                                         </form>
 
                                        
                                     <br><img  style="left:630px; top:20px;" src="images/icons/mankuco.PNG" alt="IMG"  class="fotoJugador"  aria-hidden="true" onclick="location.href='menuPerfil.html'"></i> 
@@ -157,25 +125,13 @@
                                   
                                  
                                  
-                                     <form class="clasificacion">
-                                       
-                                          
-                                           <input id="radio1" type="radio" name="estrellas" value="5"><!--
-                                           --><label for="radio1">★</label><!--
-                                           --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-                                           --><label for="radio2">★</label><!--
-                                           --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-                                           --><label for="radio3">★</label><!--
-                                           --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-                                           --><label for="radio4">★</label><!--
-                                           --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-                                           --><label for="radio5">★</label>
-                                              <label for="radio5">  </label>
-                                              <button type="submit" class="valoracion-btn">Enviar valoración</button>
-                                        
- 
-                                       </form>
+                                   <form class="clasificacion">
                                          
+                                      
+                                             <button type="submit" class="valoracion-btn">Enviar valoracion</button>
+                                          
+   
+                                         </form>
                                      
 
                   		    </div>

@@ -256,8 +256,8 @@ public class MySQLReservaDAO implements ReservaDAO{
        
         try{
            
-            stat = conn.prepareStatement(GETALL);
-            stat.setDate(3, Date.valueOf(dia));
+            stat = conn.prepareStatement(GETDAY);
+            stat.setDate(2, Date.valueOf(dia));
             stat.setLong(1, id);
             rs = stat.executeQuery();
             while(rs.next()){

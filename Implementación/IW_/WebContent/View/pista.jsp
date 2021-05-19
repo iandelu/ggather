@@ -2,7 +2,11 @@
 <html lang="en">
 <%@ page import = "com.mycompany.iw.Partido" %>
 <%@ page import = "com.mycompany.iw.Pista" %>
+<%@ page import = "com.mycompany.iw.Reserva" %>
 <%@ page import = "com.mycompany.iw.mysql.MySQLDaoManager" %>
+<%@ page import = "java.time.LocalDate" %>
+<%@ page import = "java.time.format.DateTimeFormatter" %>
+<%@ page import = "java.time.*" %>
 <%@ page import = "java.util.List" %>
 
 <head>
@@ -52,6 +56,7 @@
 	Class.forName("com.mysql.jdbc.Driver");
 	MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
 	
+	
 %> 
 
 <body>
@@ -80,7 +85,20 @@
                                     <i class="fa fa-clock-o" aria-hidden="true"></i>
                                 </span>
                             </div>
-        
+        					
+        					<%
+        					 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        			        	String date = request.getParameter("Hora Inicio");
+
+        			        	LocalDate localDate = LocalDate.parse(date, formatter);
+        						List<Reserva> reservas = man.getReservaDAO().obtenerReservasDia(localDate, pistaActual.getId());
+        						
+        					%>
+        					
+        					
+        					
+        					
                             <div class="wrap-input100 validate-input" data-validate = "Debes introducir una hora valida">
                                 <input list="HorasDisponibles" class="input100" type="text" name="Hora Inicio" placeholder="Horas Disponibles">
                                 <span class="focus-input100"></span>
@@ -118,8 +136,8 @@
                               
 
                               <div class="wrap-input100 validate-input" data-validate = "Debes introducir una hora valida">
-                                <select id="aÃ±adirColega" class="input100" onchange="showInp()">
-                                <option selected value="0"> AÃ±adir Colega </option>
+                                <select id="añadirColega" class="input100" onchange="showInp()">
+                                <option selected value="0"> Añadir Colega </option>
                                         <option value="0">0</option>
                                         <option value="1">1</option> 
                                         <option value="2">2</option> 

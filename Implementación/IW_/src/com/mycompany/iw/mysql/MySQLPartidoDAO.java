@@ -23,6 +23,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
     final String DELETE = "DELETE FROM partidos WHERE idPartido = ?";
     final String GETALL = "SELECT * FROM partidos";
     final String GETONE = "SELECT * FROM partidos WHERE idPartido = ?";
+    final String GETPARTIDOS = "SELECT * FROM partidos p, jugador j, partido_jugadores pj WHERE j.idJugador = ? AND j.idJugador = pj.idJugador AND pj.idPartido = p.idPartido AND p.estado = ?";
     
     
     
@@ -450,5 +451,50 @@ public class MySQLPartidoDAO implements PartidoDAO{
         
         return partidos;
     }
+     
+     public List<Partido> getHistorial(long id) throws DAOException{
+
+         PreparedStatement stat = null;
+         ResultSet rs = null;
+         List<Partido> partidos = new ArrayList<>();
+         
+         try{
+             
+             stat = conn.prepareStatement(GETPARTIDOS);
+             stat.setLong(1,id);
+             stat.setString(2,"finalizado");
+             rs = stat.executeQuery();
+             while(rs.next()){
+                 
+                 partidos.add(convertir(rs));
+                 
+             }
+             
+         }catch(SQLException ex){
+              throw new DAOException("Error en SQL, ex");
+         }finally{
+             
+             if(rs != null){
+                 
+                 try{
+                     rs.close();
+                 }catch(SQLException ex){
+                     new DAOException("Error en SQL, ex");
+                 }
+                 
+             }
+             if(stat != null){
+                 
+                 try{
+                     stat.close();
+                 }catch(SQLException ex){
+                     new DAOException("Error en SQL, ex");
+                 }
+                 
+             }
+         }
+         
+          return partidos;
+      }
     
 }

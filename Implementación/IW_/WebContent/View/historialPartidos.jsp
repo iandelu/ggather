@@ -6,6 +6,9 @@
 <%@ page import = "com.mycompany.iw.mysql.MySQLDaoManager" %>
 <%@ page import = "java.util.List" %>
 
+<%@page import = "com.mycompany.iw.javabean.JugadorBean" %>
+<jsp:useBean id="jugadorBean" class = "com.mycompany.iw.javabean.JugadorBean" scope="session"/>
+
 <head>
 	<title>Historial de partidos</title>
 	<meta charset="UTF-8">

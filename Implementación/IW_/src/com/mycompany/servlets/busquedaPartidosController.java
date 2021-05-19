@@ -66,8 +66,15 @@ public class busquedaPartidosController extends HttpServlet {
 				e.printStackTrace();
 			}
 		
-		response.sendRedirect("/IW_/View/busquedaPartidos.jsp");
-
+		
+		if(session.getAttribute("jugador")!=null) {
+		
+		response.sendRedirect("/IW_/View/busquedaPartidosLogged.jsp");
+		
+		}
+		else {
+			response.sendRedirect("/IW_/View/busquedaPartidos.jsp");
+		}
         
 	}
 

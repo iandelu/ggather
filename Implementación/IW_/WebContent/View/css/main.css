@@ -159,6 +159,7 @@ iframe {
   width: 100%;
   margin: 0 auto;
 }
+
 .container-login100 {
   width: 100%;  
   min-height: 100vh;
@@ -172,26 +173,6 @@ iframe {
   align-items: center;
   padding: 15px;
   background-image: url("../images/backgrounds/loginBack.jpg");
-  background-size: cover;
-  /*background: #9053c7;
-  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: linear-gradient(-135deg, #c850c0, #4158d0); */
-}
-.container-login100-propietario {
-  width: 100%;  
-  min-height: 100vh;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  background-image: url("../images/backgrounds/loginBackPropietario.jpg");
   background-size: cover;
   /*background: #9053c7;
   background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
@@ -377,35 +358,6 @@ iframe {
   background: #333333;
 }
 
-.login100-form-btn-propietario {
-  font-family: Montserrat-Bold;
-  font-size: 15px;
-  line-height: 1.5;
-  color: #fff;
-  text-transform: uppercase;
-
-  width: 100%;
-  height: 50px;
-  border-radius: 25px;
-  background: #3d8b9e;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 25px;
-
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
-}
-
-.login100-form-btn-propietario:hover {
-  background: #333333;
-}
 
 
 /*------------------------------------------------------------------
@@ -539,27 +491,6 @@ iframe {
   background: linear-gradient(-135deg, #c850c0, #4158d0); */
 }
 
-.container-home-propietario {
-  width: 100%;  
-  min-height: 100vh;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  background-image: url("../images/backgrounds/loginBackPropietario.jpg");
-  background-size: cover;
-  /*background: #9053c7;
-  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: linear-gradient(-135deg, #c850c0, #4158d0); */
-}
-
 .wrap-home {
   width: 700px;
   background: rgb(255, 255, 255);
@@ -628,32 +559,6 @@ iframe {
   height: 50px;
   border-radius: 25px;
   background: #57b846;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 25px;
-
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
-}
-
-.home-form-btn-propietario {
-  font-family: Montserrat-Bold;
-  font-size: 15px;
-  line-height: 1.5;
-  color: #fff;
-  text-transform: uppercase;
-
-  width: 100%;
-  height: 50px;
-  border-radius: 25px;
-  background: #3d8b9e;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -759,27 +664,6 @@ iframe {
   align-items: center;
   padding: 15px;
   background-image: url("../images/backgrounds/loginBack.jpg");
-  background-size: cover;
-  /*background: #9053c7;
-  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: linear-gradient(-135deg, #c850c0, #4158d0); */
-}
-
-.container-registro-propietario {
-  width: 100%;  
-  min-height: 100vh;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  background-image: url("../images/backgrounds/loginBackPropietario.jpg");
   background-size: cover;
   /*background: #9053c7;
   background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
@@ -1643,13 +1527,23 @@ nav {
     margin-top: 16px;
 }
 
+/*------------------------------------------------------------------
+[ CARTAS RESERVAS ]*/
+
 .card {
   position: relative;
-  box-shadow: 0 32px 32px 0 rgba(1,1,1,.05);
-  border-radius: 4px;
-  background-color: #fff;
+  box-shadow: 0 32px 32px 0 rgba(2, 252, 56, 0.137);
+  
+  border-color: rgba(0, 0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.712);
   -webkit-transition: box-shadow .25s;
   transition: box-shadow .25s;
+  margin-top: 65px;
+  margin-left: 15px;
+  border-radius: 5%;
+  border-top-left-radius:50% ;
+  border-top-right-radius:50% ;
+  
 }
 
 .card__header-link {
@@ -1770,3 +1664,465 @@ nav {
   -webkit-transition: border-color .25s,opacity .25s;
   transition: border-color .25s,opacity .25s;
 }
+
+.partido-btn {
+  font-family: Montserrat-Bold;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+
+  width: 80%;
+  height: 50px;
+  border-radius: 25px;
+  background: #57b846;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25;
+  margin-bottom: 10px;
+  margin-left: 25px;
+  margin-top: 10px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.partido-btn-cancelar {
+  font-family: Montserrat-Bold;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+
+  width: 80%;
+  height: 50px;
+  border-radius: 25px;
+  background: #ce2626;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25;
+  margin-bottom: 10px;
+  margin-left: 25px;
+  margin-top: 10px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.partido-btn:hover {
+  background: #333333;
+}
+
+.partido-btn-cancelar:hover {
+  background: #3a0810;
+}
+
+.focus-input100 {
+  display: block;
+  position: absolute;
+  border-radius: 25px;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 0px 0px;
+  color: rgba(87,184,70, 0.8);
+}
+
+
+.map{
+  height: 100%;
+}
+
+
+.container-partid{
+  width: 100%;  
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-image: url("https://cutewallpaper.org/21/street-football-wallpaper/Soccer-Field-City-Night-Light-Dark-iPad-Air-Wallpapers-Free-.jpg");
+  background-size: cover;
+}
+
+.deporte-text {
+  font-family: Poppins-Bold;
+  font-size: 24px;
+  color: #333333;
+  line-height: 1.2;
+  text-align: center;
+
+  width: 100%;
+  display: block;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.deporte {
+  position: relative;
+  box-shadow: 0 32px 32px 0 rgba(2, 252, 56, 0.137);
+  
+  border-color: rgba(0, 0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.712);
+  -webkit-transition: box-shadow .25s;
+  transition: box-shadow .25s;
+  margin-top: 65px;
+  margin-left: 15px;
+  border-radius: 5%;
+  border-top-left-radius:50% ;
+  border-top-right-radius:50% ;
+  
+}
+
+
+/*------------------------------------------------------------------
+[ VALORACION ESTRELLAS ]*/
+
+#form {
+  width: 250px;
+  margin: 0 auto;
+  height: 50px;
+}
+
+#form p {
+  text-align: center;
+}
+
+#form label {
+  font-size: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  color: grey;
+}
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  margin-right: 650px;
+}
+
+label:hover,
+label:hover ~ label {
+  color: orange;
+}
+
+input[type="radio"]:checked ~ label {
+  color: orange;
+}
+
+
+.valoracion-btn {
+  font-family: Montserrat-Bold;
+  font-size: 10px;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+
+  width: 90%;
+  height: 40px;
+  border-radius: 10px;
+
+  background: #57b846;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+  margin-left: 50px;
+  margin-top: 10px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.valoracion-btn:hover {
+  background: #3c7bda;
+  
+}
+
+
+.amarilla-btn {
+  font-family: Montserrat-Bold;
+  font-size: 10px;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #b7c220;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25;
+  margin-bottom: 10px;
+  margin-left: 25px;
+  margin-top: 10px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.amarilla-btn:hover {
+  background: #ffd900;
+  width: 50px;
+  height: 70px;
+}
+
+
+.roja-btn {
+  font-family: Montserrat-Bold;
+  font-size: 10px;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #a80e0e;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25;
+  margin-bottom: 10px;
+  margin-left: 25px;
+  margin-top: 10px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.roja-btn:hover {
+  background: #ff0000;
+  width: 50px;
+  height: 70px;
+}
+
+.btn-group{
+  margin-left: 5%;
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+.fotoJugador {
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  border-radius:150px;
+}
+
+.fotoJugador:hover{
+  width: 60px;
+  height: 60px;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+
+
+
+.hora {
+  position: relative;
+  box-shadow: 0 32px 32px 0 rgba(2, 252, 56, 0);
+  width:fit-content;
+  border-color: rgba(0, 0, 0, 0);
+  background-color: rgba(255, 255, 255, 0);
+  -webkit-transition: box-shadow .25s;
+  transition: box-shadow .25s;
+  margin-top: 65px;
+  margin-left: 15px;
+  border-radius: 5%;
+  
+  
+}
+
+.hora-btn {
+  font-family: Montserrat-Bold;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #fff;
+  text-transform: uppercase;
+
+  width: 80px;
+  height: 80px;
+  border-radius: 15px;
+  background: #57b846;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25;
+  margin-bottom: 10px;
+  margin-left: 25px;
+  margin-top: 10px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.hora-btn:hover {
+  background: #333333;
+}
+
+.hora-cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(100px,1fr));
+  grid-auto-rows: -webkit-max-content;
+  grid-auto-rows: max-content;
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+  flex: 1 1;
+  margin-top: 16px;
+  margin-right: 20px;
+}
+
+.hora-btn-reserved {
+  font-family: Montserrat-Bold;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #fff;
+  text-transform: uppercase;
+
+  width: 80px;
+  height: 80px;
+  border-radius: 15px;
+  background: #999999;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25;
+  margin-bottom: 10px;
+  margin-left: 25px;
+  margin-top: 10px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+

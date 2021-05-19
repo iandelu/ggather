@@ -102,7 +102,16 @@
                     
     
                     <div class="container-menuPerfil-form-btn">
-
+						
+						<div>
+						<form class="historial-form validate-form" method="post" action="/IW_/verHistorialController">
+							<button class="login100-form-btn">
+								Historial
+							</button>
+						</form>
+						
+						</div>
+						
 						<div>
 						<button class="login100-form-btn">
 							Mis partidos

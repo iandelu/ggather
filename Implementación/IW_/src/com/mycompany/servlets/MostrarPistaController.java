@@ -56,7 +56,7 @@ public class MostrarPistaController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("/IW_/View/pista.jsp");
+		response.sendRedirect("/IW_/View/diaPista.jsp");
 		
 		
         

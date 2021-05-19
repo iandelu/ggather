@@ -73,7 +73,7 @@
                         <h1 style="left: 610px;">Pista <%=pistaActual.getId() %></h1>
                         </header>
                         
-                        <form class="registro-form validate-form">
+                        <form class="registro-form validate-form" method="post" action="/IW_/CalcularHorasController">
                             <span class="login100-form-title">
                                 <br>Reservar Pista <%=pistaActual.getId() %> <br><br> <h6>Selecciona el dia para tu reserva</h6>
                             </span>
@@ -84,6 +84,7 @@
                                 <span class="symbol-input100">
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </span>
+                             
                             </div>
         					
         			
@@ -94,7 +95,7 @@
                       
                             <div class="container-login100-form-btn">
                                 <button class="login100-form-btn">
-                                    Confirmar Reserva
+                                    Siguiente
                                 </button>
                             </div>
                             

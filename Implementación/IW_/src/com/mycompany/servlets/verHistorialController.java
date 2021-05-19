@@ -36,25 +36,16 @@ public class verHistorialController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
 		HttpSession session = request.getSession(false);
-		JugadorBean jugadorBean = (JugadorBean) session.getAttribute("jugadorBean");
+		Jugador jugador = (Jugador) session.getAttribute("jugador");
+		System.out.println(jugador.getEmail());
 
 		try {
 			
 			Class.forName("com.mysql.jdbc.Driver");
             MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
             
-            List<Partido> partidos = man.getPartidoDAO().getHistorial(jugadorBean.getId());
+            List<Partido> partidos = man.getPartidoDAO().getHistorial(jugador.getId());
 			session.setAttribute("partidos", partidos);
 
             
@@ -66,6 +57,16 @@ public class verHistorialController extends HttpServlet {
 			e.printStackTrace();
 		}
 		response.sendRedirect("IW_/View/historialPartidos.jsp");
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//doGet(request, response);
+		
 	}
 
 }

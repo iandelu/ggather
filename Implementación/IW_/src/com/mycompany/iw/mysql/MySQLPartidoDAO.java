@@ -23,7 +23,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
     final String DELETE = "DELETE FROM partidos WHERE idPartido = ?";
     final String GETALL = "SELECT * FROM partidos";
     final String GETONE = "SELECT * FROM partidos WHERE idPartido = ?";
-    final String GETPARTIDOS = "SELECT * FROM partidos p, jugador j, partido_jugadores pj WHERE j.idJugador = ? AND j.idJugador = pj.idJugador AND pj.idPartido = p.idPartido AND p.estado = ?";
+    final String GETPARTIDOS = "SELECT * FROM partidos p, jugadores j, partido_jugadores pj WHERE j.idJugador = ? AND j.idJugador = pj.idJugador AND pj.idPartido = p.idPartido AND p.estado = ?";
     
     
     
@@ -471,7 +471,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
              }
              
          }catch(SQLException ex){
-              throw new DAOException("Error en SQL, ex");
+              throw new DAOException("Error en SQL", ex);
          }finally{
              
              if(rs != null){
@@ -479,7 +479,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
                  try{
                      rs.close();
                  }catch(SQLException ex){
-                     new DAOException("Error en SQL, ex");
+                     new DAOException("Error en SQL", ex);
                  }
                  
              }
@@ -488,7 +488,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
                  try{
                      stat.close();
                  }catch(SQLException ex){
-                     new DAOException("Error en SQL, ex");
+                     new DAOException("Error en SQL", ex);
                  }
                  
              }

@@ -34,7 +34,7 @@
 <%
    
    
-	Jugador usuario = (Jugador) session.getAttribute("Jugador");
+	Jugador usuario = (Jugador) session.getAttribute("jugador");
 
 	Class.forName("com.mysql.jdbc.Driver");
 	MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");

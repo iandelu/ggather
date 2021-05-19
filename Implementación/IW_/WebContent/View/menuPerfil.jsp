@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
+<%@ page import = "com.mycompany.iw.Jugador" %>
+<%
+	Jugador jugador = (Jugador) session.getAttribute("jugador");
+%>
 <head>
 	<title>Login</title>
 	<meta charset="UTF-8">
@@ -40,18 +44,18 @@
 					<div class="Datos">
                   	  	<div class= "wrap-input100">
                       		  <span class=Datos-User>Usuario: </span>
-								Mankuco
+								<%= jugador.getUsuario() %>
                   		  </div> 
 						
                     
                   		  <div class= "wrap-input100">
 							<span class=Datos-User>Nombre: </span>
-							 Manuel De la Cueva 
+							 <%=jugador.getNombre() + jugador.getApellidos() %>
                   		  </div>
 
                   		  <div class= "wrap-input100">
 							<span class=Datos-User>Email: </span> 
-							manudelacuev@gmail.com
+							<%= jugador.getEmail() %>
                    		 </div>
 
 							<div class= "wrap-input100">

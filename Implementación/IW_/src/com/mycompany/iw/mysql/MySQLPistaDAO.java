@@ -261,7 +261,7 @@ public class MySQLPistaDAO implements PistaDao{
            
            stat = conn.prepareStatement(SEARCH);
            stat.setString(1, localizacion);
-           stat.setLong(2,  1);
+           stat.setLong(2,  deporte);
            rs = stat.executeQuery();
            while(rs.next()){
         	   System.out.println("Se mete aqui");

@@ -71,16 +71,16 @@ public class CrearPartido extends HttpServlet {
                String localidad = request.getParameter("localidad");
                String deporte = request.getParameter("deporte");
                
-               Long dep = null;
-               if(deporte == "1") dep =(long) 1;
-               if(deporte == "2") dep = (long)2;
-               if(deporte == "3") dep = (long)3;
+               Long dep = Long.parseLong(deporte);
+               //if(deporte == "1") dep =(Long) 1;
+              // if(deporte == "2") dep =(Long) 2;
+              // if(deporte == "3") dep = (Long) 3;
                
                
               
                System.out.println("Hola");
               
-					List <Pista> pistas = man.getPistaDAO().buscarPista(localidad, dep);
+					List <Pista> pistas = man.getPistaDAO().buscarPista(localidad,dep);
 					session.setAttribute("pistas", pistas);
 					
 					} catch (DAOException | SQLException e) {

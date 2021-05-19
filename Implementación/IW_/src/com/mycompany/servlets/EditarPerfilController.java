@@ -37,7 +37,7 @@ public class EditarPerfilController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
         JugadorBean jugadorBean = (JugadorBean) session.getAttribute("jugadorBean");
 		
 		try{
@@ -66,7 +66,7 @@ public class EditarPerfilController extends HttpServlet {
             daoManager.getJugadorDAO().modificar(jugadorAux);
             session.setAttribute("jugador", jugadorAux);
             
-            nextPage = "/View/menuPerfil.jsp";
+            //nextPage = "/View/menuPerfil.jsp";
             
             
             

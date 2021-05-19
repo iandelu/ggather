@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+<%@ page import = "com.mycompany.iw.Partido" %>
+<%@ page import = "com.mycompany.iw.Pista" %>
+<%@ page import = "com.mycompany.iw.mysql.MySQLDaoManager" %>
+<%@ page import = "java.util.List" %>
 <head>
 	<title>Partidos</title>
 	<meta charset="UTF-8">
@@ -66,19 +70,19 @@
                </a>
                <header class="card__header" style="background-image: url(&quot;https://openarena.es/wp-content/uploads/2019/05/open_arena_instalaciones16.jpg&quot;); margin-top: -5px; width: 101%; margin-left: -2px;">
                 <h1>Partido de <%=man.getJugadorDAO().obtener(partidos.get(i).getCreador()).getUsuario() %></h1>
-                    <h2><%man.getPistaDAO().obtener(partidos.get(i).getPistaPartido())%> </h2>
+                    <h2><%=man.getPistaDAO().obtener(partidos.get(i).getPistaPartido())%> </h2>
                 </header>
                <div class="card_body">
                     <div class="card_address">
                         <div class="card_Adress_street">
                             
-                            <h10 style="color: rgb(80, 75, 75);"><%man.getClubDAO().obtener(man.getPistaDAO().obtener(partidos.get(i).getPistaPartido()).getClub()).getLocalizacion()%></h1>
+                            <h10 style="color: rgb(80, 75, 75);"><%=man.getClubDAO().obtener(man.getPistaDAO().obtener(partidos.get(i).getPistaPartido()).getClub()).getLocalizacion()%></h1>
                             
                         </div>
                     </div>
                     <div class="slots">
                      <a id="2021-05-15T17:00:00" role="button" class="button button--filled" tabindex="0">
-                         <div><%man.getReservaDAO().obtener(partidos.get(i).getReserva()).getHoraInicio()%></div></a>
+                         <div><%=man.getReservaDAO().obtener(partidos.get(i).getReserva()).getHoraInicio()%></div></a>
  
                     </div>
                 </div>

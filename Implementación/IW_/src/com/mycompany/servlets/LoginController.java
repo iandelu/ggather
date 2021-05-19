@@ -67,6 +67,8 @@ public class LoginController extends HttpServlet {
                 	jugadorBean.setUsuario(jugadorAux.getUsuario());
                 	jugadorBean.setValoracionMedia(0);
                 	*/
+                	
+                	session.setAttribute("jugador", jugadorAux);
                 	response.sendRedirect("/IW_/View/mainMenuLogged.jsp");
                 	
                 }

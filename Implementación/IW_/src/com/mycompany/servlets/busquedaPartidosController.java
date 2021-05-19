@@ -1,6 +1,7 @@
 package com.mycompany.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -10,9 +11,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import com.mycompany.iw.Jugador;
 import com.mycompany.iw.Partido;
+import com.mycompany.iw.daos.DAOException;
 import com.mycompany.iw.mysql.MySQLDaoManager;
 
 /**
@@ -35,13 +38,14 @@ public class busquedaPartidosController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession(false);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		
 		try{
 			
             Class.forName("com.mysql.jdbc.Driver");
-            MySQLDaoManager daoManager = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
+            MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
             
             String nextPage = "/View/login.jsp";
             String fecha = request.getParameter("fecha");
@@ -51,7 +55,6 @@ public class busquedaPartidosController extends HttpServlet {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate fechaLDate = LocalDate.parse(fecha, formatter);
            
-            List<Partido> partidos = daoManager.getPartidoDAO().buscarPartidos(deporte, localidad, localDate);
             
               
 			List <Partido> partidos = man.getPartidoDAO().buscarPartidos(deporte,localidad,fechaLDate);

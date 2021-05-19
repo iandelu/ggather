@@ -76,7 +76,7 @@
                         <h1 style="left: 610px;">Pista <%=pistaActual.getId() %></h1>
                         </header>
                         
-                        <form class="registro-form validate-form">
+                        <form class="registro-form validate-form" method="post" action="/IW_/ReservarController">
                             <span class="login100-form-title">
                                 <br>Reservar Pista <%=pistaActual.getId() %>
                             </span>
@@ -90,7 +90,7 @@
                                     <i class="fa fa-clock-o" aria-hidden="true"></i>
                                 </span>
                             </div>
-
+ 
                             <datalist id="HorasDisponibles">
                             
                             <%
@@ -99,7 +99,7 @@
                             
                             	for(int i = 0; i< horasLibres.size(); i++){
                             	
-                            		%> <option value= <%=horasLibres.get(i) %> > <%
+                            		%> <option value=<%=horasLibres.get(i) %>></option> <%
                             	}
                             %>
                               

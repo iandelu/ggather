@@ -302,7 +302,7 @@ public class MySQLPartidoDAO implements PartidoDAO{
                try{
                    stat.close();
                }catch(SQLException ex){
-                   new DAOException("Error en SQL, ex");
+                   new DAOException("Error en SQL", ex);
                }
                
            }

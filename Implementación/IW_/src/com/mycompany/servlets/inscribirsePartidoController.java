@@ -44,7 +44,7 @@ public class inscribirsePartidoController extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
             MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
             
-            String nextPage = "/View/editarPerfil.jsp";
+           
             
             
             man.getPartidoDAO().inscribirsePartido(jugadorAUX, partidoActual);            
@@ -57,9 +57,10 @@ public class inscribirsePartidoController extends HttpServlet {
             
 		} catch(Exception e) {
 			
+			
 		}
 		
-		response.sendRedirect("/IW_/View/partidoPendiente.jsp");
+		response.sendRedirect("/IW_/View/mainMenuLogged.jsp");
 	
 		
 		

@@ -45,7 +45,6 @@ public class mostrarPartidos extends HttpServlet {
 			MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
 			
 			String id = (String) request.getParameter("partido");
-			System.out.println(id);
 			Long Id = Long.parseLong(id);
 			
 			Partido partido = new Partido();

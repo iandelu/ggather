@@ -69,7 +69,6 @@
     	<div>
            <article class="card">
            
-           <input type="hidden" name="partido" value=<%= partidos.get(i).getId() %>>
                 <a class="card__header-link" >
                 
                </a>
@@ -85,6 +84,7 @@
                         	<i class="fa fa-map" aria-hidden="true"></i>
                             <h10 style="color: rgb(80, 75, 75);"><%=man.getClubDAO().obtener(man.getPistaDAO().obtener(partidos.get(i).getPistaPartido()).getClub()).getLocalizacion()%></h1>
                               <form  action="/IW_/mostrarPartidos" method = "post">
+                              <input type="hidden" name="partido" value=<%= partidos.get(i).getId() %>>
                               <button class="partido-btn" onclick="location.href='partido.jsp'">
 							¡Unirme al partido!
 							</button>

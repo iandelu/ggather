@@ -312,9 +312,9 @@ public class MySQLPartidoDAO implements PartidoDAO{
         return partidos;
     }
     
-    public void inscribirColega(String nombre, String apellidos) throws DAOException {
+    public void inscribirColega(String dni, String nombre, String apellidos) throws DAOException {
         
-        Jugador colega = new Jugador( "COLEGA", nombre,  apellidos, "COLEGA@COLEGA.ES",  999999999);
+        Jugador colega = new Jugador( "COLEGA"+dni, nombre,  apellidos, "COLEGA"+dni,  999999999);
         
                  PreparedStatement stat = null;
         
@@ -332,6 +332,50 @@ public class MySQLPartidoDAO implements PartidoDAO{
             stat.setFloat(7, colega.getValoracionMedia()); //Esto abria que modificarlopor que al crear un usuario no posee valoracion
             stat.setLong(8, colega.getTelefono());
             
+            
+
+            if(stat.executeUpdate() == 0){
+                throw new DAOException("Puede que no se haya guardado.");
+            }
+            
+        } catch(SQLException ex){
+            throw new DAOException("Error en SQL", ex);
+        } finally{
+            if (stat !=  null){
+                
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    throw new DAOException("Error en SQL", ex);
+                }
+            }if(stat != null){
+               
+               try{
+                   stat.close();
+               }catch(SQLException ex){
+                   new DAOException("Error en SQL", ex);
+               }
+               
+           }
+        }
+        
+    }
+    
+    
+    final String INSCRIBIRSE = "INSERT INTO PARTIDO_JUGADORES(idPartido, idJugador, equipo) VALUES (?,?,?)";
+    public void inscribirsePartido(Jugador j, Partido p) throws DAOException {
+        
+        
+        
+                 PreparedStatement stat = null;
+                 
+        
+        try{
+            
+        	stat = conn.prepareStatement(INSCRIBIRSE);
+        	stat.setLong(1, p.getId());
+            stat.setLong(2, j.getId());
+            stat.setLong(3, 1);
             
             if(stat.executeUpdate() == 0){
                 throw new DAOException("Puede que no se haya guardado.");

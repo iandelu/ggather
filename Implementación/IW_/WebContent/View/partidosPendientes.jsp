@@ -5,6 +5,9 @@
 <%@ page import = "com.mycompany.iw.Jugador" %>
 <%@ page import = "com.mycompany.iw.mysql.MySQLDaoManager" %>
 <%@ page import = "java.util.List" %>
+
+<%@page import = "com.mycompany.iw.javabean.JugadorBean" %>
+<jsp:useBean id="jugadorBean" class = "com.mycompany.iw.javabean.JugadorBean" scope="session"/>
 <head>
 	<title>Partidos Pendientes</title>
 	<meta charset="UTF-8">
@@ -27,6 +30,7 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 </head>
+
 <%
    
    
@@ -38,6 +42,7 @@
 
 	
 %> 
+
 <body>
 
 	<div class="limiter">
@@ -53,7 +58,7 @@
                     
 					
                     <div class="search2-page__cards">
-       					<%
+     				   <%
         
 					        for(int i = 0; i < partidos.size(); i++){
 					
@@ -65,8 +70,8 @@
                                  
                                 </a>
                                 <header class="card__header" style="background-image: url(&quot;https://openarena.es/wp-content/uploads/2019/05/open_arena_instalaciones16.jpg&quot;); margin-top: -5px; width: 101%; margin-left: -2px;">
-                                 <h1>Partido de @ <%= man.getJugadorDAO().obtener(partidos.get(i).getCreador()).getUsuario()%></h1>
-                                 <h2><%= man.getPistaDAO().nombreDeporte(man.getPistaDAO().obtener(partidos.get(i).getPistaPartido()).getDeporte())%> </h2>
+                                 <h1>Partido de @MANKUCO</h1>
+                                 <h2> <%= man.getPistaDAO().nombreDeporte(man.getPistaDAO().obtener(partidos.get(i).getPistaPartido()).getDeporte())%> </h2>
                                  </header>
                                 <div class="card_body">
                                     <div class="card_address">
@@ -81,7 +86,7 @@
                                     </div>
                                     <div class="slots">
                                      <a>
-                                         <div><button class="partido-btn" onclick="location.href='partido.html'">
+                                         <div><button class="partido-btn" onclick="location.href='partido.jsp'">
                                              Ver Detalles
                                          </button>
                  
@@ -92,6 +97,9 @@
                                 </div>
                             </article>
                         </div> 
+                        <%
+                        }
+                        %> 
 
 						
                         <div>

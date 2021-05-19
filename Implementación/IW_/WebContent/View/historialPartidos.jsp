@@ -8,7 +8,6 @@
 
 <%@page import = "com.mycompany.iw.javabean.JugadorBean" %>
 <jsp:useBean id="jugadorBean" class = "com.mycompany.iw.javabean.JugadorBean" scope="session"/>
-
 <head>
 	<title>Historial de partidos</title>
 	<meta charset="UTF-8">
@@ -86,7 +85,7 @@
                                     </div>
                                     <div class="slots">
                                      <a>
-                                         <div><button class="partido-btn" onclick="location.href='partido.html'">
+                                         <div><button class="partido-btn" onclick="location.href='partido.jsp'">
                                              Ver Detalles
                                          </button>
                  
@@ -96,48 +95,12 @@
                                     </div>
                                 </div>
                             </article>
-                        </div> 
+                        </div>
+                        <%
+                        }
+                        %> 
 
-						
-                        <div>
-                            <article class="card">
-                                <a class="card__header-link" >
-                                 
-                                </a>
-                                <header class="card__header" style="background-image: url(&quot;https://openarena.es/wp-content/uploads/2019/05/open_arena_instalaciones16.jpg&quot;); margin-top: -5px; width: 101%; margin-left: -2px;">
-                                 <h1>Partido de @MANKUCO</h1>
-                                 <h2> PADEL </h2>
-                                 </header>
-                                <div class="card_body">
-                                    <div class="card_address">
-                                        <div class="card_Adress_street">
-                                         <span class="focus-input100"></span>
-                                         <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            <span style="color: rgb(80, 75, 75); font-size: 14px; margin-left: 2px;"> 14/01/2021 </span>
-                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                            <span style="color: rgb(80, 75, 75); font-size: 14px; margin-left: 2px;"> 17:00</span>
-                                             
-                                        </div>
-                                    </div>
-                                    <div class="slots">
-                                     <a>
-                                         <div><button class="partido-btn" onclick="location.href='partido.html'">
-                                             Ver Detalles
-                                         </button>
-                 
-                                         </div>
-                                     </a>
-                 
-                                    </div>
-                                </div>
-                            </article>
-                        </div> 
-                 
-
-                      
-                 
-					
-
+		
 					<div class="text-center p-t-30">
 						<a class="txt2" onclick="location.href='menuPerfil.html'">
 							Volver al mi perfil

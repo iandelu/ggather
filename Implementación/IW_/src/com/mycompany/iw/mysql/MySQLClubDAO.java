@@ -296,8 +296,8 @@ public class MySQLClubDAO implements ClubDAO{
          return c;
      }
     
-    final String UPDATEFOTO = "UPDATE club SET fotClub = ?  WHERE idClub = ?";
-    final String GETFOTO = "SELECT fotoClub FROM club WHERE idClub = ?";
+    final String UPDATEFOTOCLUB = "UPDATE club SET fotClub = ?  WHERE idClub = ?";
+    final String GETFOTOCLUB = "SELECT fotoClub FROM club WHERE idClub = ?";
     
     
     public void modificarFotoClub(String foto, Long idj) throws DAOException {
@@ -307,7 +307,7 @@ public class MySQLClubDAO implements ClubDAO{
         
         try{
             
-            stat = conn.prepareStatement(UPDATEFOTO);   
+            stat = conn.prepareStatement(UPDATEFOTOCLUB);   
             
             stat.setString(1, foto);
             stat.setLong(2, idj);
@@ -346,12 +346,12 @@ public class MySQLClubDAO implements ClubDAO{
         
         try{
             
-            stat = conn.prepareStatement(GETFOTO);
+            stat = conn.prepareStatement(GETFOTOCLUB);
             stat.setLong(1, idJ);
             rs = stat.executeQuery();
             if(rs.next()){
                 
-                j = rs.getString("fotoPerfil");
+                j = rs.getString("fotoClub");
                 
             }else{
                 throw new DAOException("No se ha encontrado ese registro.");
@@ -395,7 +395,7 @@ public class MySQLClubDAO implements ClubDAO{
         
         try{
             
-            stat = conn.prepareStatement(UPDATEFOTO);   
+            stat = conn.prepareStatement(UPDATEGOOGLE);   
             
             stat.setString(1, foto);
             stat.setLong(2, idj);
@@ -434,12 +434,12 @@ public class MySQLClubDAO implements ClubDAO{
         
         try{
             
-            stat = conn.prepareStatement(GETFOTO);
+            stat = conn.prepareStatement(GETGOOGLE);
             stat.setLong(1, idJ);
             rs = stat.executeQuery();
             if(rs.next()){
                 
-                j = rs.getString("fotoPerfil");
+                j = rs.getString("googleLink");
                 
             }else{
                 throw new DAOException("No se ha encontrado ese registro.");

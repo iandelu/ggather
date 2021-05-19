@@ -26,8 +26,7 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 <%
-   
-   
+
 	List<Pista> pistas = (List<Pista>) session.getAttribute("pistas");
 
 	Class.forName("com.mysql.jdbc.Driver");
@@ -64,11 +63,13 @@
         
        <%
        for(int i = 0; i< pistas.size(); i++){
+    	   
     	%>
+    	<form class="login100-form validate-form" action="/IW_/MostrarPistaController" method = "post">
+    	<input type="hidden" name="pista" value=<%= pistas.get(i).getId() %>>
     	   <div>
            <article class="card">
-               <a class="card__header-link" >
-                
+               <a class="card__header-link">
                </a>
                <header class="card__header" style="background-image: url(&quot;https://openarena.es/wp-content/uploads/2019/05/open_arena_instalaciones16.jpg&quot;); margin-top: -5px; width: 101%; margin-left: -2px;">
                 <h1>Pista de <%=man.getPistaDAO().nombreDeporte(pistas.get(i).getDeporte()) %></h1>
@@ -99,7 +100,7 @@
                    </div>
                    <div class="slots">
                     <a>
-                        <div><button class="partido-btn" onclick="location.href='partido.html'">
+                        <div><button class="partido-btn" onclick="location.href=">
 							¡Crear Partido!
 						</button>
 
@@ -111,6 +112,7 @@
        
        
                </div>
+               </form>
                
            </article>
            <%}

@@ -1,11 +1,18 @@
 package com.mycompany.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
+import com.mycompany.iw.Pista;
+import com.mycompany.iw.daos.DAOException;
+import com.mycompany.iw.mysql.MySQLDaoManager;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class MostrarPistaController
@@ -26,7 +33,33 @@ public class MostrarPistaController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		HttpSession session = request.getSession(false);
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
+			
+			String id = (String) request.getAttribute("pista");
+			System.out.println(id);
+			//Long Id = Long.parseLong(id);
+			
+			Pista pista = new Pista();
+			
+			pista = man.getPistaDAO().obtener((long) 4);
+			
+			
+			session.setAttribute("pistaActual", pista);
+			
+		} catch (ClassNotFoundException | SQLException | DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		response.sendRedirect("/IW_/View/pista.jsp");
+		
+		
+        
 	}
 
 	/**

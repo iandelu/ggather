@@ -65,12 +65,12 @@
                         <h2><%= man.getPistaDAO().nombreDeporte(pistaActual.getDeporte()) %></h2>
                         <span class="focus-icon"> </span>
                         <i  style="left:590px; top:20px; color: red;" class="fa fa-map-pin" aria-hidden="true"></i>
-                        <h1 style="left: 610px;">Pista 5</h1>
+                        <h1 style="left: 610px;">Pista <%=pistaActual.getId() %></h1>
                         </header>
                         
                         <form class="registro-form validate-form">
                             <span class="login100-form-title">
-                                <br>Reservar Pista 5
+                                <br>Reservar Pista <%=pistaActual.getId() %>
                             </span>
         
                             <div class="wrap-input100 validate-input" data-validate = "Debes introducir un número valido">

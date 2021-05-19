@@ -65,7 +65,7 @@
 		<div class="container-menuPerfil">
 			<div class="wrap-menuPerfil">
                      <% String foto = man.getClubDAO().obtenerFotoClub(man.getClubDAO().obtener(pistaActual.getClub()).getId());%>
-                    <header class="card__header" style="background-image: url(&quot;<%out.println(foto); %>&quot;); margin-top: -5px; width: 101%; margin-left: -2px;">
+                    <header class="card__header" style="background-image: url(<%out.println(foto); %>); margin-top: -5px; width: 101%; margin-left: -2px;">
                         <h1><%=man.getClubDAO().obtener(pistaActual.getClub()).getNombreClub()%></h1>
                         <h2><%= man.getPistaDAO().nombreDeporte(pistaActual.getDeporte()) %></h2>
                         <span class="focus-icon"> </span>

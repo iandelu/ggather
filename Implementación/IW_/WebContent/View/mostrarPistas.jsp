@@ -72,7 +72,7 @@
                <a class="card__header-link">
                </a>
                	<% String foto = man.getClubDAO().obtenerFotoClub(man.getClubDAO().obtener(pistas.get(i).getClub()).getId());%>
-               <header class="card__header" style="background-image: url(&quot;<%out.println(foto); %>&quot;); margin-top: -5px; width: 101%; margin-left: -2px;">
+               <header class="card__header" style="background-image: url(<%out.println(foto);%>); margin-top: -5px; width: 101%; margin-left: -2px;">
                 <h1>Pista de <%=man.getPistaDAO().nombreDeporte(pistas.get(i).getDeporte()) %></h1>
                 <%
 

@@ -71,7 +71,7 @@
                 
                </a>
                <header class="card__header" style="background-image: url(&quot;https://openarena.es/wp-content/uploads/2019/05/open_arena_instalaciones16.jpg&quot;); margin-top: -5px; width: 101%; margin-left: -2px;">
-                <h1>Pista de <%=pistas.get(i).getDeporte() %></h1>
+                <h1>Pista de <%=man.getPistaDAO().nombreDeporte(pistas.get(i).getDeporte()) %></h1>
                 <%
 
                 

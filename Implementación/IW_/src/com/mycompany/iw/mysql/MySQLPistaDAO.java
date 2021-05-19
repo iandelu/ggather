@@ -200,7 +200,8 @@ public class MySQLPistaDAO implements PistaDao{
 
     @Override
     public Pista obtener(Long id) throws DAOException  {
-        PreparedStatement stat = null;
+       
+    	PreparedStatement stat = null;
        ResultSet rs = null;
        Pista pista;
        
@@ -350,5 +351,105 @@ public class MySQLPistaDAO implements PistaDao{
     }
     
     
+    
+    final String GETDEPORTE = "SELECT nombreDeporte FROM deportes WHERE idDeporte = ?";
+    
+    
+    public String nombreDeporte(Long id) throws DAOException{
+    	
+    	PreparedStatement stat = null;
+        ResultSet rs = null;
+        String deporte;
+        
+        try{
+            
+        	stat = conn.prepareStatement(GETDEPORTE);
+            stat.setLong(1, id);
+            rs = stat.executeQuery();
+            if(rs.next()){
+                
+                deporte  = rs.getString("nombreDeporte");
+                
+            }else{
+                throw new DAOException("No se ha encontrado ese registro.");
+            }
+            
+        }catch(SQLException ex){
+             throw new DAOException("Error en SQL", ex);
+        }finally{
+            
+            if(rs != null){
+                
+                try{
+                    rs.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL", ex);
+                }
+                
+            }
+            if(stat != null){
+                
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL", ex);
+                }
+                
+            }
+        }
+        
+         return deporte;
+    	
+    	
+    }
+    
+    public int numeroJugadores(Long id) throws DAOException{
+    	
+    	PreparedStatement stat = null;
+        ResultSet rs = null;
+        int nJugadores;
+        
+        try{
+            
+        	stat = conn.prepareStatement(GETDEPORTE);
+            stat.setLong(1, id);
+            rs = stat.executeQuery();
+            if(rs.next()){
+                
+            	nJugadores  = rs.getInt("nombreDeporte");
+                
+            }else{
+                throw new DAOException("No se ha encontrado ese registro.");
+            }
+            
+        }catch(SQLException ex){
+             throw new DAOException("Error en SQL", ex);
+        }finally{
+            
+            if(rs != null){
+                
+                try{
+                    rs.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL", ex);
+                }
+                
+            }
+            if(stat != null){
+                
+                try{
+                    stat.close();
+                }catch(SQLException ex){
+                    new DAOException("Error en SQL", ex);
+                }
+                
+            }
+        }
+        
+         return nJugadores;
+    	
+    	
+    }
+
     
 }

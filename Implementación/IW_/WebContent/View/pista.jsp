@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<%@ page import = "com.mycompany.iw.Partido" %>
+<%@ page import = "com.mycompany.iw.Pista" %>
+<%@ page import = "com.mycompany.iw.mysql.MySQLDaoManager" %>
+<%@ page import = "java.util.List" %>
+
 <head>
 	<title>Historial</title>
 	<meta charset="UTF-8">
@@ -40,6 +45,14 @@
 
 </header>
 
+<%
+   
+	Pista pistaActual = (Pista) session.getAttribute("pistaActual");
+
+	Class.forName("com.mysql.jdbc.Driver");
+	MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
+	
+%> 
 
 <body>
     
@@ -48,8 +61,8 @@
 			<div class="wrap-menuPerfil">
                     
                     <header class="card__header" style="background-image: url(&quot;https://openarena.es/wp-content/uploads/2019/05/open_arena_instalaciones16.jpg&quot;); margin-top: -5px; width: 101%; margin-left: -2px;">
-                        <h1>OPEN ARENA</h1>
-                        <h2> PADEL </h2>
+                        <h1><%=man.getClubDAO().obtener(pistaActual.getClub()).getNombreClub()%></h1>
+                        <h2><%= man.getPistaDAO().nombreDeporte(pistaActual.getDeporte()) %></h2>
                         <span class="focus-icon"> </span>
                         <i  style="left:590px; top:20px; color: red;" class="fa fa-map-pin" aria-hidden="true"></i>
                         <h1 style="left: 610px;">Pista 5</h1>

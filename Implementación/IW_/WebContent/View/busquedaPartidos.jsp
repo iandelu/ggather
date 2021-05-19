@@ -26,7 +26,7 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 </head>
-
+<body style="background-image: url(&quot;https://cutewallpaper.org/21/street-football-wallpaper/Soccer-Field-City-Night-Light-Dark-iPad-Air-Wallpapers-Free-.jpg&quot;); background-size: cover; margin: 0; background-repeat: no-repeat; height: 200vh; overflow-x:hidden; overflow-y:hidden">
 
 <%
    
@@ -47,7 +47,7 @@
 
     <nav>
         <ul>
-            <li><a href="mainMenu.jsp">Inicio</a></li>
+            <li><a href="../mainMenu.jsp">Inicio</a></li>
             <li><a href="home.jsp">Crear Partido</a></li>
             <li><a href="home.jsp"  >Acceder</a></li>
         </ul>
@@ -60,13 +60,13 @@
 	<br>
 	<br>
     <div class="search2-page__cards">
+    
         <%
         
         for(int i = 0; i < partidos.size(); i++){
 
     	%>
-    	   <div>
-            <article class="card">
+    	 <article class="card" >
                 <a class="card__header-link" >
                 
                </a>
@@ -77,23 +77,24 @@
                <div class="card_body">
                     <div class="card_address">
                         <div class="card_Adress_street">
-                            
+                            <span class="focus-input100"></span>
+                        	<i class="fa fa-map" aria-hidden="true"></i>
                             <h10 style="color: rgb(80, 75, 75);"><%=man.getClubDAO().obtener(man.getPistaDAO().obtener(partidos.get(i).getPistaPartido()).getClub()).getLocalizacion()%></h1>
+                              <button class="partido-btn" onclick="location.href='partido.jsp'">
+							¡Unirme al partido!
+							</button>
                             
                         </div>
                     </div>
-                    <div class="slots">
-                     <a id="2021-05-15T17:00:00" role="button" class="button button--filled" tabindex="0">
-                         <div><%=man.getReservaDAO().obtener(partidos.get(i).getReserva()).getHoraInicio()%></div></a>
- 
-                    </div>
+                    
                 </div>
-           	</div>
-           <%
+                </article> 
+       <%
         }
        %>
-       </article> 
        </div>
+       
+        
     
 
     

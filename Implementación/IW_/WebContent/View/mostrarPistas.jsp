@@ -39,23 +39,23 @@
 
 <header id="main-header">
             
-    <a id="logo-header" href="mainMenu.html">
+    <a id="logo-header" href="../mainMenu.jsp">
     <span class="header-pic"><img src="images/icons/logo3.png"></span>
         <span class="site-name">GGather</span>
     </a> 
 
     <nav>
         <ul>
-            <li><a href="mainMenu.html">Inicio</a></li>
-            <li><a href="home.html">Crear Partido</a></li>
-            <li><a href="home.html"  >Acceder</a></li>
+            <li><a href="../mainMenu.jsp">Inicio</a></li>
+            <li><a href="home.jsp">Crear Partido</a></li>
+            <li><a href="home.jsp"  >Acceder</a></li>
         </ul>
     </nav>
 
 </header>
 
 
-<body style="background-image: url(&quot;https://cutewallpaper.org/21/street-football-wallpaper/Soccer-Field-City-Night-Light-Dark-iPad-Air-Wallpapers-Free-.jpg&quot;); background-size: cover; margin: 0; background-repeat: no-repeat; height: 200vh; overflow-x:hidden; overflow-y:hidden">
+<body style="background-image: url(&quot;https://cutewallpaper.org/21/street-football-wallpaper/Soccer-Field-City-Night-Light-Dark-iPad-Air-Wallpapers-Free-.jpg&quot;); background-size: cover; margin: 0; background-repeat: no-repeat; height: 200vh; overflow-x:hidden;">
    <br>
    <br>
    <br>

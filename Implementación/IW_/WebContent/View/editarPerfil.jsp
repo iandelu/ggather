@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <%@page import = "com.mycompany.iw.javabean.JugadorBean" %>
+<%@ page import = "com.mycompany.iw.Jugador" %>
+<%@ page import = "com.mycompany.iw.mysql.MySQLDaoManager" %>
 <jsp:useBean id="jugadorBean" class = "com.mycompany.iw.javabean.JugadorBean" scope="session"/>
+<%
+	Jugador jugador = (Jugador) session.getAttribute("jugador");
+	Class.forName("com.mysql.jdbc.Driver");
+	MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
+	
+%>
 <head>
 	<title>EditarPerfil</title>
 	<meta charset="UTF-8">
@@ -34,63 +42,64 @@
 					<span class="login100-form-title">
 						Editar Perfil
 					</span>
+					<% String foto = man.getJugadorDAO().obtenerFotoPerfil(jugador.getId());%>
 
 					<div class="editarPerfil-pic js-tilt" data-tilt>
-                        <img  src="images/icons/mankuco.PNG" alt="IMG">
-						<input class="fotoP" type="file" accept="image/png, image/jpeg" name=mankuco>
+                        <img  src='<% out.println(foto);%>' alt="IMG">
+						<input class="fotoP" type="file" accept="image/png, image/jpeg">
                     </div>
 					
 					<div><br></div>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un nombre de usuario vÃ¡lido">
-						<input class="input100" type="text" name="usuario" placeholder="Mankuco">
+                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un nombre de usuario válido">
+						<input class="input100" type="text" name="usuario" placeholder="<%= jugador.getUsuario() %>">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Debes introducir un nombre vÃ¡lido">
-						<input class="input100" type="text" name="nombre" placeholder="Manuel">
+					<div class="wrap-input100 validate-input" data-validate = "Debes introducir un nombre válido">
+						<input class="input100" type="text" name="nombre" placeholder="<%=jugador.getNombre() %>">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>
 						</span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir unos apellidos vÃ¡lidos">
-						<input class="input100" type="text" name="apellidos" placeholder="De la Cueva Coca">
+                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir unos apellidos válidos">
+						<input class="input100" type="text" name="apellidos" placeholder="<%=jugador.getApellidos() %>">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Debes introducir una fecha vÃ¡lida">
-						<input class="input100" type="date" name="fechanacimiento" placeholder="04/11/2000">
+					<div class="wrap-input100 validate-input" data-validate = "Debes introducir una fecha válida">
+						<input class="input100" type="date" name="fechanacimiento" placeholder="<%=jugador.getFechaNacimiento() %>">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-calendar" aria-hidden="true"></i>
 						</span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un nÃºmero vÃ¡lido">
-						<input class="input100" type="tel" name="telefono" placeholder="666777888">
+                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un número válido">
+						<input class="input100" type="tel" name="telefono" placeholder="<%=jugador.getTelefono() %>">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-phone" aria-hidden="true"></i>
 						</span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un email vÃ¡lido: ejemplo@gmail.com">
-						<input class="input100" type="email" name="email" placeholder="manudelacuev@gmail.com">
+                    <div class="wrap-input100 validate-input" data-validate = "Debes introducir un email válido: ejemplo@gmail.com">
+						<input class="input100" type="email" name="email" placeholder="<%=jugador.getEmail() %>">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Es necesario una contraseÃ±a valida">
+					<div class="wrap-input100 validate-input" data-validate = "Es necesario una contraseña válida">
 						<input class="input100" type="password" name="pass" placeholder="**********">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">

@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
@@ -25,16 +25,16 @@
 
 <header id="dashboard-header">
             
-  <a id="logo-header" href="mainMenu.jsp">
+  <a id="logo-header" href="mainMenu.html">
   <span class="dashboard-pic"><img src="../assets/img/logos/logo3 (1).png"></span>
       <span class="site-name">GGather</span>
   </a> 
 
   <nav>
       <ul>
-          <li><a href="dashboard.jsp">Estadisticas</a></li>
-          <li><a href="../../crearPartido.jsp">Gestionar Pistas</a></li>
-          <li><a href="../../mainMenu.jsp"  >Volver a Ggather</a></li>
+          <li><a href="dashboard.html">Estadisticas</a></li>
+          <li><a href="../../crearPartido.html">Gestionar Pistas</a></li>
+          <li><a href="../../mainMenu.html"  >Volver a Ggather</a></li>
       </ul>
   </nav>
 
@@ -50,7 +50,7 @@
       <ul class="navbar-nav">
 
         <li class="nav-item" style="visibility: hidden;">
-          <a class="nav-link  active" href="../pages/dashboard.jsp">
+          <a class="nav-link  active" href="../pages/dashboard.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>shop </title>
@@ -72,7 +72,7 @@
 
 
         <li class="nav-item">
-          <a class="nav-link " href="../pages/dashboard.jsp">
+          <a class="nav-link " href="../pages/dashboard.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>shop </title>
@@ -93,7 +93,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link active " href="../pages/tables.jsp">
+          <a class="nav-link active " href="../pages/MisPistas.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -112,96 +112,116 @@
             <span class="nav-link-text ms-1">Gestionar Pistas</span>
           </a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link active " href="../pages/GestionarReservas.html">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>office</title>
+                <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g id="Rounded-Icons" transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <g id="Icons-with-opacity" transform="translate(1716.000000, 291.000000)">
+                      <g id="office" transform="translate(153.000000, 2.000000)">
+                        <path class="color-background" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z" id="Path" opacity="0.6"></path>
+                        <path class="color-background" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z" id="Shape"></path>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">Gestionar Reservas</span>
+          </a>
+        </li>
         
   </aside>
   <main class="main-content mt-1 border-radius-lg">
     <!-- Navbar -->
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
-      <div class="container-fluid py-1 px-3">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Ggather Propietario</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Gestionar Pistas</li>
-          </ol>
-          <h6 class="font-weight-bolder mb-0">Gestionar Pistas</h6>
-        </nav>
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="my-auto">
-                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold">New message</span> from Laur
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          13 minutes ago
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="my-auto">
-                        <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 ">
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold">New album</span> by Travis Scott
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          1 day
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
-                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <title>credit-card</title>
-                          <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="Rounded-Icons" transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                              <g id="Icons-with-opacity" transform="translate(1716.000000, 291.000000)">
-                                <g id="credit-card" transform="translate(453.000000, 454.000000)">
-                                  <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" id="Path" opacity="0.593633743"></path>
-                                  <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z" id="Shape"></path>
-                                </g>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          Payment successfully completed
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          2 days
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  
     <!-- End Navbar -->
     
+   
+        
+        
+      <div>
+          <article class="card" style="box-shadow: 0 32px 32px 0 rgba(2, 252, 56, 0);">
+              <a class="card__header-link" >
+               
+              </a>
+              <header class="card__header" style="background-image: url(&quot;https://openarena.es/wp-content/uploads/2019/05/open_arena_instalaciones16.jpg&quot;); margin-top: -5px; width: 1250px;  margin-left: -2px;">
+               <span class="focus-icon"> </span>
+               <i  style="left:150px; top:20px;" class="fa fa-map-pin" aria-hidden="true"></i>
+               </header>
+              <div class="card_body">
+
+
+               
+                      </div>
+                  </div>
+                  <div class="slots">
+                   <a>
+                       <div><button class="partido-btn" onclick="location.href='partido.html'">
+             Añadir nueva pista
+           </button>
+
+                       </div>
+                   </a>
+
+                  </div>
+              </div>
+          </article>
+      </div> 
+
+      <div class="search2-page__cards">
+
+      <div>
+        <article style="background-color: rgba(21, 135, 180, 0); box-shadow: 0 32px 32px 0 rgba(23, 157, 190, 0.445); "class="card">
+            <a class="card__header-link" >
+             
+            </a>
+            <header class="card__header" style="background-image: url(&quot;https://openarena.es/wp-content/uploads/2019/05/open_arena_instalaciones16.jpg&quot;); margin-top: -5px; width: 101%; margin-left: -2px;">
+             <h1 style="color: aliceblue;">Pista de PADEL</h1>
+             <h2 style="color: aliceblue;" > OPEN ARENA </h2>
+             <span class="focus-icon"> </span>
+             <i  style="left:150px; top:20px; color: red;" class="fa fa-map-pin" aria-hidden="true"></i>
+             <h1 style="left: 170px; color: aliceblue;">Pista 5</h1>
+             </header>
+            <div class="card_body">
+              <div class="btn-group">
+                <div class="slots">
+                 <a>
+                     <div><button  style="background-color: rgb(165, 49, 49);" class="hora-btn" onclick="location.href='partido.html'">
+           Eliminar pista
+         </button>
+
+                     </div>
+                 </a>
+
+                </div>
+                <div class="slots">
+                  <a>
+                      <div><button class="hora-btn" onclick="location.href='partido.html'">
+            Modificar pista
+          </button>
  
+                      </div>
+                  </a>
+ 
+                 </div>
+
+                 
+            </div>
+        </article>
+    </div> 
+    
+    
+
+        
+        
+    </div>   
+        
+
+
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>

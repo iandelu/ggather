@@ -62,7 +62,7 @@
                             
                             
                                     <br><img  style="left:630px; top:20px;" src="images/icons/mankuco.PNG" alt="IMG"  class="fotoJugador"  aria-hidden="true" onclick="location.href='menuPerfil.html'"></i> 
-                                   Mankuco  
+                                   		Mankuco  
                                    <div class="btn-group">
                                     <button  onclick="openForm()"  class="amarilla-btn">A</button>
                                     <button   onclick="openForm()" class="roja-btn">R</button>

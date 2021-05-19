@@ -5,8 +5,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.mycompany.iw.Pista;
 import com.mycompany.iw.Reserva;
@@ -21,16 +19,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class CalcularHorasController
+ * Servlet implementation class ReservarController
  */
-@WebServlet("/CalcularHorasController")
-public class CalcularHorasController extends HttpServlet {
+@WebServlet("/ReservarController")
+public class ReservarController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public CalcularHorasController() {
+    public ReservarController() {
         // TODO Auto-generated constructor stub
     }
 
@@ -39,55 +37,56 @@ public class CalcularHorasController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 		HttpSession session = request.getSession(false);
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
 			
+			
+			String horaInicio = (String) request.getParameter("Hora Inicio");
+			System.out.println(horaInicio);
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("H:mm");
+			LocalTime date = LocalTime.parse(horaInicio, formatter);
+			LocalTime horaFin = LocalTime.of(date.getHour()+1, 0);
+			
+			
+			LocalDate diaReserva = (LocalDate) session.getAttribute("diaReserva");
+			
 			Pista pistaActual = (Pista) session.getAttribute("pistaActual");
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-        	String date = request.getParameter("diaReserva");
-
-        	LocalDate localDate = LocalDate.parse(date, formatter);
-			List<Reserva> reservas = man.getReservaDAO().obtenerReservasDia(localDate, pistaActual.getId());
+			Reserva reserva = new Reserva();
 			
-			LocalTime horaInicio = pistaActual.getHorarioInicio();
-			LocalTime horaFin = pistaActual.getHorarioFin();
-			List<LocalTime> horasOcupadas = new ArrayList<LocalTime>();
-			List<LocalTime> horasLibres = new ArrayList<LocalTime>();
-			LocalTime aux = horaInicio;
 			
-			for(int i = 0; i< reservas.size(); i++){
-				horasOcupadas.add(reservas.get(i).getHoraInicio());
-			}
+			reserva.setPista(pistaActual.getId());
+			reserva.setFecha(diaReserva);
+			reserva.setHoraInicio(date);
+			reserva.setHoraFin(horaFin);
 			
-			for(int i = horaInicio.getHour(); i< horaFin.getHour(); i++){
-				horasLibres.add(aux);
-				aux = LocalTime.of(aux.getHour()+1, 00);
-				
-			}
+			man.getReservaDAO().insertar(reserva);
 			
-			for(int i = 0 ; i<horasLibres.size(); i++){
-				for(int j = 0; j< horasOcupadas.size(); j++){
-					if(horasLibres.get(i).getHour() == horasOcupadas.get(j).getHour()){
-						horasLibres.remove(i);
-					}
-				}
-			}
+			response.sendRedirect("/IW_/View/mainMenuLogged.jsp");
 			
-			session.setAttribute("diaReserva", localDate);
-			session.setAttribute("horasLibres", horasLibres);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 		} catch (ClassNotFoundException | SQLException | DAOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("/IW_/View/pista.jsp");
-        
-        
+		
 	}
 
 	/**

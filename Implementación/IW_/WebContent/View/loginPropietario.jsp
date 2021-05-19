@@ -25,7 +25,7 @@
 <body>
 
 	<div class="limiter">
-		<div class="container-login100-propietario">
+		<div class="container-home-propietario">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
 					<img  src="images/icons/Logo.PNG" alt="IMG">
@@ -33,10 +33,10 @@
 
 				<form class="login100-form validate-form" method="post" action="/IW_/LoginPropietarioController">
 					<span class="login100-form-title">
-						Login
+						Login Propietario
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Debes introducir un email v�lido: ejemplo@gmail.com">
+					<div class="wrap-input100 validate-input" data-validate = "Debes introducir un email valido: ejemplo@gmail.com">
 						<input class="input100" type="text" name="email" placeholder="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">

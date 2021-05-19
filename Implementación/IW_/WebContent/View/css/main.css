@@ -2215,7 +2215,9 @@ input[type="radio"]:checked ~ label {
 .login100-form-btn-propietario:hover {
   background: #333333;
 }
-.container-home-propietario {
+
+
+.container-home-propietario{
   width: 100%;
   min-height: 100vh;
   display: -webkit-box;
@@ -2229,10 +2231,6 @@ input[type="radio"]:checked ~ label {
   padding: 15px;
   background-image: url("../images/backgrounds/loginBackPropietario.jpg");
   background-size: cover;
-  /*background: #9053c7;
-  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: linear-gradient(-135deg, #c850c0, #4158d0); */
+
 }
 

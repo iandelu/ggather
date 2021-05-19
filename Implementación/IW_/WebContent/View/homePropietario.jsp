@@ -29,28 +29,28 @@
 			<div class="wrap-home">
 
                   <span class="home-form-title">
-                      Bienvenido a 
+                      GGather Propietario
                     </span>
 
 				    <div class="home-pic js-tilt" data-tilt>
-					    <img src="images/icons/Logo.PNG" alt="IMG">
+					    <img style="margin-left:40px; margin-bottom:15px; " src="images/icons/logoAzul.png" alt="IMG">
 			    	</div>
 	
 					<div class="container-home-form-btn">
-						<button class="home-form-btn-propietario" onclick="location.href='loginPropietario.jsp'">
+						<button  class="login100-form-btn-propietario" onclick="location.href='loginPropietario.jsp'">
 							Inicia Sesión
 						</button>
 					</div>
 
                     <div class="container-home-form-btn">
-						<button class="home-form-btn-propietario" onclick="location.href='registerPropietario.jsp'">
+						<button class="login100-form-btn-propietario" onclick="location.href='registerPropietario.jsp'">
 							Regístrate
 						</button>
 					</div>
 
 					<div class="text-center p-t-30">
-                        <a onclick="location.href='../../IW_/mainMenu.jsp'">
-                            Volver al menú principal
+                        <a onclick="location.href='../../IW_/home.jsp'">
+                            Volver al home
                             <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
                         </a>
 					</div>

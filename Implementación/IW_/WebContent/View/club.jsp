@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+<%@ page import = "com.mycompany.iw.Club" %>
+<%@ page import = "com.mycompany.iw.mysql.MySQLDaoManager" %>
+<%
+	Club clubActual = (Club) session.getAttribute("clubActual");
+	Class.forName("com.mysql.jdbc.Driver");
+	MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
+	
+%>
 <head>
 	<title>Club</title>
 	<meta charset="UTF-8">
@@ -46,9 +54,9 @@
     <div class="limiter">
 		<div class="container-partido">
 			<div class="wrap-menuPerfil">
-                    
+                    <% String foto = man.getClubDAO().obtenerFotoClub(clubActual.getId());%>
                     <header class="card__header" style="background-image: url(&quot;https://openarena.es/wp-content/uploads/2019/05/open_arena_instalaciones30.jpg&quot;); margin-top: -5px; width: 101%; margin-left: -2px;">
-                        <h1 style="bottom:120px; color: rgb(0, 114, 6);"  >OPEN ARENA CLUB</h1> 
+                        <h1 style="bottom:120px; color: rgb(0, 114, 6);"  ><%= clubActual.getNombreClub() %></h1> 
                        
                     </header>
                 
@@ -56,15 +64,17 @@
                         <br><span class=Datos-User>Contacto: </span>
                         
                                 <br><i  style="left:630px; top:20px; color:rgb(104, 105, 104);"  class="fa fa-phone"  aria-hidden="true" onclick="location.href='menuPerfil.html'"></i> 
-                                 610 89 76 45
+                                 <%= clubActual.getTelefono() %>
                                 <br><i  style="left:630px; top:20px; color:rgb(104, 105, 104);" class="fa fa-envelope" aria-hidden="true" onclick="location.href='menuPerfil.html'" ></i> 
-                                 openArena@gmail.com
+                                 <%= clubActual.getEmail()%>
+               
                           </div> 
                             
                   		  <div class= "wrap-input100">
                            <br> <i  style="left:630px; top:20px; color:rgb(61, 61, 61);"  class="fa fa-map"  aria-hidden="true" onclick="location.href='menuPerfil.html'"></i>
-							<span class=Datos-User>Localizacion: </span> 
+							<span class=Datos-User>Localizacion: <%= clubActual.getLocalizacion() %></span> 
 							 
+							 <%String googleLink = man.getClubDAO().obtenerGoogle(clubActual.getId()); %>
 
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149.1416034215736!2d-4.804544449583729!3d37.88037101375157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6d20a9d7928149%3A0xfc1bd9bfb662f945!2sOpen%20Arena!5e0!3m2!1ses!2ses!4v1621208247761!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" ></iframe>
                    		 </div>

@@ -8,6 +8,7 @@
 <%@ page import = "java.time.format.DateTimeFormatter" %>
 <%@ page import = "java.time.*" %>
 <%@ page import = "java.util.List" %>
+<%@ page import = "java.util.ArrayList" %>
 
 <head>
 	<title>Historial</title>
@@ -86,16 +87,6 @@
                                 </span>
                             </div>
         					
-        					<%
-        					 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-        			        	String date = request.getParameter("Hora Inicio");
-
-        			        	LocalDate localDate = LocalDate.parse(date, formatter);
-        						List<Reserva> reservas = man.getReservaDAO().obtenerReservasDia(localDate, pistaActual.getId());
-        						
-        					%>
-        					
         					
         					
         					
@@ -107,15 +98,15 @@
                                 </span>
                             </div>
 
+					
                             <datalist id="HorasDisponibles">
-
-                                <option value="16:00">
-                              
-                                <option value="20:00">
-                              
-                                <option value="21:00">
-                              
-                                <option value="16:00">
+							<%
+								for(int i = 0; i< horasLibres.size(); i++){
+									
+									%><option value=<%=horasLibres.get(i) %>><%
+								}
+							%>
+                                
                               
                               </datalist>
 

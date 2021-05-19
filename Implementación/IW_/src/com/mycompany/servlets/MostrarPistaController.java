@@ -40,13 +40,13 @@ public class MostrarPistaController extends HttpServlet {
 			Class.forName("com.mysql.jdbc.Driver");
 			MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
 			
-			String id = (String) request.getAttribute("pista");
+			String id = (String) request.getParameter("pista");
 			System.out.println(id);
-			//Long Id = Long.parseLong(id);
+			Long Id = Long.parseLong(id);
 			
 			Pista pista = new Pista();
 			
-			pista = man.getPistaDAO().obtener((long) 4);
+			pista = man.getPistaDAO().obtener(Id);
 			
 			
 			session.setAttribute("pistaActual", pista);

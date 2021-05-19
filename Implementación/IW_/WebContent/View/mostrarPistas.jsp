@@ -63,9 +63,9 @@
         
        <%
        for(int i = 0; i< pistas.size(); i++){
-    	   
+    	   System.out.println(pistas.get(i).getId());
     	%>
-    	<form class="login100-form validate-form" action="/IW_/MostrarPistaController" method = "post">
+    	<form class="mostrarPistas-form validate-form" action="/IW_/MostrarPistaController" method = "post">
     	<input type="hidden" name="pista" value=<%= pistas.get(i).getId() %>>
     	   <div>
            <article class="card">
@@ -100,17 +100,14 @@
                    </div>
                    <div class="slots">
                     <a>
-                        <div><button class="partido-btn" onclick="location.href=">
+                        <div><button class="partido-btn">
 							¡Crear Partido!
 						</button>
 
                         </div>
                     </a>
 
-                   </div>
-    	   
-       
-       
+                   </div>     
                </div>
                </form>
                

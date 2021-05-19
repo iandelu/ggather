@@ -417,7 +417,7 @@ public class MySQLPistaDAO implements PistaDao{
             rs = stat.executeQuery();
             if(rs.next()){
                 
-            	nJugadores  = rs.getInt("nombreDeporte");
+            	nJugadores  = rs.getInt("numeroJugadores");
                 
             }else{
                 throw new DAOException("No se ha encontrado ese registro.");

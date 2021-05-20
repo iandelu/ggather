@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+<%@ page import = "java.time.LocalDate" %>
+<%@ page import = "java.time.format.DateTimeFormatter" %>
+<%
+												LocalDate localDate = LocalDate.now();
+												DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+												String hoy = localDate.format(formatter);
+												
+												%>
 <head>
 	<title>Menú Principal</title>
 	<meta charset="UTF-8">
@@ -51,28 +59,28 @@
                             <form class="menu-form" action="/IW_/busquedaPartidosController" method = "post">
                                         <a id="barra-busqueda">
                                             <select name = "localidad" class="busqueda-menu">
-                                                <option selected value="0"> Localidad </option>
-                                                     <option selected value="0"> Localidad </option>
+                                               
                                                     	<optgroup label="Localidades"> 
-                                                            <option value="Cordoba">Córdoba</option> 
+                                                            <option selected="true" value="Cordoba">Córdoba</option> 
                                                             <option value="Malaga">Málaga</option> 
                                                             <option value="Sevilla">Sevilla</option> 
                                                     	</optgroup>    
                                                 </select>
 
                                                 <select name = "deporte" class="busqueda-menu2">
-                                                    <option selected value="0"> Deporte </option>
+                                                   
                                                     <optgroup label="Deportes"> 
-                                                            <option value="1">Pádel</option> 
+                                                            <option selected="true" value="1">Pádel</option> 
                                                             <option value="2">Fútbol 11</option> 
                                                             <option value="3">Fútbol 7</option> 
                                                     </optgroup>
                                                 </select>
 
-
-                                                <input class="busqueda-menu3" type="date" name="fecha" placeholder="Fecha">
-
-                                                <input class="busqueda-menu4" type="number" name="jugadores" placeholder="Jugadores">
+												
+                                                <input class="busqueda-menu3" type="date" name="fecha" placeholder="Fecha" value=<%=hoy %>>
+												
+												
+                                                <input class="busqueda-menu4" type="number" name="jugadores" placeholder="Jugadores" value="1">
 
                                                 <span class="focus-input100"></span>
                                                 <span class="symbol-busqueda">

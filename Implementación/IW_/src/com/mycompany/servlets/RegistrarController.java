@@ -55,7 +55,7 @@ public class RegistrarController extends HttpServlet {
              String password = request.getParameter("pass");
             
   
-             Jugador jugadorAux = new Jugador( usuario,  nombre,  apellidos,  email, telefono, password,  Date.valueOf(fecha), 0);
+             Jugador jugadorAux = new Jugador( usuario,  nombre,  apellidos,  email, telefono, password,  Date.valueOf(fecha), 5);
 
              
              daoManager.getJugadorDAO().insertar(jugadorAux);

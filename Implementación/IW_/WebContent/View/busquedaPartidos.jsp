@@ -56,21 +56,23 @@
 </header>
 
 <body>
-	<br>
+		<br>
 	<br>
 	<br>
     <div class="search2-page__cards">
-    
         <%
         
         for(int i = 0; i < partidos.size(); i++){
 
     	%>
-    	 <article class="card" >
+    	<div>
+           <article class="card">
+           
                 <a class="card__header-link" >
                 
                </a>
-               <header class="card__header" style="background-image: url(&quot;https://openarena.es/wp-content/uploads/2019/05/open_arena_instalaciones16.jpg&quot;); margin-top: -5px; width: 101%; margin-left: -2px;">
+                <% String foto = man.getJugadorDAO().obtenerFotoPerfil(man.getJugadorDAO().obtener(partidos.get(i).getCreador()).getId());%>
+               <header class="card__header" style="background-image: url(<% out.println(foto);%>); margin-top: -5px; width: 101%; margin-left: -2px;">
                 <h1>Partido de @<%= man.getJugadorDAO().obtener(partidos.get(i).getCreador()).getUsuario() %></h1>
                     <h2><%= man.getPistaDAO().nombreDeporte(man.getPistaDAO().obtener(partidos.get(i).getPistaPartido()).getDeporte())%> </h2>
                 </header>
@@ -80,21 +82,27 @@
                             <span class="focus-input100"></span>
                         	<i class="fa fa-map" aria-hidden="true"></i>
                             <h10 style="color: rgb(80, 75, 75);"><%=man.getClubDAO().obtener(man.getPistaDAO().obtener(partidos.get(i).getPistaPartido()).getClub()).getLocalizacion()%></h1>
-                              <button class="partido-btn" onclick="location.href='partido.jsp'">
+                              <input type="hidden" name="partido" value=<%= partidos.get(i).getId() %>>
+                              <button class="partido-btn" onclick="location.href='home.jsp'">
 							¡Unirme al partido!
 							</button>
-                            
+                            </form>
                         </div>
                     </div>
                     
+                    
+                    
                 </div>
                 </article> 
-       <%
+                 </div>
+           	
+          
+      	 
+           <%
         }
        %>
-       </div>
        
-        
+       </div>
     
 
     

@@ -84,34 +84,36 @@
         					
         					
                             <div class="wrap-input100 validate-input" data-validate = "Debes introducir una hora valida">
-                                <input list="HorasDisponibles" class="input100" type="text" name="Hora Inicio" placeholder="Horas Disponibles">
-                                <span class="focus-input100"></span>
-                                <span class="symbol-input100">
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                </span>
-                            </div>
- 
-                            <datalist id="HorasDisponibles">
-                            
-                            <%
+                                <select name="Hora Inicio" class="input100" >
+                                <option selected value="0"> Hora de reserva</option>
+                                <%
                             List<LocalTime> horasLibres = (List<LocalTime>) session.getAttribute("horasLibres");
                             
                             
                             	for(int i = 0; i< horasLibres.size(); i++){
                             	
-                            		%> <option value=<%=horasLibres.get(i) %>></option> <%
+                            		%> <option value=<%=horasLibres.get(i) %>><%=horasLibres.get(i) %></option> <%
                             	}
                             %>
+                                  
+                                  </select> 
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                </span>
+                                
+                            </div>
+                            
+                            
                               
-                              </datalist>
+                              
 
 
                               <div class="wrap-input100 validate-input" data-validate = "Debes introducir una hora valida">
                                 <select name="horaFin" class="input100" >
-                                <option selected value="0"> Horas de Reserva</option>
+                                <option selected value="0"> Numero de Horas</option>
                                         <option value="1">1</option> 
-                                        <option value="2">2</option> 
-                                        <option value="3">3</option> 
+                                         
                                   
                                   </select> 
                                 <span class="focus-input100"></span>

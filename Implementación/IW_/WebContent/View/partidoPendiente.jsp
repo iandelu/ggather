@@ -32,7 +32,7 @@
 
     <nav>
         <ul>
-            <li><a href="../../mainMenu.jsp">Inicio</a></li>
+            <li><a href="mainMenuLogged.jsp">Inicio</a></li>
             <li><a href="crearPartido.jsp">Crear Partido</a></li>
             <li><a href="menuPerfil.jsp"  >Mi Perfil</a></li>
             <li><a href="../LogoutController">Cerrar Sesión</a></li>

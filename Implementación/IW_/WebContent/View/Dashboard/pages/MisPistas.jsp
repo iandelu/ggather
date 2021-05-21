@@ -1,6 +1,10 @@
 
 <!DOCTYPE html>
 <html lang="es">
+<%@ page import = "com.mycompany.iw.Pista" %>
+<%@ page import = "com.mycompany.iw.Club" %>
+<%@ page import = "com.mycompany.iw.mysql.MySQLDaoManager" %>
+<%@ page import = "java.util.List" %>
 
 <head>
   <meta charset="utf-8" />
@@ -22,7 +26,16 @@
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.2" rel="stylesheet" />
   <link rel="stylesheet" href="../../css/main.css">
 </head>
+<%
 
+	List<Pista> pistas = (List<Pista>) session.getAttribute("misPistas");
+	Club club = (Club) session.getAttribute("club");
+
+	Class.forName("com.mysql.jdbc.Driver");
+	MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
+
+	
+%> 
 <header id="dashboard-header">
             
   <a id="logo-header" href="../../../mainMenu.jsp">
@@ -33,7 +46,9 @@
   <nav>
       <ul>
           <li><a href="dashboard.jsp">Estadisticas</a></li>
+          <form  action="/IW_/mispistas" method = "post">
           <li><a href="MisPistas.jsp">Gestionar Pistas</a></li>
+          </form>
           <li><a href="../../../mainMenu.jsp"  >Volver a Ggather</a></li>
       </ul>
   </nav>
@@ -172,27 +187,35 @@
           </article>
       </div> 
 
-      <div class="search2-page__cards">
 
+      <div class="search2-page__cards">
+		<%
+       for(int i = 0; i< pistas.size(); i++){
+    	   System.out.println(pistas.get(i).getId());
+    	%>
       <div>
         <article style="background-color: rgba(21, 135, 180, 0); box-shadow: 0 32px 32px 0 rgba(23, 157, 190, 0.445); "class="card">
             <a class="card__header-link" >
              
             </a>
-            <header class="card__header" style="background-image: url(&quot;https://openarena.es/wp-content/uploads/2019/05/open_arena_instalaciones16.jpg&quot;); margin-top: -5px; width: 101%; margin-left: -2px;">
-             <h1 style="color: aliceblue;">Pista de PADEL</h1>
-             <h2 style="color: aliceblue;" > OPEN ARENA </h2>
+            <% String foto = man.getClubDAO().obtenerFotoClub(man.getClubDAO().obtener(pistas.get(i).getClub()).getId());%>
+            <header class="card__header" style="background-image: url(<%out.println(foto);%>); margin-top: -5px; width: 101%; margin-left: -2px;">
+             <h1 style="color: aliceblue;">Pista de <%=man.getPistaDAO().nombreDeporte(pistas.get(i).getDeporte()) %></h1>
+             <h2 style="color: aliceblue;" ><%=club.getNombreClub()%> </h2>
              <span class="focus-icon"> </span>
              <i  style="left:150px; top:20px; color: red;" class="fa fa-map-pin" aria-hidden="true"></i>
-             <h1 style="left: 170px; color: aliceblue;">Pista 5</h1>
+             <h1 style="left: 170px; color: aliceblue;">Pista <%=pistas.get(i).getId() %></h1>
              </header>
             <div class="card_body">
               <div class="btn-group">
                 <div class="slots">
                  <a>
-                     <div><button  style="background-color: rgb(165, 49, 49);" class="hora-btn" onclick="location.href='partido.html'">
+                 	<form  action="/IW_/eliminarPistaController" method = "post">
+                    <input type="hidden" name="pista" value=<%= pistas.get(i).getId() %>>
+                     <div><button  style="background-color: rgb(165, 49, 49);" class="hora-btn" onclick="location.href='MisPistas.jsp'">
            Eliminar pista
          </button>
+         </form>
 
                      </div>
                  </a>
@@ -200,7 +223,7 @@
                 </div>
                 <div class="slots">
                   <a>
-                      <div><button class="hora-btn" onclick="location.href='partido.html'">
+                      <div><button class="hora-btn" onclick="location.href='MisPistas.jsp'">
             Modificar pista
           </button>
  
@@ -210,10 +233,11 @@
                  </div>
 
                  
-            </div>
-        </article>
-    </div> 
-    
+            	</div>
+        	</article>
+    	</div> 
+    	<%}
+       %> 
     
 
         

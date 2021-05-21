@@ -105,7 +105,7 @@
                                     </div>
                                     <div class="slots">
                                      <a>
-                                         <div><button class="partido-btn" onclick="location.href='partido.jsp'">
+                                         <div><button class="partido-btn" onclick="location.href='partidoHistorial.jsp'">
                                              Ver Detalles
                                          </button>
                  
@@ -140,7 +140,7 @@
                                     </div>
                                     <div class="slots">
                                      <a>
-                                         <div><button class="partido-btn" onclick="location.href='partido.jsp'">
+                                         <div><button class="partido-btn" onclick="location.href='partidoHistorial.jsp'">
                                              Ver Detalles
                                          </button>
                  
@@ -175,7 +175,7 @@
                                     </div>
                                     <div class="slots">
                                      <a>
-                                         <div><button class="partido-btn" onclick="location.href='partido.jsp'">
+                                         <div><button class="partido-btn" onclick="location.href='partidoHistorial.jsp'">
                                              Ver Detalles
                                          </button>
                  

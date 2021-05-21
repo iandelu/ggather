@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <%@ page import = "com.mycompany.iw.Club" %>
 <%
 	Club club = (Club) session.getAttribute("club");
@@ -37,7 +37,7 @@
       <ul>
           <li><a href="dashboard.jsp">Estadisticas</a></li>
           <li><a href="MisPistas.jsp">Gestionar Pistas</a></li>
-          <li><a href="../../mainMenu.jsp"  >Volver a Ggather</a></li>
+          <li><a href="../../../mainMenu.jsp"  >Volver a Ggather</a></li>
       </ul>
   </nav>
 
@@ -96,7 +96,8 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/MisPistas.jsp">
+        <form  action="../../../mispsitas" method = "post"></form>
+          <a class="nav-link  " href="../../../mispistas">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -234,8 +235,8 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Dinero Generado</p>
                     <h5 class="font-weight-bolder mb-0">
-                      53,000€
-                      <span class="text-success text-sm font-weight-bolder">+23,000€</span>
+                      53,000$
+                      <span class="text-success text-sm font-weight-bolder">+23,000$</span>
                     </h5>
                   </div>
                 </div>

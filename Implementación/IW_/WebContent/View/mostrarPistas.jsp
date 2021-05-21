@@ -28,10 +28,8 @@
 <%
 
 	List<Pista> pistas = (List<Pista>) session.getAttribute("pistas");
-
 	Class.forName("com.mysql.jdbc.Driver");
 	MySQLDaoManager man = new MySQLDaoManager("ggather.zapto.org", "java", "1234", "aplicacion");
-
 	
    %> 
 
@@ -46,9 +44,10 @@
 
     <nav>
         <ul>
-            <li><a href="../mainMenu.jsp">Inicio</a></li>
+            <li><a href="mainMenuLogged.jsp">Inicio</a></li>
             <li><a href="home.jsp">Crear Partido</a></li>
-            <li><a href="home.jsp"  >Acceder</a></li>
+            <li><a href="menuPerfil.jsp"  >Mi Perfil</a></li>
+            <li><a href="../LogoutController">Cerrar Sesión</a></li>
         </ul>
     </nav>
 
@@ -96,6 +95,7 @@
                     	   %><i class="fa fa-star" aria-hidden="true" style="color: gold;"></i><%
                        }
                        %>
+                       
                        </span>
                        </div>
                    </div>

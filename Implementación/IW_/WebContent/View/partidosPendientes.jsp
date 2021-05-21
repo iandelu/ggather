@@ -112,7 +112,7 @@
 					
 
 					<div class="text-center p-t-30">
-						<a class="txt2" onclick="location.href='menuPerfil.html'">
+						<a class="txt2" onclick="location.href='menuPerfil.jsp'">
 							Volver al mi perfil
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>

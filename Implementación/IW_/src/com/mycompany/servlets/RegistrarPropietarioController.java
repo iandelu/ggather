@@ -47,11 +47,12 @@ public class RegistrarPropietarioController extends HttpServlet {
              String nombrePropietario = request.getParameter("nombrePropietario");
              String localizacion = request.getParameter("localidad");
             // Date fechaNacimiento = Jugador.setFechaString(request.getParameter("fechanacimiento"));
-             long telefono = Integer.parseInt(request.getParameter("telefono"));
+             Long telefono = Long.parseLong(request.getParameter("telefono"));
              String email = request.getParameter("email");
              String password = request.getParameter("pass");
              
              Club clubAux = new Club(nombreClub, localizacion, email, password, telefono, nombrePropietario, false);
+             
              
              daoManager.getClubDAO().insertar(clubAux);
              

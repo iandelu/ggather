@@ -250,7 +250,7 @@ public class MySQLPistaDAO implements PistaDao{
     
     
     final String SEARCH = "SELECT p.idPista, p.idClub, p.idDeporte, p.horarioInicio, p.horarioFin, p.puntuacionMedia FROM pistas p, club c WHERE p.idClub = c.idClub and c.localizacion like ? AND p.idDeporte = ?";
-    final String GETMISPISTAS = "SELECT p.idPista FROM pistas p, club c WHERE p.idClub = ? AND p.idClub = c.idClub";
+    final String GETMISPISTAS = "SELECT p.idPista, p.idClub, p.idDeporte, p.horarioInicio, p.horarioFin, p.puntuacionMedia FROM pistas p, club c WHERE p.idClub = c.idClub and p.idClub = ? ";
     
     
     public List<Pista> buscarPista(String localizacion, Long deporte) throws DAOException  {
@@ -315,6 +315,7 @@ public class MySQLPistaDAO implements PistaDao{
        try{
            
            stat = conn.prepareStatement(GETMISPISTAS);
+           stat.setLong(1, id);
            rs = stat.executeQuery();
            while(rs.next()){
                
